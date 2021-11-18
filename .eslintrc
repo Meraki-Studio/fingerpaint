@@ -3,7 +3,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "globals": {
         "process": true
     },
@@ -15,6 +15,7 @@
     "plugins": ["babel", "react"],
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "rules": {
+        "import/no-named-as-default": 0,
         "no-console": "warn",
         "indent": [
             "error",
