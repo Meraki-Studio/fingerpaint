@@ -1,11 +1,12 @@
 import React from 'react';
+import CanvasBoard from '../components/canvas/CanvasBoard';
 
-function Canvas() {
+const Canvas = ({ draw }) => {
     return (
-        <div>
-            <p>This is the canvas page!</p>
-        </div>
+        <>
+            <CanvasBoard draw={draw} />
+        </>
     );
-}
+};
 
 export default Canvas;
