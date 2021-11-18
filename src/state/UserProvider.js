@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 export function UserProvider({ children }) {
   // state here
-  const [myArt, setMyArt] = useState([]);
+  const [myArt, setMyArt] = useState();
 
   // useEffect to load art upon login
 
