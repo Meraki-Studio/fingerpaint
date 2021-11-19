@@ -1,11 +1,47 @@
-import React from 'react';
-import CanvasBoard from '../components/canvas/CanvasBoard';
+import React, { useEffect, useRef } from 'react';
 
-const Canvas = ({ draw }) => {
+const Canvas = (props) => {
+    const {
+        // draw,
+        ...rest
+    } = props;
+
+    const canvasRef = useRef(null);
+
+    useEffect(
+        () => {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext('2d');
+            let frameCount = 0;
+            let animationFrameId;
+
+            const render = () => {
+                frameCount++;
+                context.fillStyle = '#000000';
+                context.fillRect(
+                    0,
+                    0,
+                    context.canvas.width,
+                    context.canvas.height
+                );
+                // draw(context, frameCount);
+                animationFrameId = window.requestAnimationFrame(render);
+            };
+            render();
+
+            return () => {
+                window.cancelAnimationFrame(animationFrameId);
+            };
+        },
+        [
+            // draw
+        ]
+    );
     return (
-        <>
-            <CanvasBoard draw={draw} />
-        </>
+        <section>
+            <h1>This is your Canvas! Express yourself!</h1>
+            <canvas ref={canvasRef} {...rest} />
+        </section>
     );
 };
 
