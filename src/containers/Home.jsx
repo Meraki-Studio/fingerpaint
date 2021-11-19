@@ -4,8 +4,11 @@ import styles from './containers.css';
 
 import ArtList from '../components/art/ArtList';
 import Welcome from '../components/Welcome';
+import Header from './Header';
+
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Home() {
     const { myArt } = useMyArt();
@@ -13,7 +16,7 @@ export default function Home() {
 
     return (
         <main className={styles.home}>
-            {/* menu + logo */}
+            <Header />
             {myArt ? (
                 <div className={styles.homeArtlist}>
                     <ArtList drawings={myArt} />
