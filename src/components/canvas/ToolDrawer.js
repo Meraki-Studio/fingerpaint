@@ -1,12 +1,12 @@
 import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const drawerWidth = 80;
+const drawerWidth = 20;
 
 const openDrawer = (theme) => ({
     width: drawerWidth,
@@ -22,17 +22,23 @@ const closeDrawer = (theme) => ({
         duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: `calc(${theme.spacing(7)} + 1)`,
-    [theme.breakpoints.up('sm')]: {
-        width: `calc(${theme.spacing(9)} + 1)`,
-    },
 });
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
+const Drawer = styled(MuiDrawer, {
+    shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+        ...openDrawer(theme),
+        '& .MuiDrawer-paper': openDrawer(theme),
+    }),
+    ...(!open && {
+        ...closeDrawer(theme),
+        '& .MuiDrawer-paper': closeDrawer(theme),
+    }),
 }));
 
 const ToolDrawer = () => {
@@ -43,25 +49,50 @@ const ToolDrawer = () => {
         setOpen(!open);
     };
 
+    const viewNav = [
+        'search-plus',
+        'search-minus',
+        'hand-paper',
+        'eye',
+        'eye-slash',
+        'icons',
+    ];
+    const tools = [
+        'paint-brush',
+        'pen',
+        'eraser',
+        'fill-drip',
+        'font',
+        'stamp',
+        'image',
+        'palette',
+    ];
+    const manipulation = ['edit', 'undo', 'redo', 'save', 'trash-alt', 'crop'];
+
     return (
         <Box sx={{ display: 'flex' }}>
-            <Toolbar>
+            <Drawer variant="permanent" open={open}>
                 <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
+                    sx={{ justifySelf: 'flex-end' }}
                     onClick={() => handleDrawer(open)}
-                    edge="start"
-                    sx={{
-                        marginRight: 'auto',
-                        ...(open && { display: 'none' }),
-                    }}
-                ></IconButton>
-            </Toolbar>
-            <MuiDrawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton>{}</IconButton>
-                </DrawerHeader>
-            </MuiDrawer>
+                >
+                    {open ? (
+                        <FontAwesomeIcon icon="angle-left" />
+                    ) : (
+                        <FontAwesomeIcon icon="angle-right" />
+                    )}
+                </IconButton>
+                <ButtonGroup
+                    variant="text"
+                    color="primary"
+                    aria-label="draw tools group"
+                    orientation="vertical"
+                >
+                    {tools.map((tool) => (
+                        <FontAwesomeIcon key={tool} icon={tool} />
+                    ))}
+                </ButtonGroup>
+            </Drawer>
         </Box>
     );
 };

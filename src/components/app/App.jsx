@@ -5,6 +5,9 @@ import Landing from '../../containers/Landing';
 import Login from '../../containers/Login';
 import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
+import { CanvasControlIcons } from '../../utils/CanvasControlIcons';
+
+CanvasControlIcons();
 
 export default function App() {
     return (
