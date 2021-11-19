@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import Container from '@mui/material/Container';
 // import { BlockPicker } from 'react-color';
@@ -38,11 +38,22 @@ const Canvas = () => {
             zoomExtents: { min: 0.33, max: 3 },
         };
      */
-    const handleChange = (name, value) => {
-        setCanvasOptions((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+    // const handleChange = (name, value) => {
+    //     setCanvasOptions((prevState) => ({
+    //         ...prevState,
+    //         [name]: value,
+    //     }));
+    // };
+
+    const canvas = useRef(null);
+    const canvasRef = canvas.current;
+
+    const clearCanvas = () => {
+        canvasRef.eraseAll();
+    };
+
+    const saveCanvas = () => {
+        localStorage.setItem('savedCanvas', canvasRef.getSaveData());
     };
 
     return (
@@ -50,8 +61,15 @@ const Canvas = () => {
             <h1>This is your Canvas! Express yourself!</h1>
             <ToolDrawer />
             {/* <BlockPicker /> */}
-            <Button variant="contained">Clear Canvas</Button>
+            <Button variant="contained" onClick={() => clearCanvas()}>
+                Clear Canvas
+            </Button>
+            <Button variant="contained" onClick={() => saveCanvas()}>
+                Save
+            </Button>
             <CanvasDraw
+                style={{ touchAction: 'none' }}
+                ref={canvasRef}
                 {...canvasOptions}
                 canvasHeight={1080}
                 canvasWidth={1920}
