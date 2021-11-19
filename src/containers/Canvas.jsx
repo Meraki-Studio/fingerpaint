@@ -1,48 +1,16 @@
-import React, { useEffect, useRef } from 'react';
-import ToolDrawer from '../components/canvas/ToolDrawer';
+import React, { useContext } from 'react';
+// import ToolDrawer from '../components/canvas/ToolDrawer';
+import { useCanvas, UserContext } from '../state/UserProvider';
 
-const Canvas = (props) => {
-    const {
-        // draw,
-        ...rest
-    } = props;
+const Canvas = () => {
+    const { draw } = useContext(UserContext);
+    const canvasRef = useCanvas(draw);
 
-    const canvasRef = useRef(null);
-
-    useEffect(
-        () => {
-            const canvas = canvasRef.current;
-            const context = canvas.getContext('2d');
-            let frameCount = 0;
-            let animationFrameId;
-
-            const render = () => {
-                frameCount++;
-                context.fillStyle = '#000000';
-                context.fillRect(
-                    0,
-                    0,
-                    context.canvas.width,
-                    context.canvas.height
-                );
-                // draw(context, frameCount);
-                animationFrameId = window.requestAnimationFrame(render);
-            };
-            render();
-
-            return () => {
-                window.cancelAnimationFrame(animationFrameId);
-            };
-        },
-        [
-            // draw
-        ]
-    );
     return (
         <section>
             <h1>This is your Canvas! Express yourself!</h1>
-            <ToolDrawer />
-            <canvas ref={canvasRef} {...rest} />
+            {/* <ToolDrawer /> */}
+            <canvas style={{ border: 'solid red 5px' }} ref={canvasRef} />
         </section>
     );
 };
