@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import ToolDrawer from '../components/canvas/ToolDrawer';
 
 const Canvas = (props) => {
     const {
@@ -40,6 +41,7 @@ const Canvas = (props) => {
     return (
         <section>
             <h1>This is your Canvas! Express yourself!</h1>
+            <ToolDrawer />
             <canvas ref={canvasRef} {...rest} />
         </section>
     );
