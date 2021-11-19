@@ -1,0 +1,30 @@
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.homeNoArtlist {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 100vh;
+}
+
+.homeArtlist {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}
