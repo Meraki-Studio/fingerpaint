@@ -8,12 +8,32 @@ import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
 
 import {
-    faUndo,
-    faRedo,
+    faArrowLeft,
+    faUndoAlt,
+    faRedoAlt,
+    faExpandArrowsAlt,
+    faEye,
+    faPalette,
     faPaintBrush,
+    faStamp,
+    faFillDrip,
+    faImage,
+    faEraser,
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faUndo, faRedo, faPaintBrush);
+library.add(
+    faArrowLeft,
+    faUndoAlt,
+    faRedoAlt,
+    faExpandArrowsAlt,
+    faEye,
+    faPalette,
+    faPaintBrush,
+    faStamp,
+    faFillDrip,
+    faImage,
+    faEraser
+);
 
 export default function App() {
     return (
