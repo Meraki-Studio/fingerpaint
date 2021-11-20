@@ -1,13 +1,19 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Landing from '../../containers/Landing';
 import Login from '../../containers/Login';
 import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
-import { CanvasControlIcons } from '../../utils/CanvasControlIcons';
 
-CanvasControlIcons();
+import {
+    faUndo,
+    faRedo,
+    faPaintBrush,
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faUndo, faRedo, faPaintBrush);
 
 export default function App() {
     return (

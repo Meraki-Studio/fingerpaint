@@ -3,9 +3,9 @@ import CanvasDraw from 'react-canvas-draw';
 import Container from '@mui/material/Container';
 // import { BlockPicker } from 'react-color';
 
-import ToolDrawer from '../components/canvas/ToolDrawer';
 import { useCanvasOptions } from '../state/UserProvider';
-import { Button } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Canvas = () => {
     const { canvasOptions, setCanvasOptions } = useCanvasOptions();
@@ -56,24 +56,101 @@ const Canvas = () => {
         localStorage.setItem('savedCanvas', canvasRef.getSaveData());
     };
 
+    const topTools = [
+        {
+            icon: 'arrow-left',
+            onClick: () => console.log('back'),
+        },
+        {
+            icon: 'undo-alt',
+            onClick: () => console.log('undo'),
+        },
+        {
+            icon: 'redo-alt',
+            onClick: () => console.log('redo'),
+        },
+        {
+            icon: 'expand-arrows-alt',
+            onClick: () => console.log('pan/zoom'),
+        },
+        {
+            icon: 'eye',
+            onClick: () => console.log('show/hide'),
+        },
+    ];
+
+    const bottomTools = [
+        {
+            icon: 'palette',
+            onClick: () => console.log('palette'),
+        },
+        {
+            icon: 'paint-brush',
+            onClick: () => console.log('brush'),
+        },
+        {
+            icon: 'stamp',
+            onClick: () => console.log('stamp'),
+        },
+        {
+            icon: 'fill-drip',
+            onClick: () => console.log('fill'),
+        },
+        {
+            icon: 'image',
+            onClick: () => console.log('image'),
+        },
+        {
+            icon: 'eraser',
+            onClick: () => console.log('eraser'),
+        },
+    ];
+
     return (
         <Container maxWidth="lg">
-            <h1>This is your Canvas! Express yourself!</h1>
-            <ToolDrawer />
-            {/* <BlockPicker /> */}
-            <Button variant="contained" onClick={() => clearCanvas()}>
-                Clear Canvas
-            </Button>
-            <Button variant="contained" onClick={() => saveCanvas()}>
-                Save
-            </Button>
+            <AppBar position="static" color="primary">
+                <Toolbar
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-evenly',
+                    }}
+                >
+                    {topTools.map((tool) => {
+                        return (
+                            <FontAwesomeIcon
+                                key={tool.icon}
+                                icon={tool.icon}
+                                onClick={tool.onClick}
+                            />
+                        );
+                    })}
+                </Toolbar>
+            </AppBar>
             <CanvasDraw
                 style={{ touchAction: 'none' }}
                 ref={canvasRef}
                 {...canvasOptions}
-                canvasHeight={1080}
-                canvasWidth={1920}
+                canvasHeight={window.screen.height}
+                canvasWidth={window.screen.width}
             />
+            <AppBar position="static" color="primary">
+                <Toolbar
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-evenly',
+                    }}
+                >
+                    {bottomTools.map((tool) => {
+                        return (
+                            <FontAwesomeIcon
+                                key={tool.icon}
+                                icon={tool.icon}
+                                onClick={tool.onClick}
+                            />
+                        );
+                    })}
+                </Toolbar>
+            </AppBar>
         </Container>
     );
 };
