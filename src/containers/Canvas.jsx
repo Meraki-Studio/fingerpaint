@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import Container from '@mui/material/Container';
 // import { BlockPicker } from 'react-color';
@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Canvas = () => {
     const { canvasOptions, setCanvasOptions } = useCanvasOptions();
+    const [hidden, setHidden] = useState(false);
 
     /**
      * @param {Object} canvasOptions
@@ -75,7 +76,10 @@ const Canvas = () => {
         },
         {
             icon: 'eye',
-            onClick: () => console.log('show/hide'),
+            onClick: () => {
+                setHidden(!hidden);
+                console.log('show/hide');
+            },
         },
     ];
 
@@ -108,33 +112,58 @@ const Canvas = () => {
 
     return (
         <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
-            <AppBar
-                position="absolute"
-                color="transparent"
-                sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
-            >
-                <Toolbar
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}
+            {hidden ? (
+                <AppBar
+                    position="absolute"
+                    color="transparent"
+                    sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
                 >
-                    {topTools.map((tool) => {
-                        return (
-                            <FontAwesomeIcon
-                                key={tool.icon}
-                                icon={tool.icon}
-                                style={{
-                                    borderRadius: '50px',
-                                    padding: '.7rem',
-                                    background: 'white',
-                                }}
-                                onClick={tool.onClick}
-                            />
-                        );
-                    })}
-                </Toolbar>
-            </AppBar>
+                    <Toolbar
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'end',
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            icon={topTools[4].icon}
+                            style={{
+                                borderRadius: '50px',
+                                padding: '.7rem',
+                                background: 'white',
+                            }}
+                            onClick={topTools[4].onClick}
+                        />
+                    </Toolbar>
+                </AppBar>
+            ) : (
+                <AppBar
+                    position="absolute"
+                    color="transparent"
+                    sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
+                >
+                    <Toolbar
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        {topTools.map((tool) => {
+                            return (
+                                <FontAwesomeIcon
+                                    key={tool.icon}
+                                    icon={tool.icon}
+                                    style={{
+                                        borderRadius: '50px',
+                                        padding: '.7rem',
+                                        background: 'white',
+                                    }}
+                                    onClick={tool.onClick}
+                                />
+                            );
+                        })}
+                    </Toolbar>
+                </AppBar>
+            )}
             <CanvasDraw
                 style={{ touchAction: 'none' }}
                 ref={canvasRef}
@@ -142,34 +171,58 @@ const Canvas = () => {
                 canvasHeight={window.screen.height}
                 canvasWidth={window.screen.width}
             />
-            <AppBar
-                position="absolute"
-                color="transparent"
-                sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
-            >
-                <Toolbar
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-around',
-                        padding: '0 2px',
-                    }}
+            {hidden ? (
+                <AppBar
+                    position="absolute"
+                    color="transparent"
+                    sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
                 >
-                    {bottomTools.map((tool) => {
-                        return (
-                            <FontAwesomeIcon
-                                key={tool.icon}
-                                icon={tool.icon}
-                                style={{
-                                    borderRadius: '50px',
-                                    padding: '.7rem',
-                                    background: 'white',
-                                }}
-                                onClick={tool.onClick}
-                            />
-                        );
-                    })}
-                </Toolbar>
-            </AppBar>
+                    <Toolbar
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'start',
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            icon={bottomTools[0].icon}
+                            style={{
+                                borderRadius: '50px',
+                                padding: '.7rem',
+                                background: 'white',
+                            }}
+                            onClick={bottomTools[0].onClick}
+                        />
+                    </Toolbar>
+                </AppBar>
+            ) : (
+                <AppBar
+                    position="absolute"
+                    color="transparent"
+                    sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
+                >
+                    <Toolbar
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        {bottomTools.map((tool) => {
+                            return (
+                                <FontAwesomeIcon
+                                    key={tool.icon}
+                                    icon={tool.icon}
+                                    style={{
+                                        borderRadius: '50px',
+                                        padding: '.7rem',
+                                        background: 'white',
+                                    }}
+                                    onClick={tool.onClick}
+                                />
+                            );
+                        })}
+                    </Toolbar>
+                </AppBar>
+            )}
         </Container>
     );
 };
