@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import CanvasDraw from 'react-canvas-draw';
+import CanvasDraw from '../utils/eraser/index';
 import Container from '@mui/material/Container';
 // import { BlockPicker } from 'react-color';
 
@@ -13,6 +13,8 @@ const Canvas = () => {
     const { canvasOptions, setCanvasOptions } = useCanvasOptions();
     const [hidden, setHidden] = useState(false);
     const [PZ, setPZ] = useState(false);
+    const [color, setColor] = useState('#000');
+    const [erase, setErase] = useState(false);
     const navigate = useNavigate();
 
     /**
@@ -102,7 +104,10 @@ const Canvas = () => {
         },
         {
             icon: 'paint-brush',
-            onClick: () => console.log('brush'),
+            onClick: () => {
+                console.log('brush');
+                setErase(false);
+            },
         },
         {
             icon: 'stamp',
@@ -118,7 +123,10 @@ const Canvas = () => {
         },
         {
             icon: 'eraser',
-            onClick: () => console.log('eraser'),
+            onClick: ({ target }) => {
+                console.log(`within eraser! erase: ${erase}, color: ${color}`);
+                setErase(true);
+            },
         },
     ];
 
@@ -183,6 +191,9 @@ const Canvas = () => {
                 canvasHeight={window.screen.height}
                 canvasWidth={window.screen.width}
                 enablePanAndZoom={PZ}
+                brushColor={color}
+                erase={erase}
+                imgSrc="https://place-puppy.com/public-images/index-page/image4/410x280-lg.jpg"
             />
             {hidden ? (
                 <AppBar
