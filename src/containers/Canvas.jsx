@@ -252,6 +252,7 @@ const Canvas = () => {
                             justifyContent: 'space-between',
                         }}
                     >
+                        TODO - move drawer above bottom tools
                         <Drawer
                             variant="persistent"
                             anchor="bottom"

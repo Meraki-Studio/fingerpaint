@@ -1,6 +1,4 @@
 import React from 'react';
-import Canvas from './Canvas.jsx';
-import UserContext from '../state/UserProvider';
 
 const Landing = () => {
     return (
