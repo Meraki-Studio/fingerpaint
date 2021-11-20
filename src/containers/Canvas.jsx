@@ -7,9 +7,12 @@ import { useCanvasOptions } from '../state/UserProvider';
 import { AppBar, Toolbar } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { useNavigate } from 'react-router-dom';
+
 const Canvas = () => {
     const { canvasOptions, setCanvasOptions } = useCanvasOptions();
     const [hidden, setHidden] = useState(false);
+    const navigate = useNavigate();
 
     /**
      * @param {Object} canvasOptions
@@ -60,7 +63,10 @@ const Canvas = () => {
     const topTools = [
         {
             icon: 'arrow-left',
-            onClick: () => console.log('back'),
+            onClick: () => {
+                console.log('back');
+                navigate('/home');
+            },
         },
         {
             icon: 'undo-alt',
