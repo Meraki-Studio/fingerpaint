@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const Canvas = () => {
     const { canvasOptions, setCanvasOptions } = useCanvasOptions();
     const [hidden, setHidden] = useState(false);
+    const [PZ, setPZ] = useState(false);
     const navigate = useNavigate();
 
     /**
@@ -49,7 +50,7 @@ const Canvas = () => {
     //     }));
     // };
 
-    const canvas = useRef(null);
+    const canvas = useRef();
     const canvasRef = canvas.current;
 
     const clearCanvas = () => {
@@ -70,7 +71,9 @@ const Canvas = () => {
         },
         {
             icon: 'undo-alt',
-            onClick: () => console.log('undo'),
+            onClick: () => {
+                console.log('undo');
+            },
         },
         {
             icon: 'redo-alt',
@@ -78,7 +81,10 @@ const Canvas = () => {
         },
         {
             icon: 'expand-arrows-alt',
-            onClick: () => console.log('pan/zoom'),
+            onClick: () => {
+                setPZ(!PZ);
+                console.log('pan/zoom: ', PZ);
+            },
         },
         {
             icon: 'eye',
@@ -176,6 +182,7 @@ const Canvas = () => {
                 {...canvasOptions}
                 canvasHeight={window.screen.height}
                 canvasWidth={window.screen.width}
+                enablePanAndZoom={PZ}
             />
             {hidden ? (
                 <AppBar
