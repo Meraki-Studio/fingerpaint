@@ -100,7 +100,9 @@ const Canvas = () => {
     const bottomTools = [
         {
             icon: 'palette',
-            onClick: () => console.log('palette'),
+            onClick: () => {
+                console.log('palette');
+            },
         },
         {
             icon: 'paint-brush',
@@ -115,7 +117,9 @@ const Canvas = () => {
         },
         {
             icon: 'fill-drip',
-            onClick: () => console.log('fill'),
+            onClick: () => {
+                console.log('fill');
+            },
         },
         {
             icon: 'image',
