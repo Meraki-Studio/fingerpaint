@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 import CanvasDraw from '../utils/eraser/index';
 import Container from '@mui/material/Container';
-// import { BlockPicker } from 'react-color';
+import { CirclePicker } from 'react-color';
 
 import { useCanvasOptions } from '../state/UserProvider';
-import { AppBar, Toolbar } from '@mui/material';
+import { AppBar, Drawer, Toolbar } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ const Canvas = () => {
     const [PZ, setPZ] = useState(false);
     const [color, setColor] = useState('#000');
     const [erase, setErase] = useState(false);
+    const [showPalette, setShowPalette] = useState(false);
     const navigate = useNavigate();
 
     /**
@@ -63,6 +64,11 @@ const Canvas = () => {
         localStorage.setItem('savedCanvas', canvasRef.getSaveData());
     };
 
+    const handleColorChange = ({ hex }) => {
+        setColor(hex);
+        setShowPalette(!showPalette);
+    };
+
     const topTools = [
         {
             icon: 'arrow-left',
@@ -102,6 +108,7 @@ const Canvas = () => {
             icon: 'palette',
             onClick: () => {
                 console.log('palette');
+                setShowPalette(!showPalette);
             },
         },
         {
@@ -189,7 +196,7 @@ const Canvas = () => {
                 </AppBar>
             )}
             <CanvasDraw
-                style={{ touchAction: 'none' }}
+                style={{ touchAction: 'none', position: 'relative' }}
                 ref={canvasRef}
                 {...canvasOptions}
                 canvasHeight={window.screen.height}
@@ -210,6 +217,18 @@ const Canvas = () => {
                             justifyContent: 'start',
                         }}
                     >
+                        <Drawer
+                            variant="persistent"
+                            anchor="bottom"
+                            open={showPalette}
+                        >
+                            {/* {showPalette ? ( */}
+                            <CirclePicker
+                                onChange={(color) => handleColorChange(color)}
+                                color={color}
+                            />
+                            {/* ) : null} */}
+                        </Drawer>
                         <FontAwesomeIcon
                             icon={bottomTools[0].icon}
                             style={{
@@ -233,6 +252,18 @@ const Canvas = () => {
                             justifyContent: 'space-between',
                         }}
                     >
+                        <Drawer
+                            variant="persistent"
+                            anchor="bottom"
+                            open={showPalette}
+                        >
+                            {/* {showPalette ? ( */}
+                            <CirclePicker
+                                onChange={(color) => handleColorChange(color)}
+                                color={color}
+                            />
+                            {/* ) : null} */}
+                        </Drawer>
                         {bottomTools.map((tool) => {
                             return (
                                 <FontAwesomeIcon
