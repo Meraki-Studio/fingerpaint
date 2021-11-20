@@ -5,7 +5,12 @@ import Container from '@mui/material/Container';
 
 import ToolDrawer from '../components/canvas/ToolDrawer';
 import { useCanvasOptions } from '../state/UserProvider';
-import { Button } from '@mui/material';
+import { AppBar, IconButton, Toolbar } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CanvasControlIcons } from '../utils/CanvasControlIcons';
+import styles from './containers.css';
+
+CanvasControlIcons();
 
 const Canvas = () => {
     const { canvasOptions, setCanvasOptions } = useCanvasOptions();
@@ -56,24 +61,43 @@ const Canvas = () => {
         localStorage.setItem('savedCanvas', canvasRef.getSaveData());
     };
 
+    const topTools = [
+        {
+            id: 1,
+            icon: 'faUndo',
+            clickHandler: () => console.log('you clicked back arrow!'),
+        },
+        {
+            id: 2,
+            icon: 'faRedo',
+            clickHandler: () => console.log('you clicked undo!'),
+        },
+    ];
+
     return (
         <Container maxWidth="lg">
-            <h1>This is your Canvas! Express yourself!</h1>
-            <ToolDrawer />
-            {/* <BlockPicker /> */}
-            <Button variant="contained" onClick={() => clearCanvas()}>
-                Clear Canvas
-            </Button>
-            <Button variant="contained" onClick={() => saveCanvas()}>
-                Save
-            </Button>
+            <AppBar>
+                <Toolbar>
+                    {topTools.map((tool) => {
+                        return (
+                            <FontAwesomeIcon
+                                icon={tool.icon}
+                                onClick={tool.clickHandler}
+                            />
+                        );
+                    })}
+                </Toolbar>
+            </AppBar>
             <CanvasDraw
                 style={{ touchAction: 'none' }}
                 ref={canvasRef}
                 {...canvasOptions}
-                canvasHeight={1080}
-                canvasWidth={1920}
+                canvasHeight={window.screen.availHeight}
+                canvasWidth={window.screen.availWidth}
             />
+            <AppBar>
+                <Toolbar></Toolbar>
+            </AppBar>
         </Container>
     );
 };
