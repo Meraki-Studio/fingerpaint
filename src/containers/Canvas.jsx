@@ -107,8 +107,12 @@ const Canvas = () => {
     ];
 
     return (
-        <Container maxWidth="lg">
-            <AppBar position="static" color="primary">
+        <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
+            <AppBar
+                position="absolute"
+                color="primary"
+                // style={{ position: 'absolute' }}
+            >
                 <Toolbar
                     style={{
                         display: 'flex',
@@ -133,7 +137,11 @@ const Canvas = () => {
                 canvasHeight={window.screen.height}
                 canvasWidth={window.screen.width}
             />
-            <AppBar position="static" color="primary">
+            <AppBar
+                position="absolute"
+                color="primary"
+                sx={{ top: 'auto', bottom: 0 }}
+            >
                 <Toolbar
                     style={{
                         display: 'flex',

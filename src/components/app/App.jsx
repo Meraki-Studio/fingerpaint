@@ -7,6 +7,8 @@ import Login from '../../containers/Login';
 import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
 
+import styles from './App.css';
+
 import {
     faArrowLeft,
     faUndoAlt,
