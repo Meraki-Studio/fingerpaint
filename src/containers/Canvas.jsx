@@ -110,13 +110,13 @@ const Canvas = () => {
         <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
             <AppBar
                 position="absolute"
-                color="primary"
-                // style={{ position: 'absolute' }}
+                color="transparent"
+                sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
             >
                 <Toolbar
                     style={{
                         display: 'flex',
-                        justifyContent: 'space-evenly',
+                        justifyContent: 'space-between',
                     }}
                 >
                     {topTools.map((tool) => {
@@ -124,6 +124,11 @@ const Canvas = () => {
                             <FontAwesomeIcon
                                 key={tool.icon}
                                 icon={tool.icon}
+                                style={{
+                                    borderRadius: '50px',
+                                    padding: '.7rem',
+                                    background: 'white',
+                                }}
                                 onClick={tool.onClick}
                             />
                         );
@@ -139,13 +144,14 @@ const Canvas = () => {
             />
             <AppBar
                 position="absolute"
-                color="primary"
-                sx={{ top: 'auto', bottom: 0 }}
+                color="transparent"
+                sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
             >
                 <Toolbar
                     style={{
                         display: 'flex',
-                        justifyContent: 'space-evenly',
+                        justifyContent: 'space-around',
+                        padding: '0 2px',
                     }}
                 >
                     {bottomTools.map((tool) => {
@@ -153,6 +159,11 @@ const Canvas = () => {
                             <FontAwesomeIcon
                                 key={tool.icon}
                                 icon={tool.icon}
+                                style={{
+                                    borderRadius: '50px',
+                                    padding: '.7rem',
+                                    background: 'white',
+                                }}
                                 onClick={tool.onClick}
                             />
                         );
