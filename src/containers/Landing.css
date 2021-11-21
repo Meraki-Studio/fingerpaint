@@ -1,0 +1,147 @@
+.container {
+    display: grid;
+    grid-template-areas:
+        'Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero'
+        'Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero'
+        'Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero'
+        '. . . what what what what what what . . .'
+        '. . . what what what what what what . . .'
+        '. . . what what what what what what . . .'
+        '. . . features features features features features features . . .'
+        '. . video video video video video video video video . .'
+        '. . how how how how how how how how . .'
+        '. . how how how how how how how how . .'
+        '. . how how how how how how how how . .'
+        '. . who who who who who who who who . .';
+    gap: 5px 5px;
+    grid-auto-flow: row;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+/* HEADER STYLES */
+.header {
+    display: flex;
+    grid-area: 1 / 1 / 1 / 13;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border: 3px solid magenta;
+}
+
+.logo {
+    display: flex;
+    font-size: 1.5rem;
+    width: fit-content;
+    margin-left: 5px;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.ctaBtn {
+    display: flex;
+    justify-self: flex-end;
+    width: fit-content;
+}
+
+/* HERO STYLES */
+.hero {
+    display: flex;
+    grid-area: Hero;
+    border: 3px solid green;
+    height: 500px;
+    background-color: #fddeb4;
+    clip-path: ellipse(120% 100% at 50% 0%);
+}
+/* .heroText {
+}
+.heroImg {
+} */
+
+/* WHAT SECTION STYLES */
+.what {
+    display: flex;
+    flex-direction: row;
+    grid-area: what;
+    border: 3px solid red;
+}
+/* .whatImg {
+    grid-area: whatImg;
+}
+.whatText {
+    grid-area: whatText;
+} */
+
+/* FEATURES */
+.features {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    grid-area: features;
+    justify-content: space-around;
+    border: 3px solid blue;
+}
+.featureCard {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: flex-start;
+    width: 80%;
+}
+.featureCard figure {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
+
+/* VIDEO */
+.video {
+    border: 3px solid orange;
+    grid-area: 7 / 1 / 8 / 13;
+}
+
+/* HOW SECTION STYLES */
+.how {
+    border: 3px solid purple;
+    grid-area: 8 / 1 / 11 / 13;
+}
+/* .step1Text {
+    grid-area: 8 / 2 / 9 / 7;
+}
+.step1Img {
+    grid-area: 8 / 7 / 9 / 12;
+}
+.step2Img {
+    grid-area: 9 / 2 / 10 / 7;
+}
+.step2Text {
+    grid-area: 9 / 7 / 10 / 12;
+}
+.step3Text {
+    grid-area: 10 / 2 / 11 / 7;
+}
+.step3Img {
+    grid-area: 10 / 7 / 11 / 12;
+} */
+
+/* TEAM SECTION STYLES */
+.team {
+    border: 3px solid brown;
+    grid-area: 11 / 1 / 13 / 13;
+}
+/* .juliCard {
+    grid-area: 11 / 2 / 13 / 4;
+}
+.nickCard {
+    grid-area: 11 / 6 / 13 / 8;
+}
+.jamesCard {
+    grid-area: 11 / 10 / 13 / 12;
+} */
