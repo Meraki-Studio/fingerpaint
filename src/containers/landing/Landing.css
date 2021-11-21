@@ -1,0 +1,323 @@
+@font-face {
+    font-family: 'Oliver';
+    src: url('../../assets/fonts/Oliver-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Futura_Book';
+    src: url('../../assets/fonts/Futura_Book.ttf') format('truetype');
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER STYLES */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 5px;
+    color: #414141;
+}
+
+.logo {
+    display: flex;
+    margin-left: 5px;
+    font-family: Oliver;
+    font-size: 1.5rem;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: #414141;
+    font-size: 1rem;
+    font-family: Futura_Book;
+
+    padding: 0 10px;
+}
+
+.ctaBtn {
+    /* Position */
+    display: flex;
+    justify-self: flex-end;
+    align-items: center;
+    justify-content: center;
+
+    /* Size */
+    width: 172px;
+    height: 48px;
+    border-radius: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    /* Font */
+    font-family: Futura_Book;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* Color */
+    background-color: #f99d1f;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* HERO STYLES */
+.hero {
+    display: flex;
+    flex-direction: row;
+    grid-area: Hero;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    background-color: #fddeb4;
+    color: #414141;
+    clip-path: ellipse(120% 100% at 50% 0%);
+}
+
+.heroText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 375px;
+    height: 400px;
+}
+
+.heroText h2 {
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 80px;
+
+    /* or 106% */
+    letter-spacing: -1.5px;
+    margin: 0;
+    color: #414141;
+}
+
+.heroText p {
+    margin: 0;
+    font-family: Futura_Book;
+    font-size: 0.75rem;
+}
+
+/* WHAT SECTION STYLES */
+.what {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin: 2rem auto;
+    width: 85vw;
+}
+.what h3 {
+    /* Fingerpaint: making digital design tools accessible and fun for your child. */
+
+    /* Header 3 */
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 47px;
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+}
+.whatImg {
+    width: 408px;
+    height: 408px;
+}
+.whatText {
+    width: 400px;
+}
+
+/* FEATURES */
+.features {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-evenly;
+}
+.featureCard {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 450px;
+}
+.featureCard figure {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.featureCard figure img {
+    margin-right: 1rem;
+    height: 120px;
+    width: 120px;
+}
+.featureCard figure figCaption {
+    /* Header 4 */
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 137.81%;
+    /* identical to box height, or 33px */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+}
+
+/* VIDEO */
+.video {
+    border: 3px solid orange;
+    width: 936px;
+    height: 432px;
+    margin: 2rem auto;
+}
+
+/* HOW SECTION STYLES */
+.how {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    max-width: 1075px;
+}
+.how img {
+    /* Rectangle 7 */
+    width: 560px;
+    height: 560px;
+    margin: 2rem;
+
+    background: #c4c4c4;
+    border-radius: 16px;
+}
+
+.howText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.howText h3 {
+    /* Step 1: Select a tool to use. */
+    width: 434px;
+    height: 47px;
+
+    /* Header 3 */
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 47px;
+    /* identical to box height */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+}
+.howText p {
+    /* Choose from a variety of brushes, a rainbow of hues, a collection of stamps, and a panorama of backgrounds. Situated in the tools dock below, it’s as simple as tapping the one you want. */
+    width: 484.59px;
+    height: 106.97px;
+
+    /* Body */
+    font-family: Domine;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160.31%;
+    /* or 26px */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+}
+
+/* TEAM SECTION STYLES */
+.team {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0 3rem;
+}
+
+.teamCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 370px;
+}
+.teamCard img {
+    align-items: center;
+}
+
+.name {
+    /* Header 4 */
+    font-family: Futura;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 137.81%;
+    /* identical to box height, or 33px */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+    margin: 0;
+    padding: 32px 0 5px;
+}
+.role {
+    /* Subheader */
+    font-family: Futura;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160.31%;
+    /* identical to box height, or 29px */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+    margin: 0;
+}
+.blurb {
+    font-family: Domine;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160.31%;
+    /* or 26px */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+}
+.portfolio {
+    /* Hyperlink */
+    font-family: Futura;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 160.31%;
+    /* identical to box height, or 26px */
+    letter-spacing: 0.25px;
+
+    /* Dark Grey */
+    color: #393939;
+}
+.iconLinks {
+    margin-right: 16px;
+    color: #000;
+}

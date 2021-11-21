@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { CssBaseline } from '@mui/material';
 
-import Landing from '../../containers/Landing';
+import Landing from '../../containers/landing/Landing';
 import Login from '../../containers/Login';
 import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
