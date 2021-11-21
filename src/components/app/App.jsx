@@ -1,13 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { CssBaseline } from '@mui/material';
 
-import Landing from '../../containers/Landing';
+import Landing from '../../containers/landing/Landing';
 import Login from '../../containers/Login';
 import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
-
-import styles from './App.css';
 
 import {
     faArrowLeft,
@@ -23,6 +22,14 @@ import {
     faEraser,
 } from '@fortawesome/free-solid-svg-icons';
 
+import {
+    faLinkedin,
+    faLinkedinIn,
+    faGithub,
+    faGithubAlt,
+    faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
+
 library.add(
     faArrowLeft,
     faUndoAlt,
@@ -34,18 +41,23 @@ library.add(
     faStamp,
     faFillDrip,
     faImage,
-    faEraser
+    faEraser,
+    faLinkedin,
+    faLinkedinIn,
+    faGithub,
+    faGithubAlt,
+    faTwitter
 );
 
 export default function App() {
     return (
-        <main>
+        <CssBaseline>
             <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/canvas" element={<Canvas />} />
             </Routes>
-        </main>
+        </CssBaseline>
     );
 }
