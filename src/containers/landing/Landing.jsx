@@ -31,22 +31,24 @@ const Landing = () => (
             </button>
         </header>
         <main className={styles.container}>
-            <div className={styles.hero}>
-                <article className={styles.heroText}>
-                    <h2>Creativity, simplified.</h2>
-                    <p>
-                        Concocting fantastical creations has never been so
-                        simple. Nurture the next generation of digital
-                        designers. Fridge magnets not included.
-                    </p>
-                    <button href="#download" className={styles.ctaBtn}>
-                        Try it for free
-                    </button>
-                </article>
-                {/* Not currently applying class name here */}
-                <figure className={styles.heroImage}>
-                    <img src="http://place-puppy.com/300x300" alt="Hero" />
-                </figure>
+            <div className={styles.heroContainer}>
+                <div className={styles.hero}>
+                    <article className={styles.heroText}>
+                        <h2>Creativity, simplified.</h2>
+                        <p>
+                            Concocting fantastical creations has never been so
+                            simple. Nurture the next generation of digital
+                            designers. Fridge magnets not included.
+                        </p>
+                        <button href="#download" className={styles.ctaBtn}>
+                            Try it for free
+                        </button>
+                    </article>
+                    {/* Not currently applying class name here */}
+                    <figure className={styles.heroImage}>
+                        <img src="http://place-puppy.com/300x300" alt="Hero" />
+                    </figure>
+                </div>
             </div>
             <section className={styles.what}>
                 <img
@@ -111,7 +113,7 @@ const Landing = () => (
             <section className={styles.video}>
                 <p>Video goes here!</p>
             </section>
-            <section>
+            <section className={styles.howContainer}>
                 <div className={styles.how}>
                     <div className={styles.howText}>
                         <h3>Step 1: Select a tool to use</h3>
@@ -169,34 +171,6 @@ const Landing = () => (
                     console.log(maker);
                     return <ProfileItem key={maker.name} maker={maker} />;
                 })}
-                {/* <Card sx={{ maxWidth: 250 }} className={'styles.teamCard'}>
-                    <CardMedia
-                        component="img"
-                        src={juliImg}
-                        alt="Juli Vela"
-                        sx={{
-                            height: 150,
-                            width: 150,
-                            borderRadius: '50%',
-                        }}
-                    />
-                    <CardContent>
-                        <Typography components="p">
-                            An engineer with a passion for learning and teaching
-                            others. Juli codes to save the planet, advocate for
-                            mental health, and encourage other neurodiverse
-                            womxn along the way!
-                        </Typography>
-                    </CardContent>
-                    <div className={styles.teamLinks}>
-                        <a href="https://juliannevela.dev">
-                            See her work here →
-                        </a>
-                        <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
-                        <FontAwesomeIcon icon={['fab', 'github-alt']} />
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />
-                    </div>
-                </Card> */}
             </section>
         </main>
     </>
