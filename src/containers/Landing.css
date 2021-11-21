@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Oliver';
+    src: url('../../public/assets/fonts/Oliver-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Futura_Book';
+    src: url('../../public/assets/fonts/Futura_Book.ttf') format('truetype');
+}
+
 .container {
     display: grid;
     grid-template-areas:
@@ -23,19 +32,20 @@
 /* HEADER STYLES */
 .header {
     display: flex;
-    grid-area: 1 / 1 / 1 / 13;
-    width: 100%;
     flex-direction: row;
     align-items: center;
+
+    width: 100%;
     padding: 5px;
+    color: #414141;
     border: 3px solid magenta;
 }
 
 .logo {
     display: flex;
-    font-size: 1.5rem;
-    width: fit-content;
     margin-left: 5px;
+    font-family: Oliver;
+    font-size: 1.5rem;
 }
 
 .navBar {
@@ -44,10 +54,33 @@
     justify-content: space-evenly;
 }
 
+.navBar a {
+    text-decoration: none;
+    color: #414141;
+    font-size: 1rem;
+    font-family: Futura_Book;
+}
+
 .ctaBtn {
+    /* Position */
     display: flex;
     justify-self: flex-end;
-    width: fit-content;
+
+    /* Size */
+    width: 110px;
+    border-radius: 16px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    /* Font */
+    font-family: Futura_Book;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* Color */
+    background-color: #f99d1f;
+    color: #ffffff;
 }
 
 /* HERO STYLES */

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, Typography } from '@mui/material';
 
 import styles from './Landing.css';
 
@@ -13,9 +12,9 @@ const Landing = () => {
                     <a href="#how">How to use it</a>
                     <a href="#who">Who made it</a>
                 </nav>
-                <Button className={styles.ctaBtn} variant="contained">
+                <button href="#download" className={styles.ctaBtn}>
                     Try it for free
-                </Button>
+                </button>
             </header>
             <main className={styles.container}>
                 <section className={styles.hero}>
