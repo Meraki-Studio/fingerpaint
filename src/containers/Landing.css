@@ -4,15 +4,15 @@
         'Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero'
         'Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero'
         'Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero Hero'
-        '. . . what what what what what what . . .'
-        '. . . what what what what what what . . .'
-        '. . . what what what what what what . . .'
-        '. . . features features features features features features . . .'
-        '. . video video video video video video video video . .'
-        '. . how how how how how how how how . .'
-        '. . how how how how how how how how . .'
-        '. . how how how how how how how how . .'
-        '. . who who who who who who who who . .';
+        'what what what what what what what what what what what what'
+        'what what what what what what what what what what what what'
+        'what what what what what what what what what what what what'
+        'features features features features features features features features features features features features'
+        'video video video video video video video video video video video video'
+        'how how how how how how how how how how how how'
+        'how how how how how how how how how how how how'
+        'how how how how how how how how how how how how'
+        'who who who who who who who who who who who who';
     gap: 5px 5px;
     grid-auto-flow: row;
     height: 100%;
@@ -69,6 +69,8 @@
     display: flex;
     flex-direction: row;
     grid-area: what;
+    margin-left: 3rem;
+    margin-right: 3rem;
     border: 3px solid red;
 }
 /* .whatImg {
@@ -84,6 +86,8 @@
     flex-direction: row;
     padding: 2rem;
     grid-area: features;
+    margin-left: 3rem;
+    margin-right: 3rem;
     justify-content: space-around;
     border: 3px solid blue;
 }
@@ -104,13 +108,19 @@
 /* VIDEO */
 .video {
     border: 3px solid orange;
-    grid-area: 7 / 1 / 8 / 13;
+    grid-area: video;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 /* HOW SECTION STYLES */
 .how {
+    display: flex;
+    flex-direction: row;
+    grid-area: how;
+    margin-left: 3rem;
+    margin-right: 3rem;
     border: 3px solid purple;
-    grid-area: 8 / 1 / 11 / 13;
 }
 /* .step1Text {
     grid-area: 8 / 2 / 9 / 7;
@@ -133,8 +143,13 @@
 
 /* TEAM SECTION STYLES */
 .team {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    grid-area: who;
+    margin-left: 3rem;
+    margin-right: 3rem;
     border: 3px solid brown;
-    grid-area: 11 / 1 / 13 / 13;
 }
 /* .juliCard {
     grid-area: 11 / 2 / 13 / 4;

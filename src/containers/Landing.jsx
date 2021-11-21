@@ -87,7 +87,10 @@ const Landing = () => {
                         </p>
                     </article>
                 </section>
-                {/* <section className={styles.how}>
+                <section className={styles.video}>
+                    <p>Video goes here!</p>
+                </section>
+                <section className={styles.how}>
                     <span className={styles.howText}>
                         Lorem ipsum dolor sit amet consectetur, adipisicing
                         elit. Ut recusandae modi, repellat beatae non ipsum
@@ -100,21 +103,45 @@ const Landing = () => {
                         src="http://place-puppy.com/500x500"
                         alt="Hero"
                     />
-                </section> */}
-                {/* <section className={styles.what}>
-                    <span className={styles.whatText}>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut recusandae modi, repellat beatae non ipsum
-                        ratione expedita autem delectus et officiis. Nesciunt
-                        quae culpa nostrum mollitia voluptate voluptatibus nobis
-                        laudantium.
-                    </span>
-                    <img
-                        className={styles.whatImg}
-                        src="http://place-puppy.com/500x500"
-                        alt="Hero"
-                    />
-                </section> */}
+                </section>
+                <section className={styles.team}>
+                    <article className={styles.teamCard}>
+                        <figure>
+                            <img
+                                src="http://place-puppy.com/50x50"
+                                alt="team"
+                            />
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit.
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article className={styles.teamCard}>
+                        <figure>
+                            <img
+                                src="http://place-puppy.com/50x50"
+                                alt="team"
+                            />
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit.
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article className={styles.teamCard}>
+                        <figure>
+                            <img
+                                src="http://place-puppy.com/50x50"
+                                alt="team"
+                            />
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit.
+                            </figcaption>
+                        </figure>
+                    </article>
+                </section>
             </main>
         </>
     );
