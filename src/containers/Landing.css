@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Oliver';
-    src: url('../../public/assets/fonts/Oliver-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/Oliver-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: 'Futura_Book';
-    src: url('../../public/assets/fonts/Futura_Book.ttf') format('truetype');
+    src: url('../assets/fonts/Futura_Book.ttf') format('truetype');
 }
 
 .container {
@@ -196,14 +196,18 @@
     grid-area: who;
     margin-left: 3rem;
     margin-right: 3rem;
+    margin-bottom: 2rem;
     border: 3px solid brown;
 }
-/* .juliCard {
-    grid-area: 11 / 2 / 13 / 4;
+
+.teamCard h3 {
+    font-family: Futura_Book;
+    font-size: 1rem;
+    margin: 0;
 }
-.nickCard {
-    grid-area: 11 / 6 / 13 / 8;
+.teamCard p {
+    font-family: Futura_Book;
+    font-size: 0.75rem;
+    margin: 0;
+    font-style: italic;
 }
-.jamesCard {
-    grid-area: 11 / 10 / 13 / 12;
-} */

@@ -22,6 +22,14 @@ import {
     faEraser,
 } from '@fortawesome/free-solid-svg-icons';
 
+import {
+    faLinkedin,
+    faLinkedinIn,
+    faGithub,
+    faGithubAlt,
+    faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
+
 library.add(
     faArrowLeft,
     faUndoAlt,
@@ -33,7 +41,12 @@ library.add(
     faStamp,
     faFillDrip,
     faImage,
-    faEraser
+    faEraser,
+    faLinkedin,
+    faLinkedinIn,
+    faGithub,
+    faGithubAlt,
+    faTwitter
 );
 
 export default function App() {

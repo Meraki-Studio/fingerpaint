@@ -1,4 +1,16 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Typography,
+} from '@mui/material';
+
+import juliImg from '../assets/images/Juli.jpg';
+import nickImg from '../assets/images/Nick.png';
+// import jamesImg from '../assets/images/James.jpg';
 
 import styles from './Landing.css';
 
@@ -104,18 +116,34 @@ const Landing = () => {
                     />
                 </section>
                 <section className={styles.team}>
-                    <article className={styles.teamCard}>
-                        <figure>
-                            <img
-                                src="http://place-puppy.com/50x50"
-                                alt="team"
-                            />
-                            <figcaption>
-                                Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit.
-                            </figcaption>
-                        </figure>
-                    </article>
+                    <Card sx={{ maxWidth: 250 }} className={'styles.teamCard'}>
+                        <CardMedia
+                            component="img"
+                            src={juliImg}
+                            alt="Juli Vela"
+                            sx={{
+                                height: 150,
+                                width: 150,
+                                borderRadius: '50%',
+                            }}
+                        />
+                        <CardContent>
+                            <Typography components="p">
+                                An engineer with a passion for learning and
+                                teaching others. Juli codes to save the planet,
+                                advocate for mental health, and encourage other
+                                neurodiverse womxn along the way!
+                            </Typography>
+                        </CardContent>
+                        <div className={styles.teamLinks}>
+                            <a href="https://juliannevela.dev">
+                                See her work here →
+                            </a>
+                            <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+                            <FontAwesomeIcon icon={['fab', 'github-alt']} />
+                            <FontAwesomeIcon icon={['fab', 'twitter']} />
+                        </div>
+                    </Card>
                     <article className={styles.teamCard}>
                         <figure>
                             <img
