@@ -86,16 +86,30 @@
 /* HERO STYLES */
 .hero {
     display: flex;
+    flex-direction: row;
     grid-area: Hero;
+    justify-content: center;
+    align-items: center;
     border: 3px solid green;
     height: 500px;
+    padding-left: 4rem;
+    padding-right: 4rem;
     background-color: #fddeb4;
+    color: #414141;
     clip-path: ellipse(120% 100% at 50% 0%);
 }
-/* .heroText {
+
+.heroText h2 {
+    font-family: Futura_Book;
+    font-size: 3rem;
+    margin: 0;
 }
-.heroImg {
-} */
+
+.heroText p {
+    margin: 0;
+    font-family: Futura_Book;
+    font-size: 0.75rem;
+}
 
 /* WHAT SECTION STYLES */
 .what {

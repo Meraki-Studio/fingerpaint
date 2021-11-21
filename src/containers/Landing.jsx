@@ -18,18 +18,18 @@ const Landing = () => {
             </header>
             <main className={styles.container}>
                 <section className={styles.hero}>
-                    <span className={styles.heroText}>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Ut recusandae modi, repellat beatae non ipsum
-                        ratione expedita autem delectus et officiis. Nesciunt
-                        quae culpa nostrum mollitia voluptate voluptatibus nobis
-                        laudantium.
-                    </span>
-                    <img
-                        className={styles.heroImg}
-                        src="http://place-puppy.com/500x500"
-                        alt="Hero"
-                    />
+                    <article className={styles.heroText}>
+                        <h2>Creativity, simplified.</h2>
+                        <p>
+                            Concocting fantastical creations has never been so
+                            simple. Nurture the next generation of digital
+                            designers. Fridge magnets not included.
+                        </p>
+                    </article>
+                    {/* Not currently applying class name here */}
+                    <figure className={styles.heroImage}>
+                        <img src="http://place-puppy.com/300x300" alt="Hero" />
+                    </figure>
                 </section>
                 <section className={styles.what}>
                     <span className={styles.whatText}>
