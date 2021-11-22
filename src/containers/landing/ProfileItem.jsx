@@ -5,7 +5,7 @@ import styles from './Landing.css';
 
 export default function ProfileItem({ maker }) {
     const { name, pronoun, img, role, blurb, links } = maker;
-    console.log(img);
+
     return (
         <div sx={{ maxWidth: 250 }} className={styles.teamCard}>
             <img src={img} alt={name} />

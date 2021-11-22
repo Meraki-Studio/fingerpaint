@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import Landing from '../../containers/landing/Landing';
 import Login from '../../containers/Login';
@@ -34,7 +35,8 @@ library.add(
     faStamp,
     faFillDrip,
     faImage,
-    faEraser
+    faEraser,
+    fab
 );
 
 export default function App() {

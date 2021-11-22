@@ -153,7 +153,6 @@ const Landing = () => (
             </section>
             <section className={styles.team}>
                 {makers.map((maker) => {
-                    console.log(maker);
                     return <ProfileItem key={maker.name} maker={maker} />;
                 })}
             </section>
