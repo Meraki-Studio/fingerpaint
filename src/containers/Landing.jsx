@@ -1,11 +1,13 @@
 import React from 'react';
+import Canvas from './Canvas.jsx';
+import UserContext from '../state/UserProvider';
 
-function Landing() {
+const Landing = () => {
     return (
-        <div>
+        <section>
             <p>Welcome to Fingerpaint! This is our landing page!</p>
-        </div>
+        </section>
     );
-}
+};
 
 export default Landing;
