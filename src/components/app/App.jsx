@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
-import Landing from '../../containers/Landing';
+import Landing from '../../containers/landing/Landing';
 import Login from '../../containers/Login';
 import Home from '../../containers/Home';
 import Canvas from '../../containers/Canvas.jsx';
