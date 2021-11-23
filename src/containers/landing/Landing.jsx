@@ -1,9 +1,9 @@
 import React from 'react';
 import ProfileItem from './ProfileItem';
 import { makers } from './data';
-import styles from './Landing.css';
+import * as styles from './Landing.module.css';
 
-import logo from '../../../public/Logo_horiz.png';
+const logo = new URL('../public/Logo_horiz.png', import.meta.url);
 
 const Landing = () => (
     <>
