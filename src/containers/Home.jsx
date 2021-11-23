@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMyArt } from '../state/UserProvider';
 import styles from './containers.css';
 
@@ -11,7 +11,17 @@ import AddIcon from '@mui/icons-material/Add';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Home() {
-    const { myArt, setMyArt } = useMyArt();
+    const { myArt } = useMyArt([
+        'https://placekitten.com/96/140',
+        'https://placekitten.com/96/139',
+        'https://placekitten.com/200/287',
+        'https://placekitten.com/96/140',
+        'https://placekitten.com/96/139',
+        'https://placekitten.com/200/287',
+        'https://placekitten.com/96/140',
+        'https://placekitten.com/96/139',
+        'https://placekitten.com/200/287',
+    ]);
     console.log(myArt);
 
     const samples = [
@@ -26,10 +36,6 @@ export default function Home() {
         'https://placekitten.com/200/287',
     ];
 
-    useEffect(() => {
-        setMyArt(samples);
-    }, []);
-
     return (
         <main className={styles.home}>
             <img
@@ -37,11 +43,29 @@ export default function Home() {
                 alt="Fingerpaint"
                 className={styles.homeLogo}
             />
-            <section></section>
+            <section className={styles.artDisplay}>
+                {samples.map((art) => {
+                    console.log(art);
+                    return (
+                        <label key={art} className={styles.artContainer}>
+                            <img
+                                src={art}
+                                alt="fingerpainting"
+                                className={styles.art}
+                            />
+                        </label>
+                    );
+                })}
+            </section>
             <AppBar
                 position="absolute"
                 color="transparent"
-                sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
+                sx={{
+                    top: 'auto',
+                    bottom: 0,
+                    boxShadow: 'none',
+                    height: 'fitContent',
+                }}
             >
                 <Toolbar
                     style={{
@@ -58,15 +82,15 @@ export default function Home() {
                     <Button
                         variant="text"
                         style={{
-                            margin: '0 1rem',
+                            margin: '0 1rem .5rem',
                         }}
                     >
-                        <img src="./new.png" alt="NEW" />
+                        <img src="./new.png" alt="NEW" className={styles.new} />
                     </Button>
                     <Button
                         variant="text"
                         style={{
-                            margin: '1rem',
+                            margin: '0 1rem .5rem',
                         }}
                     >
                         <img src="./trash.png" alt="DELETE" />

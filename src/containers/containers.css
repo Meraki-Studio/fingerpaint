@@ -7,7 +7,7 @@
 .homeLogo {
     max-width: 90vw;
     max-height: 50px;
-    padding: 1rem;
+    padding-top: 1rem;
 }
 .homeNew {
     position: absolute;
@@ -24,28 +24,37 @@
     top: 530.64px;
 }
 
-.homeNoArtlist {
+.artDisplay {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    height: 100vh;
+    max-height: 70vh;
+    min-width: 90vw;
+    overflow-x: auto;
+    padding: 0 2rem;
+
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+}
+.artDisplay::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+.artContainer {
+    padding: 0.5rem;
+}
+.art {
+    height: 200px;
+    width: 125px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
-.homeArtlist {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-between;
-
-    height: 100vh;
-}
-
-.Header {
-    display: flex;
-    justify-content: space-between;
-    width: 100vw;
+.new {
+    max-height: 15vh;
 }
 
 .CanvasElement {
