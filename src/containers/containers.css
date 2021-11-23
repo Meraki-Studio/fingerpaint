@@ -4,6 +4,25 @@
     justify-content: center;
     flex-direction: column;
 }
+.homeLogo {
+    max-width: 90vw;
+    max-height: 50px;
+    padding: 1rem;
+}
+.homeNew {
+    position: absolute;
+    width: 104px;
+    height: 104px;
+    left: 128px;
+    top: 510.64px;
+}
+.homeTrash {
+    position: absolute;
+    width: 52px;
+    height: 59.43px;
+    left: 266.11px;
+    top: 530.64px;
+}
 
 .homeNoArtlist {
     display: flex;
