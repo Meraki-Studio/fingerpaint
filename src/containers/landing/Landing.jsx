@@ -3,11 +3,17 @@ import ProfileItem from './ProfileItem';
 import { makers } from './data';
 import styles from './Landing.css';
 
+import logo from '../../../public/Logo_horiz.png';
+
 const Landing = () => (
     <>
         <header className={styles.header}>
             <nav className={styles.navBar}>
-                <span className={styles.logo}>Fingerpaint</span>
+                <img
+                    src={logo}
+                    alt="Fingerpaint Logo"
+                    className={styles.logo}
+                />
                 <a href="#what">What is it</a>
                 <a href="#how">How to use it</a>
                 <a href="#who">Who made it</a>

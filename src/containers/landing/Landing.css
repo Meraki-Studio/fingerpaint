@@ -30,8 +30,7 @@
 .logo {
     display: flex;
     margin-left: 5px;
-    font-family: Oliver;
-    font-size: 1.5rem;
+    height: 48px;
 }
 
 .navBar {
