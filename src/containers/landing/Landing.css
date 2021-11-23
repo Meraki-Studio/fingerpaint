@@ -78,8 +78,10 @@
 
 /* HERO STYLES */
 .heroContainer {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 
   height: fit-content;
   background-color: #fddeb4;
@@ -105,10 +107,11 @@
   height: 400px;
 }
 .heroImage {
-  margin-bottom: 5rem;
-  max-width: 100vw;
-  max-height: 100vh;
-  overflow: hidden;
+    margin: 5rem 0;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+
 }
 
 .heroText h2 {
