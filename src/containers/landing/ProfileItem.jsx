@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import * as styles from './Landing.module.css';
+import styles from './Landing.css';
 
 export default function ProfileItem({ maker }) {
   const { name, pronoun, img, role, blurb, links } = maker;

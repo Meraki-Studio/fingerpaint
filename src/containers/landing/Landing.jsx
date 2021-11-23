@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileItem from './ProfileItem';
 import { makers } from './data';
-import * as styles from './Landing.module.css';
+import styles from './Landing.css';
 
 const logo = new URL('../../../public/assets/Logo_horiz.png', import.meta.url);
 
