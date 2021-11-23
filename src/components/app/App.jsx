@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Landing from '../../containers/landing/Landing';
 import Login from '../../containers/Login';
-import Home from '../../containers/Home';
+import Home from '../../containers/home/Home';
 import Canvas from '../../containers/Canvas.jsx';
 
 import styles from './App.css';
