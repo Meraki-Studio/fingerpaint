@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import { useMyArt } from '../state/UserProvider';
+import ArtItem from './home/ArtItem';
 import styles from './containers.css';
 
-import ArtList from '../components/art/ArtList';
-import Welcome from '../components/Welcome';
-
-import { AppBar, Drawer, Toolbar } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
-import MenuIcon from '@mui/icons-material/Menu';
+// import AddIcon from '@mui/icons-material/Add';
+// import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Home() {
     const { myArt } = useMyArt([
@@ -22,18 +20,44 @@ export default function Home() {
         'https://placekitten.com/96/139',
         'https://placekitten.com/200/287',
     ]);
-    console.log(myArt);
 
     const samples = [
-        'https://placekitten.com/96/140',
-        'https://placekitten.com/96/139',
-        'https://placekitten.com/200/287',
-        'https://placekitten.com/96/140',
-        'https://placekitten.com/96/139',
-        'https://placekitten.com/200/287',
-        'https://placekitten.com/96/140',
-        'https://placekitten.com/96/139',
-        'https://placekitten.com/200/287',
+        {
+            id: 1,
+            img: 'https://placekitten.com/96/140',
+        },
+        {
+            id: 2,
+            img: 'https://placekitten.com/96/139',
+        },
+        {
+            id: 3,
+            img: 'https://placekitten.com/200/287',
+        },
+        {
+            id: 4,
+            img: 'https://placekitten.com/96/140',
+        },
+        {
+            id: 5,
+            img: 'https://placekitten.com/96/139',
+        },
+        {
+            id: 6,
+            img: 'https://placekitten.com/200/287',
+        },
+        {
+            id: 7,
+            img: 'https://placekitten.com/96/140',
+        },
+        {
+            id: 8,
+            img: 'https://placekitten.com/96/139',
+        },
+        {
+            id: 9,
+            img: 'https://placekitten.com/200/287',
+        },
     ];
 
     return (
@@ -45,15 +69,10 @@ export default function Home() {
             />
             <section className={styles.artDisplay}>
                 {samples.map((art) => {
-                    console.log(art);
                     return (
-                        <label key={art} className={styles.artContainer}>
-                            <img
-                                src={art}
-                                alt="fingerpainting"
-                                className={styles.art}
-                            />
-                        </label>
+                        <div key={art.id}>
+                            <ArtItem art={art} />
+                        </div>
                     );
                 })}
             </section>
