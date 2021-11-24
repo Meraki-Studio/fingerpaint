@@ -1,7 +1,7 @@
 import React from 'react';
 import { itemTypes } from '../../utils/itemTypes';
 import { useDrag } from 'react-dnd';
-import '../containers.css';
+import '../containers.scss';
 
 import ImageListItem from '@mui/material/ImageListItem';
 

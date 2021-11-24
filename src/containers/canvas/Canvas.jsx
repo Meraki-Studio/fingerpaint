@@ -1,10 +1,9 @@
 import React, { useRef, useState } from 'react';
 import CanvasDraw from '../../utils/eraser/index';
-import Container from '@mui/material/Container';
 import { CirclePicker } from 'react-color';
 
 import { useCanvasOptions } from '../../state/UserProvider';
-import { AppBar, Drawer, Toolbar } from '@mui/material';
+import { AppBar, Drawer, Toolbar, Container } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useNavigate } from 'react-router-dom';

@@ -13,6 +13,8 @@
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "devDependencies": {
         "@parcel/packager-raw-url": "^2.0.1",
+        "@parcel/transformer-sass": "^2.0.1",
+        "@parcel/transformer-svg-react": "^2.0.1",
         "@parcel/transformer-webmanifest": "^2.0.1",
         "cross-fetch": "^3.1.4",
         "dotenv": "^10.0.0",
@@ -27,6 +29,7 @@
         "parcel": "^2.0.1",
         "parcel-bundler": "^1.12.5",
         "prettier": "^2.4.1",
+        "sass": "^1.43.4",
         "sharp": "^0.29.3"
     },
     "dependencies": {
@@ -41,6 +44,7 @@
         "@mui/material": "^5.1.1",
         "@parcel/service-worker": "^2.0.1",
         "@pwabuilder/pwaupdate": "^0.2.0",
+        "@svgr/parcel-plugin-svgr": "^5.5.0",
         "@swc/helpers": "latest",
         "catenary-curve": "^1.0.0",
         "lazy-brush": "^1.0.0",
