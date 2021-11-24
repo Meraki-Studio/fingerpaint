@@ -1,3 +1,7 @@
+import { useHidden } from '../../state/UserProvider';
+
+const { hidden, setHidden } = useHidden();
+
 export const topTools = [
   {
     icon: 'arrow-left',

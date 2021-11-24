@@ -2,7 +2,11 @@ import React, { useRef, useState } from 'react';
 import { CirclePicker } from 'react-color';
 import { useNavigate } from 'react-router-dom';
 
-import { useCanvasOptions } from '../../state/UserProvider';
+import {
+  useCanvasOptions,
+  useHidden,
+  useTools,
+} from '../../state/UserProvider';
 import CanvasDraw from '../../utils/eraser/index';
 
 import { AppBar, Drawer, Toolbar, Container } from '@mui/material';
@@ -12,7 +16,8 @@ import './Canvas.scss';
 
 const Canvas = () => {
   const { canvasOptions, setCanvasOptions } = useCanvasOptions();
-  const [hidden, setHidden] = useState(false);
+  const { topTools, bottomTools } = useTools();
+  const { hidden, setHidden } = useHidden();
   const [PZ, setPZ] = useState(false);
   const [color, setColor] = useState('#000');
   const [erase, setErase] = useState(false);
@@ -70,78 +75,6 @@ const Canvas = () => {
     setShowPalette(!showPalette);
   };
 
-  const topTools = [
-    {
-      icon: 'arrow-left',
-      onClick: () => {
-        console.log('back');
-        navigate('/home');
-      },
-    },
-    {
-      icon: 'undo-alt',
-      onClick: () => {
-        console.log('undo');
-      },
-    },
-    {
-      icon: 'redo-alt',
-      onClick: () => console.log('redo'),
-    },
-    {
-      icon: 'expand-arrows-alt',
-      onClick: () => {
-        setPZ(!PZ);
-        console.log('pan/zoom: ', PZ);
-      },
-    },
-    {
-      icon: 'eye',
-      onClick: () => {
-        setHidden(!hidden);
-        console.log('show/hide');
-      },
-    },
-  ];
-
-  const bottomTools = [
-    {
-      icon: 'palette',
-      onClick: () => {
-        console.log('palette');
-        setShowPalette(!showPalette);
-      },
-    },
-    {
-      icon: 'paint-brush',
-      onClick: () => {
-        console.log('brush');
-        setErase(false);
-      },
-    },
-    {
-      icon: 'stamp',
-      onClick: () => console.log('stamp'),
-    },
-    {
-      icon: 'fill-drip',
-      onClick: () => {
-        console.log('fill');
-      },
-    },
-    {
-      icon: 'image',
-      onClick: () => console.log('image'),
-    },
-    {
-      icon: 'eraser',
-      onClick: ({ target }) => {
-        console.log(`within eraser! erase: ${erase}, color: ${color}`);
-        setErase(true);
-      },
-    },
-  ];
-
   let topBar;
   let bottomBar;
 
@@ -172,16 +105,17 @@ const Canvas = () => {
           ) : (
             topTools.map((tool) => {
               return (
-                <FontAwesomeIcon
-                  key={tool.icon}
-                  icon={tool.icon}
-                  style={{
-                    borderRadius: '50px',
-                    padding: '.7rem',
-                    background: 'white',
-                  }}
-                  onClick={tool.onClick}
-                />
+                <span key={tool.id}>
+                  <FontAwesomeIcon
+                    icon={tool.icon}
+                    style={{
+                      borderRadius: '50px',
+                      padding: '.7rem',
+                      background: 'white',
+                    }}
+                    onClick={tool.onClick}
+                  />
+                </span>
               );
             })
           )}
@@ -225,16 +159,17 @@ const Canvas = () => {
           ) : (
             bottomTools.map((tool) => {
               return (
-                <FontAwesomeIcon
-                  key={tool.icon}
-                  icon={tool.icon}
-                  style={{
-                    borderRadius: '50px',
-                    padding: '.7rem',
-                    background: 'white',
-                  }}
-                  onClick={tool.onClick}
-                />
+                <span key={tool.id}>
+                  <FontAwesomeIcon
+                    icon={tool.icon}
+                    style={{
+                      borderRadius: '50px',
+                      padding: '.7rem',
+                      background: 'white',
+                    }}
+                    onClick={tool.onClick}
+                  />
+                </span>
               );
             })
           )}
