@@ -1,49 +1,49 @@
 import React from 'react';
 import ProfileItem from './ProfileItem';
 import { makers } from './data';
-import styles from './Landing.css';
+import './Landing.css';
 
 const logo = new URL('../../../public/assets/Logo_horiz.png', import.meta.url);
 
 const Landing = () => (
   <>
-    <header className={styles.header}>
-      <nav className={styles.navBar}>
-        <img src={logo} alt="Fingerpaint Logo" className={styles.logo} />
+    <header className="header">
+      <nav className="navBar">
+        <img src={logo} alt="Fingerpaint Logo" className="logo" />
         <a href="#what">What is it</a>
         <a href="#how">How to use it</a>
         <a href="#who">Who made it</a>
       </nav>
-      <button href="#download" className={styles.ctaBtn}>
+      <button href="#download" className="ctaBtn">
         Try it for free
       </button>
     </header>
-    <main className={styles.container}>
-      <div className={styles.heroContainer}>
-        <div className={styles.hero}>
-          <article className={styles.heroText}>
+    <main className="container">
+      <div className="heroContainer">
+        <div className="hero">
+          <article className="heroText">
             <h2>Creativity, simplified.</h2>
             <p>
               Concocting fantastical creations has never been so simple. Nurture
               the next generation of digital designers. Fridge magnets not
               included.
             </p>
-            <button href="#download" className={styles.ctaBtn}>
+            <button href="#download" className="ctaBtn">
               Try it for free
             </button>
           </article>
-          <figure className={styles.heroImage}>
+          <figure className="heroImage">
             <img src="http://place-puppy.com/300x300" alt="Hero" />
           </figure>
         </div>
       </div>
-      <section className={styles.what}>
+      <section className="what">
         <img
-          className={styles.whatImg}
+          className="whatImg"
           src="http://place-puppy.com/500x500"
           alt="Hero"
         />
-        <div className={styles.whatText}>
+        <div className="whatText">
           <h3>
             Fingerpaint: making digital design tools accessible and fun for your
             child.
@@ -59,8 +59,8 @@ const Landing = () => (
           </p>
         </div>
       </section>
-      <section className={styles.features}>
-        <article className={styles.featureCard}>
+      <section className="features">
+        <article className="featureCard">
           <figure>
             <img src="http://place-puppy.com/50x50" alt="feature" />
             <figcaption>Interactive Canvas</figcaption>
@@ -71,7 +71,7 @@ const Landing = () => (
             modify, and erase easily and intuitively.
           </p>
         </article>
-        <article className={styles.featureCard}>
+        <article className="featureCard">
           <figure>
             <img src="http://place-puppy.com/50x50" alt="feature" />
             <figcaption>Fun stickers</figcaption>
@@ -82,7 +82,7 @@ const Landing = () => (
             Fingerpaint?
           </p>
         </article>
-        <article className={styles.featureCard}>
+        <article className="featureCard">
           <figure>
             <img src="http://place-puppy.com/50x50" alt="feature" />
             <figcaption>Minimal interface</figcaption>
@@ -94,12 +94,12 @@ const Landing = () => (
           </p>
         </article>
       </section>
-      <section className={styles.video}>
+      <section className="video">
         <p>Video goes here!</p>
       </section>
-      <section className={styles.howContainer}>
-        <div className={styles.how}>
-          <div className={styles.howText}>
+      <section className="howContainer">
+        <div className="how">
+          <div className="howText">
             <h3>Step 1: Select a tool to use</h3>
             <p>
               Choose from a variety of brushes, a rainbow of hues, a collection
@@ -108,18 +108,18 @@ const Landing = () => (
             </p>
           </div>
           <img
-            className={styles.howImg}
+            className="howImg"
             src="http://place-puppy.com/500x500"
             alt="Hero"
           />
         </div>
-        <div className={styles.how}>
+        <div className="how">
           <img
-            className={styles.howImg}
+            className="howImg"
             src="http://place-puppy.com/500x500"
             alt="Hero"
           />
-          <div className={styles.howText}>
+          <div className="howText">
             <h3>Step 2: Choose a style</h3>
             <p>
               Upon selecting your tool of choice, you can now either choose your
@@ -129,8 +129,8 @@ const Landing = () => (
             </p>
           </div>
         </div>
-        <div className={styles.how}>
-          <div className={styles.howText}>
+        <div className="how">
+          <div className="howText">
             <h3>Step 3: Inspect, undo, hide</h3>
             <p>
               Enable view-mode with a single tap. Pinch and drag to zoom and
@@ -141,13 +141,13 @@ const Landing = () => (
             </p>
           </div>
           <img
-            className={styles.howImg}
+            className="howImg"
             src="http://place-puppy.com/500x500"
             alt="Hero"
           />
         </div>
       </section>
-      <section className={styles.team}>
+      <section className="team">
         {makers.map((maker) => {
           return <ProfileItem key={maker.name} maker={maker} />;
         })}
