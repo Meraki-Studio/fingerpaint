@@ -89,7 +89,12 @@ const Canvas = () => {
       <AppBar
         position="absolute"
         color="transparent"
-        sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
+        sx={{
+          top: 0,
+          bottom: 'auto',
+          boxShadow: 'none',
+          pointerEvents: 'none',
+        }}
       >
         <Toolbar className={topBar}>
           {hidden ? (
@@ -135,7 +140,12 @@ const Canvas = () => {
       <AppBar
         position="absolute"
         color="transparent"
-        sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
+        sx={{
+          top: 'auto',
+          bottom: 0,
+          boxShadow: 'none',
+          pointerEvents: 'none',
+        }}
       >
         <Toolbar className={bottomBar}>
           <Drawer variant="persistent" anchor="bottom" open={showPalette}>
