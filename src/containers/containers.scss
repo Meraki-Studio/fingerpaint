@@ -4,6 +4,7 @@
   justify-content: center;
   flex-direction: column;
   max-height: 100vh;
+  max-width: 100vw;
 }
 .homeLogo {
   max-width: 90vw;
@@ -20,7 +21,7 @@
   max-height: 70vh;
   min-width: 90vw;
   overflow-x: auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
