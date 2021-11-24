@@ -13,6 +13,7 @@
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "devDependencies": {
         "@parcel/packager-raw-url": "^2.0.1",
+        "@parcel/transformer-sass": "^2.0.1",
         "@parcel/transformer-svg-react": "^2.0.1",
         "@parcel/transformer-webmanifest": "^2.0.1",
         "eslint": "^8.3.0",
@@ -23,7 +24,9 @@
         "eslint-plugin-react": "^7.27.1",
         "eslint-plugin-react-hooks": "^4.3.0",
         "parcel": "^2.0.1",
-        "prettier": "^2.4.1"
+        "prettier": "^2.4.1",
+        "sass": "^1.43.4",
+        "sharp": "^0.29.3"
     },
     "dependencies": {
         "@capacitor/android": "3.3.2",
@@ -40,6 +43,7 @@
         "@mui/material": "^5.1.1",
         "@parcel/service-worker": "^2.0.1",
         "@pwabuilder/pwaupdate": "^0.2.0",
+        "@svgr/parcel-plugin-svgr": "^5.5.0",
         "react": "^17.0.2",
         "react-canvas-draw": "^1.2.1",
         "react-color": "^2.19.3",

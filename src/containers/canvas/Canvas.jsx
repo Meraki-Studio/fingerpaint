@@ -1,17 +1,23 @@
 import React, { useRef, useState } from 'react';
-import CanvasDraw from '../../utils/eraser/index';
-import Container from '@mui/material/Container';
 import { CirclePicker } from 'react-color';
+import { useNavigate } from 'react-router-dom';
 
-import { useCanvasOptions } from '../../state/UserProvider';
-import { AppBar, Drawer, Toolbar } from '@mui/material';
+import {
+  useCanvasOptions,
+  useHidden,
+  useTools,
+} from '../../state/UserProvider';
+import CanvasDraw from '../../utils/eraser/index';
+
+import { AppBar, Drawer, Toolbar, Container } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { useNavigate } from 'react-router-dom';
+import './Canvas.scss';
 
 const Canvas = () => {
   const { canvasOptions, setCanvasOptions } = useCanvasOptions();
-  const [hidden, setHidden] = useState(false);
+  const { topTools, bottomTools } = useTools();
+  const { hidden, setHidden } = useHidden();
   const [PZ, setPZ] = useState(false);
   const [color, setColor] = useState('#000');
   const [erase, setErase] = useState(false);
@@ -69,92 +75,29 @@ const Canvas = () => {
     setShowPalette(!showPalette);
   };
 
-  const topTools = [
-    {
-      icon: 'arrow-left',
-      onClick: () => {
-        console.log('back');
-        navigate('/home');
-      },
-    },
-    {
-      icon: 'undo-alt',
-      onClick: () => {
-        console.log('undo');
-      },
-    },
-    {
-      icon: 'redo-alt',
-      onClick: () => console.log('redo'),
-    },
-    {
-      icon: 'expand-arrows-alt',
-      onClick: () => {
-        setPZ(!PZ);
-        console.log('pan/zoom: ', PZ);
-      },
-    },
-    {
-      icon: 'eye',
-      onClick: () => {
-        setHidden(!hidden);
-        console.log('show/hide');
-      },
-    },
-  ];
+  let topBar;
+  let bottomBar;
 
-  const bottomTools = [
-    {
-      icon: 'palette',
-      onClick: () => {
-        console.log('palette');
-        setShowPalette(!showPalette);
-      },
-    },
-    {
-      icon: 'paint-brush',
-      onClick: () => {
-        console.log('brush');
-        setErase(false);
-      },
-    },
-    {
-      icon: 'stamp',
-      onClick: () => console.log('stamp'),
-    },
-    {
-      icon: 'fill-drip',
-      onClick: () => {
-        console.log('fill');
-      },
-    },
-    {
-      icon: 'image',
-      onClick: () => console.log('image'),
-    },
-    {
-      icon: 'eraser',
-      onClick: ({ target }) => {
-        console.log(`within eraser! erase: ${erase}, color: ${color}`);
-        setErase(true);
-      },
-    },
-  ];
+  {
+    hidden
+      ? (bottomBar = 'bottomHidden') && (topBar = 'topHidden')
+      : (bottomBar = 'barNoHide') && (topBar = 'barNoHide');
+  }
 
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
-      {hidden ? (
-        <AppBar
-          position="absolute"
-          color="transparent"
-          sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
-        >
-          <Toolbar
-            style={{
-              display: 'flex',
-              justifyContent: 'end',
-            }}
-          >
+      <AppBar
+        position="absolute"
+        color="transparent"
+        sx={{
+          top: 0,
+          bottom: 'auto',
+          boxShadow: 'none',
+          pointerEvents: 'none',
+        }}
+      >
+        <Toolbar className={topBar}>
+          {hidden ? (
             <FontAwesomeIcon
               icon={topTools[4].icon}
               style={{
@@ -164,37 +107,25 @@ const Canvas = () => {
               }}
               onClick={topTools[4].onClick}
             />
-          </Toolbar>
-        </AppBar>
-      ) : (
-        <AppBar
-          position="absolute"
-          color="transparent"
-          sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
-        >
-          <Toolbar
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            {topTools.map((tool) => {
+          ) : (
+            topTools.map((tool) => {
               return (
-                <FontAwesomeIcon
-                  key={tool.icon}
-                  icon={tool.icon}
-                  style={{
-                    borderRadius: '50px',
-                    padding: '.7rem',
-                    background: 'white',
-                  }}
-                  onClick={tool.onClick}
-                />
+                <span key={tool.id}>
+                  <FontAwesomeIcon
+                    icon={tool.icon}
+                    style={{
+                      borderRadius: '50px',
+                      padding: '.7rem',
+                      background: 'white',
+                    }}
+                    onClick={tool.onClick}
+                  />
+                </span>
               );
-            })}
-          </Toolbar>
-        </AppBar>
-      )}
+            })
+          )}
+        </Toolbar>
+      </AppBar>
       <CanvasDraw
         style={{ touchAction: 'none', position: 'relative' }}
         ref={canvasRef}
@@ -205,26 +136,27 @@ const Canvas = () => {
         brushColor={color}
         erase={erase}
       />
-      {hidden ? (
-        <AppBar
-          position="absolute"
-          color="transparent"
-          sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
-        >
-          <Toolbar
-            style={{
-              display: 'flex',
-              justifyContent: 'start',
-            }}
-          >
-            <Drawer variant="persistent" anchor="bottom" open={showPalette}>
-              {/* {showPalette ? ( */}
-              <CirclePicker
-                onChange={(color) => handleColorChange(color)}
-                color={color}
-              />
-              {/* ) : null} */}
-            </Drawer>
+
+      <AppBar
+        position="absolute"
+        color="transparent"
+        sx={{
+          top: 'auto',
+          bottom: 0,
+          boxShadow: 'none',
+          pointerEvents: 'none',
+        }}
+      >
+        <Toolbar className={bottomBar}>
+          <Drawer variant="persistent" anchor="bottom" open={showPalette}>
+            {/* {showPalette ? ( */}
+            <CirclePicker
+              onChange={(color) => handleColorChange(color)}
+              color={color}
+            />
+            {/* ) : null} */}
+          </Drawer>
+          {hidden ? (
             <FontAwesomeIcon
               icon={bottomTools[0].icon}
               style={{
@@ -234,45 +166,25 @@ const Canvas = () => {
               }}
               onClick={bottomTools[0].onClick}
             />
-          </Toolbar>
-        </AppBar>
-      ) : (
-        <AppBar
-          position="absolute"
-          color="transparent"
-          sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
-        >
-          <Toolbar
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Drawer variant="persistent" anchor="bottom" open={showPalette}>
-              {/* {showPalette ? ( */}
-              <CirclePicker
-                onChange={(color) => handleColorChange(color)}
-                color={color}
-              />
-              {/* ) : null} */}
-            </Drawer>
-            {bottomTools.map((tool) => {
+          ) : (
+            bottomTools.map((tool) => {
               return (
-                <FontAwesomeIcon
-                  key={tool.icon}
-                  icon={tool.icon}
-                  style={{
-                    borderRadius: '50px',
-                    padding: '.7rem',
-                    background: 'white',
-                  }}
-                  onClick={tool.onClick}
-                />
+                <span key={tool.id}>
+                  <FontAwesomeIcon
+                    icon={tool.icon}
+                    style={{
+                      borderRadius: '50px',
+                      padding: '.7rem',
+                      background: 'white',
+                    }}
+                    onClick={tool.onClick}
+                  />
+                </span>
               );
-            })}
-          </Toolbar>
-        </AppBar>
-      )}
+            })
+          )}
+        </Toolbar>
+      </AppBar>
     </Container>
   );
 };
