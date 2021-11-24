@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useMyArt } from '../../state/UserProvider';
-import ArtItem from './ArtItem';
-import '../containers.css';
 
 import { AppBar, Toolbar } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useDrop } from 'react-dnd';
+import { useMyArt } from '../../state/UserProvider';
+import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
+import '../containers.css';
 // import AddIcon from '@mui/icons-material/Add';
 // import MenuIcon from '@mui/icons-material/Menu';
 
@@ -24,7 +24,7 @@ export default function Home() {
 
   const [{ isOver }, drop] = useDrop({
     accept: itemTypes.CARD,
-    drop: (item, monitor) => filter(item.id),
+    drop: (item, _monitor) => filter(item.id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -39,13 +39,11 @@ export default function Home() {
     <main className="home">
       <img src={horizontalLogo} alt="Fingerpaint" className="homeLogo" />
       <section className="artDisplay">
-        {myArt.map((art) => {
-          return (
-            <div key={art.id}>
-              <ArtItem art={art} />
-            </div>
-          );
-        })}
+        {myArt.map((art) => (
+          <div key={art.id}>
+            <ArtItem art={art} />
+          </div>
+        ))}
       </section>
       <AppBar
         position="absolute"
