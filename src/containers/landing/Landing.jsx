@@ -14,7 +14,7 @@ const Landing = () => (
         <a href="#how">How to use it</a>
         <a href="#who">Who made it</a>
       </nav>
-      <button href="#download" className="ctaBtn">
+      <button href="#download" id="installApp" className="ctaBtn">
         Try it for free
       </button>
     </header>

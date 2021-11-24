@@ -1,15 +1,7 @@
 {
-    "dir": "ltr",
-    "lang": "en",
     "name": "Fingerpaint by Meraki",
-    "scope": "/",
-    "display": "standalone",
-    "start_url": "/",
     "short_name": "Fingerpaint",
-    "theme_color": "#f99d1f",
     "description": "Fingerpaint: making digital design tools accessible and fun for your child!",
-    "orientation": "Portrait",
-    "background_color": "#f99d1f",
     "icons": [
         {
             "src": "../public/assets/icons/android/android-launchericon-144-144.png",
@@ -35,5 +27,12 @@
             "src": "../public/assets/icons/android/android-launchericon-96-96.png",
             "sizes": "96x96"
         }
-    ]
+    ],
+    "display": "standalone",
+    "background_color": "#f99d1f",
+    "theme_color": "#f99d1f",
+    "orientation": "Portrait",
+    "lang": "en",
+    "scope": "/",
+    "start_url": "/"
 }

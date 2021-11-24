@@ -146,6 +146,7 @@
       src="https://kit.fontawesome.com/adf0f9e76b.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"></script>
     <meta
       name="description"
       content="Fingerpaint: making digital design tools accessible and fun for your child!"
@@ -161,15 +162,12 @@
     <div id="root"></div>
     <script type="module" src="./index.js"></script>
     <script type="module">
-      // This is the service worker with the Advanced caching
-
-      /*
-        This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service worker,
-        tell the user when there is an update available and let the user know when your PWA is ready to use offline.
-        */
-
-      const el = document.createElement('pwa-update');
-      document.body.appendChild(el);
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register(new url('service-worker.js', import.meta.url))
+          .then(() => console.log('service worker installed'))
+          .catch((err) => console.log('Error', err));
+      }
     </script>
   </body>
 </html>

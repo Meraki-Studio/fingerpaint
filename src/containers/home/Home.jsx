@@ -35,6 +35,16 @@ export default function Home() {
     import.meta.url
   );
 
+  const shareCanvas = new URL(
+    '../../../public/assets/share.svg',
+    import.meta.url
+  );
+  const newCanvas = new URL('../../../public/assets/new.svg', import.meta.url);
+  const deleteCanvas = new URL(
+    '../../../public/assets/trash.svg',
+    import.meta.url
+  );
+
   return (
     <main className="home">
       <img src={horizontalLogo} alt="Fingerpaint" className="homeLogo" />
@@ -72,9 +82,18 @@ export default function Home() {
             style={{
               margin: '0 1rem .5rem',
             }}
+            href="share"
+          >
+            <img src={shareCanvas} alt="SHARE" className="share" />
+          </Button>
+          <Button
+            variant="text"
+            style={{
+              margin: '0 1rem .5rem',
+            }}
             href="canvas"
           >
-            <img src="./new.png" alt="NEW" className="new" />
+            <img src={newCanvas} alt="NEW" className="new" />
           </Button>
           <Button
             variant="text"
@@ -84,7 +103,7 @@ export default function Home() {
             }}
             ref={drop}
           >
-            <img src="./trash.png" alt="DELETE" />
+            <img src={deleteCanvas} alt="DELETE" />
           </Button>
         </Toolbar>
       </AppBar>

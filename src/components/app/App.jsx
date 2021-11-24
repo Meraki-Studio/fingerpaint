@@ -42,7 +42,6 @@ library.add(
 export default function App() {
   return (
     <main>
-      <pwa-update></pwa-update>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
