@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { useMyArt } from '../../state/UserProvider';
-import ArtItem from './ArtItem';
-import '../containers.scss';
-
 import { AppBar, Toolbar } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useDrop } from 'react-dnd';
+import { useMyArt } from '../../state/UserProvider';
+import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
+import { getIcon } from '../../utils/useIcons';
+
+import '../containers.scss';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
@@ -22,31 +23,26 @@ export default function Home() {
 
   const [{ isOver }, drop] = useDrop({
     accept: itemTypes.CARD,
-    drop: (item, monitor) => filter(item.id),
+    drop: (item, _monitor) => filter(item.id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   });
 
-  const horizontalLogo = new URL(
-    '../../../public/assets/Logo_horiz.png',
-    import.meta.url
-  );
-  const newArt = new URL('../../../public/assets/NewArt.png', import.meta.url);
-  const trashArt = new URL('../../../public/assets/Trash.png', import.meta.url);
-  const shareArt = new URL('../../../public/assets/Share.png', import.meta.url);
+  const horizontalLogo = getIcon('brand', 'LogoHorizontal');
+  const newArt = getIcon('ui', 'addNew');
+  const trashArt = getIcon('ui', 'trash');
+  const shareArt = getIcon('ui', 'send');
 
   return (
     <main className="home">
       <img src={horizontalLogo} alt="Fingerpaint" className="homeLogo" />
       <section className="artDisplay">
-        {myArt.map((art) => {
-          return (
-            <div key={art.id}>
-              <ArtItem art={art} />
-            </div>
-          );
-        })}
+        {myArt.map((art) => (
+          <div key={art.id}>
+            <ArtItem art={art} />
+          </div>
+        ))}
       </section>
       <Toolbar className="buttonBar">
         <img src={trashArt} alt="Fingerpaint" className="sideButton" />

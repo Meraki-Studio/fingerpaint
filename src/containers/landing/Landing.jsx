@@ -3,6 +3,7 @@ import ProfileItem from './ProfileItem';
 import Button from '@mui/material/Button';
 import { makers } from './data';
 import './Landing.scss';
+import { getIcon } from '../../utils/useIcons';
 
 const logo = new URL('../../../public/assets/Logo_horiz.png', import.meta.url);
 const mockup = new URL(
