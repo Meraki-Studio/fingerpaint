@@ -8,7 +8,7 @@ import { UserProvider } from './state/UserProvider';
 import * as serviceWorkerRegistration from './sw-registration';
 
 import App from './components/app/App';
-console.log(process.env.PUBLIC_URL);
+
 render(
   <UserProvider>
     <DndProvider backend={HTML5Backend}>

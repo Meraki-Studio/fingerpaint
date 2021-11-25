@@ -37,14 +37,8 @@ export const getIcon = (path, icon) => {
   return url;
 };
 
-const test1 = getIcon('brand', 'LogoHorizontal');
-const test2 = getIcon('makers', 'Nick');
-const test3 = getIcon('space', '050-monkey');
-const test4 = getIcon('village', '050-field');
-const test5 = getIcon('ui', 'send');
-
-console.log('brand: logo', test1);
-console.log('makers: nick', test2);
-console.log('space: monkey', test3);
-console.log('village: field', test4);
-console.log('ui: send', test5);
+// const test1 = getIcon('brand', 'LogoHorizontal');
+// const test2 = getIcon('makers', 'Nick');
+// const test3 = getIcon('space', '050-monkey');
+// const test4 = getIcon('village', '050-field');
+// const test5 = getIcon('ui', 'send');
