@@ -68,7 +68,6 @@ const Canvas = () => {
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
-      {/* <Colors /> */}
       <CanvasDraw
         style={{ touchAction: 'none', position: 'relative', zIndex: 8 }}
         ref={canvasRef}
