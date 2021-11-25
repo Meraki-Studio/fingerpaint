@@ -1,8 +1,0 @@
-{
-	"appId": "io.ionic.fingerpaint",
-	"appName": "Fingerpaint",
-	"bundledWebRuntime": false,
-	"npmClient": "yarn",
-	"webDir": "dist",
-	"cordova": {}
-}

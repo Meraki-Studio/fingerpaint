@@ -1,7 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Landing.scss';
+import { getIcon } from '../../utils/useIcons';
 
 export default function ProfileItem({ maker }) {
   const { name, pronoun, img, role, blurb, links } = maker;
@@ -18,13 +18,28 @@ export default function ProfileItem({ maker }) {
         </a>
         <div className="iconLinks">
           <a href={links.linkedIn} className="iconLinks">
-            <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
+            <img
+              src={getIcon('ui', 'linkedin')}
+              height="24px"
+              width="24px"
+              alt="linkedin"
+            />
           </a>
           <a href={links.gitHub} className="iconLinks">
-            <FontAwesomeIcon icon={['fab', 'github-alt']} />
+            <img
+              src={getIcon('ui', 'github')}
+              height="24px"
+              width="24px"
+              alt="GitHub"
+            />
           </a>
           <a href={links.twitter} className="iconLinks">
-            <FontAwesomeIcon icon={['fab', 'twitter']} />
+            <img
+              src={getIcon('ui', 'twitter')}
+              height="24px"
+              width="24px"
+              alt="twitter"
+            />
           </a>
         </div>
       </div>

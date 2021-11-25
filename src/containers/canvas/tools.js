@@ -4,31 +4,31 @@ const { hidden, setHidden } = useHidden();
 
 export const topTools = [
   {
-    icon: 'arrow-left',
+    icon: 'left-arrow',
     onClick: () => {
       console.log('back');
       navigate('/home');
     },
   },
   {
-    icon: 'undo-alt',
+    icon: 'undo',
     onClick: () => {
       console.log('undo');
     },
   },
   {
-    icon: 'redo-alt',
+    icon: 'redo',
     onClick: () => console.log('redo'),
   },
   {
-    icon: 'expand-arrows-alt',
+    icon: 'pinch',
     onClick: () => {
       setPZ(!PZ);
       console.log('pan/zoom: ', PZ);
     },
   },
   {
-    icon: 'eye',
+    icon: 'hide_inactive_lt',
     onClick: () => {
       setHidden(!hidden);
       console.log('show/hide');
@@ -38,7 +38,7 @@ export const topTools = [
 
 export const bottomTools = [
   {
-    icon: 'palette',
+    icon: 'color-palette',
     onClick: () => {
       console.log('palette');
       setShowPalette(!showPalette);
@@ -56,13 +56,13 @@ export const bottomTools = [
     onClick: () => console.log('stamp'),
   },
   {
-    icon: 'fill-drip',
+    icon: 'paint-bucket',
     onClick: () => {
       console.log('fill');
     },
   },
   {
-    icon: 'image',
+    icon: 'photo',
     onClick: () => console.log('image'),
   },
   {

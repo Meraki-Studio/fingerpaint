@@ -8,9 +8,9 @@ import {
   useTools,
 } from '../../state/UserProvider';
 import CanvasDraw from '../../utils/eraser/index';
+import { getIcon } from '../../utils/useIcons';
 
-import { AppBar, Drawer, Toolbar, Container } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AppBar, Drawer, Toolbar, Container, IconButton } from '@mui/material';
 
 import './Canvas.scss';
 
@@ -98,28 +98,33 @@ const Canvas = () => {
       >
         <Toolbar className={topBar}>
           {hidden ? (
-            <FontAwesomeIcon
-              icon={topTools[4].icon}
+            <IconButton
               style={{
                 borderRadius: '50px',
                 padding: '.7rem',
                 background: 'white',
               }}
               onClick={topTools[4].onClick}
-            />
+            >
+              <img
+                src={getIcon('ui', topTools[4].icon)}
+                alt={topTools[4].icon}
+              />
+            </IconButton>
           ) : (
             topTools.map((tool) => {
               return (
                 <span key={tool.id}>
-                  <FontAwesomeIcon
-                    icon={tool.icon}
+                  <IconButton
                     style={{
                       borderRadius: '50px',
                       padding: '.7rem',
                       background: 'white',
                     }}
                     onClick={tool.onClick}
-                  />
+                  >
+                    <img src={getIcon('ui', tool.icon)} alt={tool.icon} />
+                  </IconButton>
                 </span>
               );
             })
@@ -157,28 +162,33 @@ const Canvas = () => {
             {/* ) : null} */}
           </Drawer>
           {hidden ? (
-            <FontAwesomeIcon
-              icon={bottomTools[0].icon}
+            <IconButton
               style={{
                 borderRadius: '50px',
                 padding: '.7rem',
                 background: 'white',
               }}
               onClick={bottomTools[0].onClick}
-            />
+            >
+              <img
+                src={getIcon('ui', bottomTools[0].icon)}
+                alt={bottomTools[0].icon}
+              />
+            </IconButton>
           ) : (
             bottomTools.map((tool) => {
               return (
                 <span key={tool.id}>
-                  <FontAwesomeIcon
-                    icon={tool.icon}
+                  <IconButton
                     style={{
                       borderRadius: '50px',
                       padding: '.7rem',
                       background: 'white',
                     }}
                     onClick={tool.onClick}
-                  />
+                  >
+                    <img src={getIcon('ui', tool.icon)} alt={tool.icon} />
+                  </IconButton>
                 </span>
               );
             })

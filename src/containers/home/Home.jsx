@@ -5,6 +5,7 @@ import { useDrop } from 'react-dnd';
 import { useMyArt } from '../../state/UserProvider';
 import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
+import { getIcon } from '../../utils/useIcons';
 
 import '../containers.scss';
 
@@ -28,13 +29,10 @@ export default function Home() {
     }),
   });
 
-  const horizontalLogo = new URL(
-    '../../../public/assets/Logo_horiz.png',
-    import.meta.url
-  );
-  const newArt = new URL('../../../public/assets/NewArt.svg', import.meta.url);
-  const trashArt = new URL('../../../public/assets/Trash.svg', import.meta.url);
-  const shareArt = new URL('../../../public/assets/Share.svg', import.meta.url);
+  const horizontalLogo = getIcon('brand', 'LogoHorizontal');
+  const newArt = getIcon('ui', 'newArt');
+  const trashArt = getIcon('ui', 'trash');
+  const shareArt = getIcon('ui', 'send');
 
   return (
     <main className="home">

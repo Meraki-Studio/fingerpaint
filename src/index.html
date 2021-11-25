@@ -161,13 +161,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="./index.js"></script>
-    <script type="module">
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register(new url('service-worker.js', import.meta.url))
-          .then(() => console.log('service worker installed'))
-          .catch((err) => console.log('Error', err));
-      }
-    </script>
   </body>
 </html>
