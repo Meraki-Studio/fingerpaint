@@ -30,7 +30,7 @@ export default function Home() {
   });
 
   const horizontalLogo = getIcon('brand', 'LogoHorizontal');
-  const newArt = getIcon('ui', 'newArt');
+  const newArt = getIcon('ui', 'addNew');
   const trashArt = getIcon('ui', 'trash');
   const shareArt = getIcon('ui', 'send');
 
