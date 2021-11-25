@@ -84,6 +84,7 @@
 /* HERO STYLES */
 .heroContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -91,6 +92,28 @@
   background-color: #fcd004;
   color: #414141;
   clip-path: ellipse(120% 100% at 50% 0%);
+}
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+  background-color: #fd3d00;
+  width: 80vw;
+  height: 10vh;
+
+  margin-top: 1rem;
+  border-radius: 10px;
+
+  h3 {
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+  }
+  p {
+    color: white;
+  }
 }
 .hero {
   display: flex;

@@ -53,24 +53,23 @@ export default function TopBar() {
           style={{
             display: 'flex',
             justifyContent: 'end',
+            position: 'absolute',
+            top: 0,
+            bottom: 'auto',
+            right: 0,
+            left: 'auto',
+            zIndex: 8,
+            margin: '.5rem 1rem',
           }}
         >
           <FontAwesomeIcon
             icon={topTools[3].icon}
-            style={{
-              borderRadius: '50px',
-              padding: '.7rem',
-              background: 'white',
-            }}
+            className="minimalIcon"
             onClick={topTools[3].onClick}
           />
           <FontAwesomeIcon
             icon={topTools[4].icon}
-            style={{
-              borderRadius: '50px',
-              padding: '.7rem',
-              background: 'white',
-            }}
+            className="minimalIcon"
             onClick={topTools[4].onClick}
           />
         </div>
@@ -78,7 +77,7 @@ export default function TopBar() {
         <AppBar
           position="absolute"
           color="transparent"
-          sx={{ top: 0, bottom: 'auto', boxShadow: 'none' }}
+          sx={{ top: 0, bottom: 'auto', backgroundColor: 'white', zIndex: 8 }}
         >
           <Toolbar
             style={{

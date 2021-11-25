@@ -69,7 +69,7 @@ const Canvas = () => {
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
       <CanvasDraw
-        style={{ touchAction: 'none', position: 'relative', zIndex: 8 }}
+        style={{ touchAction: 'none', position: 'relative', zIndex: 7 }}
         ref={canvasRef}
         {...canvasOptions}
         canvasHeight={window.screen.height}
@@ -77,6 +77,7 @@ const Canvas = () => {
         enablePanAndZoom={panZoom}
         brushColor={color}
         erase={erase}
+        hideGrid="true"
       />
       <Colors />
       <BottomBar />

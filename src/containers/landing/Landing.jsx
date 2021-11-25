@@ -49,6 +49,13 @@ const Landing = () => (
     </header>
     <main className="container">
       <div className="heroContainer">
+        <div className="status">
+          <h3>~*~ Fingerpaint now in Beta ~*~</h3>
+          <p>
+            Some features are incomplete; please be patient as we bring our
+            complete vision to fruition.
+          </p>
+        </div>
         <div className="hero">
           <article className="heroText">
             <h2>Creativity, simplified.</h2>
