@@ -13,6 +13,8 @@
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "devDependencies": {
         "@parcel/packager-raw-url": "^2.0.1",
+        "@parcel/transformer-sass": "^2.0.1",
+        "@parcel/transformer-svg-react": "^2.0.1",
         "@parcel/transformer-webmanifest": "^2.0.1",
         "cross-fetch": "^3.1.4",
         "dotenv": "^10.0.0",
@@ -26,7 +28,9 @@
         "identity-obj-proxy": "^3.0.0",
         "parcel": "^2.0.1",
         "parcel-bundler": "^1.12.5",
-        "prettier": "^2.4.1"
+        "prettier": "^2.4.1",
+        "sass": "^1.43.4",
+        "sharp": "^0.29.3"
     },
     "dependencies": {
         "@emotion/react": "^11.6.0",
@@ -40,15 +44,18 @@
         "@mui/material": "^5.1.1",
         "@parcel/service-worker": "^2.0.1",
         "@pwabuilder/pwaupdate": "^0.2.0",
+        "@svgr/parcel-plugin-svgr": "^5.5.0",
         "@swc/helpers": "latest",
-        "prop-types": "^15.7.2",
-        "lazy-brush": "^1.0.0",
         "catenary-curve": "^1.0.0",
-        "resize-observer-polyfill": "^1.5.1",
+        "lazy-brush": "^1.0.0",
+        "prop-types": "^15.7.2",
         "react": "^17.0.2",
         "react-canvas-draw": "^1.2.1",
         "react-color": "^2.19.3",
+        "react-dnd": "^14.0.4",
+        "react-dnd-html5-backend": "^14.0.2",
         "react-dom": "^17.0.2",
-        "react-router-dom": "^6.0.2"
+        "react-router-dom": "^6.0.2",
+        "resize-observer-polyfill": "^1.5.1"
     }
 }

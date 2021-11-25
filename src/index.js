@@ -2,15 +2,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-
-import { UserProvider } from './state/UserProvider';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import {UserProvider} from './state/UserProvider';
 import App from './components/app/App';
 
 render(
   <UserProvider>
-    <Router>
-      <App />
-    </Router>
+    <DndProvider backend={HTML5Backend}>
+      <Router>
+        <App />
+      </Router>
+    </DndProvider>
   </UserProvider>,
   document.getElementById('root')
 );

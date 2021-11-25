@@ -5,9 +5,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import '@pwabuilder/pwaupdate';
 
 import Landing from '../../containers/landing/Landing';
-import Login from '../../containers/Login';
-import Home from '../../containers/Home';
-import Canvas from '../../containers/Canvas.jsx';
+import Home from '../../containers/home/Home';
+import Canvas from '../../containers/canvas/Canvas.jsx';
 
 import styles from './App.css';
 
@@ -46,7 +45,6 @@ export default function App() {
       <pwa-update></pwa-update>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/canvas" element={<Canvas />} />
       </Routes>
