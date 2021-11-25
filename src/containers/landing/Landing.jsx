@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileItem from './ProfileItem';
+import Button from '@mui/material/Button';
 import { makers } from './data';
 import './Landing.scss';
 
@@ -43,12 +44,19 @@ const Landing = () => (
         <a href="#how">How to use it</a>
         <a href="#who">Who made it</a>
       </nav>
-      <button href="#download" className="ctaBtn">
+      <Button href="home" variant="contained" className="ctaBtn">
         Try it for free
-      </button>
+      </Button>
     </header>
     <main className="container">
       <div className="heroContainer">
+        <div className="status">
+          <h3>~*~ Fingerpaint now in Beta ~*~</h3>
+          <p>
+            Some features are incomplete; please be patient as we bring our
+            complete vision to fruition.
+          </p>
+        </div>
         <div className="hero">
           <article className="heroText">
             <h2>Creativity, simplified.</h2>
@@ -57,9 +65,9 @@ const Landing = () => (
               the next generation of digital designers. Fridge magnets not
               included.
             </p>
-            <button href="#download" className="ctaBtn">
+            <Button href="home" variant="contained" className="ctaBtn">
               Try it for free
-            </button>
+            </Button>
           </article>
           <figure className="heroImage">
             <img src={mockup} alt="Hero" />

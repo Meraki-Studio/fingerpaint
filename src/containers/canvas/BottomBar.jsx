@@ -51,38 +51,32 @@ export default function BottomBar() {
   return (
     <>
       {panZoom || maxCanvas ? (
-        <AppBar
-          position="absolute"
-          color="transparent"
-          sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
+        <div
+          style={{
+            position: 'absolute',
+            top: 'auto',
+            bottom: 0,
+            zIndex: 8,
+            margin: '0 1rem',
+          }}
         >
-          <Toolbar
-            style={{
-              display: 'flex',
-              justifyContent: 'start',
-            }}
-          >
-            <FontAwesomeIcon
-              icon={bottomTools[0].icon}
-              style={{
-                borderRadius: '50px',
-                padding: '.7rem',
-                background: 'white',
-              }}
-              onClick={bottomTools[0].onClick}
-            />
-          </Toolbar>
-        </AppBar>
+          <FontAwesomeIcon
+            icon={bottomTools[0].icon}
+            className="minimalIcon"
+            onClick={bottomTools[0].onClick}
+          />
+        </div>
       ) : (
         <AppBar
           position="absolute"
           color="transparent"
-          sx={{ top: 'auto', bottom: 0, boxShadow: 'none' }}
+          sx={{ top: 'auto', bottom: 0, zIndex: 8 }}
         >
           <Toolbar
             style={{
               display: 'flex',
               justifyContent: 'space-between',
+              backgroundColor: 'white',
             }}
           >
             {bottomTools.map((tool) => {
