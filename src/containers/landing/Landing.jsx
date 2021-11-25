@@ -77,6 +77,7 @@ const Landing = () => (
             At last, a mobile app that preliterate kids can enjoy right off the
             bat. Designed for children ages 2 - 5, Fingerpaint equips your child
             with basic design tools that are intuitive to navigate. <br />
+            <br />
             Fingerpaint is a Progressive Web App built using the React Framework
             and Material UI for the front-end components. We also utilized
             React-Canvas-Draw and React Color in order to make the canvas more
@@ -142,6 +143,7 @@ const Landing = () => (
               Upon selecting your tool of choice, you can now either choose from
               a rainbow of colors, or choose from a collection of cute stamps.{' '}
               <br />
+              <br />
               You can reach this menu by tapping on the palette icon or selected
               stamp located on the left side of the bottom controls.
             </p>
@@ -154,7 +156,9 @@ const Landing = () => (
               Enable view-mode with a single tap. Pinch and drag to zoom and
               pan, without drawing. Tap the icon again to return to draw mode.{' '}
               <br />
+              <br />
               Made an accident? Tap the undo or redo icons accordingly. <br />
+              <br />
               Want to hide the interface? You can do that too! Simply tap the
               eye icon to hide the interface. Tap again to unhide it.
             </p>
