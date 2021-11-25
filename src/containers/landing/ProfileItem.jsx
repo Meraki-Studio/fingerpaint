@@ -17,30 +17,21 @@ export default function ProfileItem({ maker }) {
           See {pronoun} work here →
         </a>
         <div className="iconLinks">
-          <a href={links.linkedIn} className="iconLinks">
-            <img
-              src={getIcon('ui', 'linkedin')}
-              height="24px"
-              width="24px"
-              alt="linkedin"
-            />
-          </a>
-          <a href={links.gitHub} className="iconLinks">
-            <img
-              src={getIcon('ui', 'github')}
-              height="24px"
-              width="24px"
-              alt="GitHub"
-            />
-          </a>
-          <a href={links.twitter} className="iconLinks">
-            <img
-              src={getIcon('ui', 'twitter')}
-              height="24px"
-              width="24px"
-              alt="twitter"
-            />
-          </a>
+          {!!links.linkedIn && (
+            <a href={links.linkedIn} className="iconLinks">
+              <FontAwesomeIcon size="2x" icon={['fab', 'linkedin-in']} />
+            </a>
+          )}
+          {!!links.gitHub && (
+            <a href={links.gitHub} className="iconLinks">
+              <FontAwesomeIcon size="2x" icon={['fab', 'github-alt']} />
+            </a>
+          )}
+          {!!links.twitter && (
+            <a href={links.twitter} className="iconLinks">
+              <FontAwesomeIcon size="2x" icon={['fab', 'twitter']} />
+            </a>
+          )}
         </div>
       </div>
     </div>

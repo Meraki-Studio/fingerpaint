@@ -5,7 +5,11 @@ export const UserContext = createContext();
 export function UserProvider({ children }) {
   // state here
   const [canvasOptions, setCanvasOptions] = useState();
-  const [hidden, setHidden] = useState(false);
+  const [showPalette, setShowPalette] = useState(false);
+  const [maxCanvas, setMaxCanvas] = useState(false);
+  const [panZoom, setPanZoom] = useState(false);
+  const [color, setColor] = useState('#000');
+  const [erase, setErase] = useState(false);
   const [myArt, setMyArt] = useState([
     {
       id: 1,
@@ -45,89 +49,6 @@ export function UserProvider({ children }) {
     },
   ]);
 
-  const [topTools] = useState([
-    {
-      icon: 'left-arrow',
-      id: 1,
-      onClick: () => {
-        console.log('back');
-        navigate('/home');
-      },
-    },
-    {
-      icon: 'undo',
-      id: 2,
-      onClick: () => {
-        console.log('undo');
-      },
-    },
-    {
-      icon: 'redo',
-      id: 3,
-      onClick: () => console.log('redo'),
-    },
-    {
-      icon: 'pinch',
-      id: 4,
-      onClick: () => {
-        setPZ(!PZ);
-        console.log('pan/zoom: ', PZ);
-      },
-    },
-    {
-      icon: 'hide_inactive_lt',
-      id: 5,
-      onClick: () => {
-        setHidden(!hidden);
-        console.log('show/hide');
-      },
-    },
-  ]);
-
-  const [bottomTools] = useState([
-    {
-      icon: 'color-palette',
-      id: 6,
-      onClick: () => {
-        console.log('palette');
-        setShowPalette(!showPalette);
-      },
-    },
-    {
-      icon: 'paint-brush',
-      id: 7,
-      onClick: () => {
-        console.log('brush');
-        setErase(false);
-      },
-    },
-    {
-      icon: 'stamp',
-      id: 8,
-      onClick: () => console.log('stamp'),
-    },
-    {
-      icon: 'paint-bucket',
-      id: 9,
-      onClick: () => {
-        console.log('fill');
-      },
-    },
-    {
-      icon: 'photo',
-      id: 10,
-      onClick: () => console.log('image'),
-    },
-    {
-      icon: 'eraser',
-      id: 11,
-      onClick: ({ target }) => {
-        console.log(`within eraser! erase: ${erase}, color: ${color}`);
-        setErase(true);
-      },
-    },
-  ]);
-
   // useEffect to load art upon login
 
   return (
@@ -135,12 +56,18 @@ export function UserProvider({ children }) {
       value={{
         myArt,
         setMyArt,
-        hidden,
-        setHidden,
+        color,
+        setColor,
+        erase,
+        setErase,
+        panZoom,
+        setPanZoom,
+        maxCanvas,
+        setMaxCanvas,
+        showPalette,
+        setShowPalette,
         canvasOptions,
         setCanvasOptions,
-        topTools,
-        bottomTools,
       }}
     >
       {children}
@@ -149,21 +76,31 @@ export function UserProvider({ children }) {
 }
 
 // Provider custom hooks
-export const useHidden = () => {
-  const { hidden, setHidden } = useContext(UserContext);
-  return { hidden, setHidden };
+export const useMaxCanvas = () => {
+  const { maxCanvas, setMaxCanvas } = useContext(UserContext);
+  return { maxCanvas, setMaxCanvas };
+};
+export const usePanZoom = () => {
+  const { panZoom, setPanZoom } = useContext(UserContext);
+  return { panZoom, setPanZoom };
 };
 export const useMyArt = () => {
   const { myArt, setMyArt } = useContext(UserContext);
   return { myArt, setMyArt };
 };
-
+export const useErase = () => {
+  const { erase, setErase } = useContext(UserContext);
+  return { erase, setErase };
+};
+export const useColor = () => {
+  const { color, setColor } = useContext(UserContext);
+  return { color, setColor };
+};
+export const usePalette = () => {
+  const { showPalette, setShowPalette } = useContext(UserContext);
+  return { showPalette, setShowPalette };
+};
 export const useCanvasOptions = () => {
   const { canvasOptions, setCanvasOptions } = useContext(UserContext);
   return { canvasOptions, setCanvasOptions };
-};
-
-export const useTools = () => {
-  const { topTools, bottomTools } = useContext(UserContext);
-  return { topTools, bottomTools };
 };

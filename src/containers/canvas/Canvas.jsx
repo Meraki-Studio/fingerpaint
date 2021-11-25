@@ -1,28 +1,23 @@
-import React, { useRef, useState } from 'react';
-import { CirclePicker } from 'react-color';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useRef } from 'react';
+import CanvasDraw from '../../utils/eraser/index';
 import {
   useCanvasOptions,
-  useHidden,
-  useTools,
+  useColor,
+  useErase,
+  usePanZoom,
 } from '../../state/UserProvider';
-import CanvasDraw from '../../utils/eraser/index';
-import { getIcon } from '../../utils/useIcons';
 
-import { AppBar, Drawer, Toolbar, Container, IconButton } from '@mui/material';
+import TopBar from './TopBar';
+import BottomBar from './BottomBar';
+import Colors from './Colors';
 
-import './Canvas.scss';
+import Container from '@mui/material/Container';
 
 const Canvas = () => {
   const { canvasOptions, setCanvasOptions } = useCanvasOptions();
-  const { topTools, bottomTools } = useTools();
-  const { hidden, setHidden } = useHidden();
-  const [PZ, setPZ] = useState(false);
-  const [color, setColor] = useState('#000');
-  const [erase, setErase] = useState(false);
-  const [showPalette, setShowPalette] = useState(false);
-  const navigate = useNavigate();
+  const { color } = useColor();
+  const { erase } = useErase();
+  const { panZoom } = usePanZoom();
 
   /**
      * @param {Object} canvasOptions
@@ -70,131 +65,22 @@ const Canvas = () => {
     localStorage.setItem('savedCanvas', canvasRef.getSaveData());
   };
 
-  const handleColorChange = ({ hex }) => {
-    setColor(hex);
-    setShowPalette(!showPalette);
-  };
-
-  let topBar;
-  let bottomBar;
-
-  {
-    hidden
-      ? (bottomBar = 'bottomHidden') && (topBar = 'topHidden')
-      : (bottomBar = 'barNoHide') && (topBar = 'barNoHide');
-  }
-
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
-      <AppBar
-        position="absolute"
-        color="transparent"
-        sx={{
-          top: 0,
-          bottom: 'auto',
-          boxShadow: 'none',
-          pointerEvents: 'none',
-        }}
-      >
-        <Toolbar className={topBar}>
-          {hidden ? (
-            <IconButton
-              style={{
-                borderRadius: '50px',
-                padding: '.7rem',
-                background: 'white',
-              }}
-              onClick={topTools[4].onClick}
-            >
-              <img
-                src={getIcon('ui', topTools[4].icon)}
-                alt={topTools[4].icon}
-              />
-            </IconButton>
-          ) : (
-            topTools.map((tool) => {
-              return (
-                <span key={tool.id}>
-                  <IconButton
-                    style={{
-                      borderRadius: '50px',
-                      padding: '.7rem',
-                      background: 'white',
-                    }}
-                    onClick={tool.onClick}
-                  >
-                    <img src={getIcon('ui', tool.icon)} alt={tool.icon} />
-                  </IconButton>
-                </span>
-              );
-            })
-          )}
-        </Toolbar>
-      </AppBar>
+      <TopBar />
       <CanvasDraw
-        style={{ touchAction: 'none', position: 'relative' }}
+        style={{ touchAction: 'none', position: 'relative', zIndex: 7 }}
         ref={canvasRef}
         {...canvasOptions}
         canvasHeight={window.screen.height}
         canvasWidth={window.screen.width}
-        enablePanAndZoom={PZ}
+        enablePanAndZoom={panZoom}
         brushColor={color}
         erase={erase}
+        hideGrid="true"
       />
-
-      <AppBar
-        position="absolute"
-        color="transparent"
-        sx={{
-          top: 'auto',
-          bottom: 0,
-          boxShadow: 'none',
-          pointerEvents: 'none',
-        }}
-      >
-        <Toolbar className={bottomBar}>
-          <Drawer variant="persistent" anchor="bottom" open={showPalette}>
-            {/* {showPalette ? ( */}
-            <CirclePicker
-              onChange={(color) => handleColorChange(color)}
-              color={color}
-            />
-            {/* ) : null} */}
-          </Drawer>
-          {hidden ? (
-            <IconButton
-              style={{
-                borderRadius: '50px',
-                padding: '.7rem',
-                background: 'white',
-              }}
-              onClick={bottomTools[0].onClick}
-            >
-              <img
-                src={getIcon('ui', bottomTools[0].icon)}
-                alt={bottomTools[0].icon}
-              />
-            </IconButton>
-          ) : (
-            bottomTools.map((tool) => {
-              return (
-                <span key={tool.id}>
-                  <IconButton
-                    style={{
-                      borderRadius: '50px',
-                      padding: '.7rem',
-                      background: 'white',
-                    }}
-                    onClick={tool.onClick}
-                  >
-                    <img src={getIcon('ui', tool.icon)} alt={tool.icon} />
-                  </IconButton>
-                </span>
-              );
-            })
-          )}
-        </Toolbar>
-      </AppBar>
+      <Colors />
+      <BottomBar />
     </Container>
   );
 };
