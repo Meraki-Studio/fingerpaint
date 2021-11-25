@@ -93,7 +93,7 @@ const Canvas = () => {
           top: 0,
           bottom: 'auto',
           boxShadow: 'none',
-          pointerEvents: 'none',
+          // pointerEvents: 'none',
         }}
       >
         <Toolbar className={topBar}>
@@ -104,30 +104,33 @@ const Canvas = () => {
                 borderRadius: '50px',
                 padding: '.7rem',
                 background: 'white',
+                // pointerEvents: 'auto',
               }}
               onClick={topTools[4].onClick}
             />
           ) : (
             topTools.map((tool) => {
               return (
-                <span key={tool.id}>
-                  <FontAwesomeIcon
-                    icon={tool.icon}
-                    style={{
-                      borderRadius: '50px',
-                      padding: '.7rem',
-                      background: 'white',
-                    }}
-                    onClick={tool.onClick}
-                  />
-                </span>
+                // <span key={tool.id}>
+                <FontAwesomeIcon
+                  icon={tool.icon}
+                  key={tool.id}
+                  style={{
+                    borderRadius: '50px',
+                    padding: '.7rem',
+                    background: 'white',
+                    pointerEvents: 'auto',
+                  }}
+                  onClick={tool.onClick}
+                />
+                // </span>
               );
             })
           )}
         </Toolbar>
       </AppBar>
       <CanvasDraw
-        style={{ touchAction: 'none', position: 'relative' }}
+        style={{ touchAction: 'none' }}
         ref={canvasRef}
         {...canvasOptions}
         canvasHeight={window.screen.height}

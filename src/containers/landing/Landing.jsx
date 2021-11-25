@@ -94,9 +94,9 @@ const Landing = () => (
           </p>
         </article>
       </section>
-      <section className="video">
+      {/* <section className="video">
         <p>Video goes here!</p>
-      </section>
+      </section> */}
       <section className="howContainer">
         <div className="how">
           <div className="howText">
@@ -152,6 +152,13 @@ const Landing = () => (
           return <ProfileItem key={maker.name} maker={maker} />;
         })}
       </section>
+      <footer className="footer">
+        <a href="https://github.com/Meraki-Studio/fingerpaint">
+          Steal this code!
+        </a>
+
+        <a href="">Steal this design!</a>
+      </footer>
     </main>
   </>
 );
