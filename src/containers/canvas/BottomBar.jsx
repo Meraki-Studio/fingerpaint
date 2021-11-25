@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import {
   usePanZoom,
   useMaxCanvas,
@@ -6,8 +6,7 @@ import {
   useErase,
   usePalette,
 } from '../../state/UserProvider';
-import { CirclePicker } from 'react-color';
-import { AppBar, Drawer, Toolbar } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function BottomBar() {
@@ -68,14 +67,12 @@ export default function BottomBar() {
               justifyContent: 'start',
             }}
           >
-            <Drawer variant="persistent" anchor="bottom" open={showPalette}>
-              {/* {showPalette ? ( */}
+            {/* <Drawer variant="persistent" anchor="bottom" open={showPalette}>
               <CirclePicker
                 onChange={(color) => handleColorChange(color)}
                 color={color}
               />
-              {/* ) : null} */}
-            </Drawer>
+            </Drawer> */}
             <FontAwesomeIcon
               icon={bottomTools[0].icon}
               style={{
@@ -99,14 +96,6 @@ export default function BottomBar() {
               justifyContent: 'space-between',
             }}
           >
-            <Drawer variant="persistent" anchor="bottom" open={showPalette}>
-              {/* {showPalette ? ( */}
-              <CirclePicker
-                onChange={(color) => handleColorChange(color)}
-                color={color}
-              />
-              {/* ) : null} */}
-            </Drawer>
             {bottomTools.map((tool) => {
               return (
                 <FontAwesomeIcon

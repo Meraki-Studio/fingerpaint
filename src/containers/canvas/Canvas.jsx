@@ -9,6 +9,7 @@ import {
 
 import TopBar from './TopBar';
 import BottomBar from './BottomBar';
+import Colors from './Colors';
 
 import Container from '@mui/material/Container';
 
@@ -67,8 +68,9 @@ const Canvas = () => {
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
+      {/* <Colors /> */}
       <CanvasDraw
-        style={{ touchAction: 'none', position: 'relative' }}
+        style={{ touchAction: 'none', position: 'relative', zIndex: 8 }}
         ref={canvasRef}
         {...canvasOptions}
         canvasHeight={window.screen.height}
@@ -77,6 +79,7 @@ const Canvas = () => {
         brushColor={color}
         erase={erase}
       />
+      <Colors />
       <BottomBar />
     </Container>
   );
