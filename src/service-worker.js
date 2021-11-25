@@ -43,7 +43,7 @@ registerRoute(
 
     return true;
   },
-  createHandlerBoundToURL('src/' + '/index.html')
+  createHandlerBoundToURL('/src' + '/index.html')
 );
 
 // An example runtime caching route for requests that aren't handled by the

@@ -33,6 +33,5 @@
     "theme_color": "#f99d1f",
     "orientation": "Portrait",
     "lang": "en",
-    "scope": "/",
     "start_url": "/home"
 }
