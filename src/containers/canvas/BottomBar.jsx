@@ -12,14 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function BottomBar() {
   const { panZoom } = usePanZoom();
   const { maxCanvas } = useMaxCanvas();
-  const { color, setColor } = useColor();
+  const { color } = useColor();
   const { erase, setErase } = useErase();
   const { showPalette, setShowPalette } = usePalette();
-
-  const handleColorChange = ({ hex }) => {
-    setColor(hex);
-    setShowPalette(!showPalette);
-  };
 
   const bottomTools = [
     {
@@ -67,12 +62,6 @@ export default function BottomBar() {
               justifyContent: 'start',
             }}
           >
-            {/* <Drawer variant="persistent" anchor="bottom" open={showPalette}>
-              <CirclePicker
-                onChange={(color) => handleColorChange(color)}
-                color={color}
-              />
-            </Drawer> */}
             <FontAwesomeIcon
               icon={bottomTools[0].icon}
               style={{

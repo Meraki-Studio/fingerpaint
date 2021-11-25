@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import { usePanZoom, useMaxCanvas } from '../../state/UserProvider';
-import { AppBar, Drawer, Toolbar } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useNavigate } from 'react-router-dom';
