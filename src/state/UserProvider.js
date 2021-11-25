@@ -1,12 +1,12 @@
 import React, { useState, createContext, useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
     // state here
     const [canvasOptions, setCanvasOptions] = useState();
-    const [hidden, setHidden] = useState(false);
+    const [maxCanvas, setMaxCanvas] = useState(false);
+    const [panZoom, setPanZoom] = useState(false);
     const [myArt, setMyArt] = useState([
         {
             id: 1,
@@ -46,88 +46,6 @@ export function UserProvider({ children }) {
         },
     ]);
 
-    const [topTools] = useState([
-        {
-          icon: 'arrow-left',
-          id: 1,
-          onClick: () => {
-            console.log('back');
-            navigate('/home');
-          },
-        },
-        {
-          icon: 'undo-alt',
-          id: 2,
-          onClick: () => {
-            console.log('undo');
-          },
-        },
-        {
-          icon: 'redo-alt',
-          id: 3,
-          onClick: () => console.log('redo'),
-        },
-        {
-          icon: 'expand-arrows-alt',
-          id: 4,
-          onClick: () => {
-            setPZ(!PZ);
-            console.log('pan/zoom: ', PZ);
-          },
-        },
-        {
-          icon: 'eye',
-          id: 5,
-          onClick: () => {
-            setHidden(!hidden);
-            console.log('show/hide');
-          },
-        },
-      ]);
-
-    const [bottomTools] = useState([
-        {
-          icon: 'palette',
-          id: 6,
-          onClick: () => {
-            console.log('palette');
-            setShowPalette(!showPalette);
-          },
-        },
-        {
-          icon: 'paint-brush',
-          id: 7,
-          onClick: () => {
-            console.log('brush');
-            setErase(false);
-          },
-        },
-        {
-          icon: 'stamp',
-          id: 8,
-          onClick: () => console.log('stamp'),
-        },
-        {
-          icon: 'fill-drip',
-          id: 9,
-          onClick: () => {
-            console.log('fill');
-          },
-        },
-        {
-          icon: 'image',
-          id: 10,
-          onClick: () => console.log('image'),
-        },
-        {
-          icon: 'eraser',
-          id: 11,
-          onClick: ({ target }) => {
-            console.log(`within eraser! erase: ${erase}, color: ${color}`);
-            setErase(true);
-          },
-        },
-      ]);
 
     // useEffect to load art upon login
 
@@ -136,12 +54,12 @@ export function UserProvider({ children }) {
             value={{
                 myArt,
                 setMyArt,
-                hidden,
-                setHidden,
+                panZoom,
+                setPanZoom,
+                maxCanvas,
+                setMaxCanvas,
                 canvasOptions,
                 setCanvasOptions,
-                topTools,
-                bottomTools
             }}
         >
             {children}
@@ -150,21 +68,19 @@ export function UserProvider({ children }) {
 }
 
 // Provider custom hooks
-export const useHidden = () => {
-    const { hidden, setHidden } = useContext(UserContext);
-    return { hidden, setHidden };
+export const useMaxCanvas = () => {
+    const { maxCanvas, setMaxCanvas } = useContext(UserContext);
+    return { maxCanvas, setMaxCanvas };
+}
+export const usePanZoom = () => {
+    const { panZoom, setPanZoom } = useContext(UserContext);
+    return { panZoom, setPanZoom };
 }
 export const useMyArt = () => {
     const { myArt, setMyArt } = useContext(UserContext);
     return { myArt, setMyArt };
-};
-
+}
 export const useCanvasOptions = () => {
     const { canvasOptions, setCanvasOptions } = useContext(UserContext);
     return { canvasOptions, setCanvasOptions };
-};
-
-export const useTools = () => {
-    const {topTools, bottomTools} = useContext(UserContext);
-    return {topTools, bottomTools};
 }
