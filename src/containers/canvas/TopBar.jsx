@@ -48,7 +48,13 @@ export default function TopBar() {
   return (
     <>
       {panZoom || maxCanvas ? (
-        <div className="minimalIcons">
+        <div
+          className="minimalIcons"
+          style={{
+            display: 'flex',
+            justifyContent: 'end',
+          }}
+        >
           <FontAwesomeIcon
             icon={topTools[3].icon}
             style={{
