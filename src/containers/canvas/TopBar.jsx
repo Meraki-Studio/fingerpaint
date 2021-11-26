@@ -19,16 +19,16 @@ export default function TopBar() {
         navigate('/home');
       },
     },
-    {
-      icon: 'undo',
-      onClick: () => {
-        console.log('undo');
-      },
-    },
-    {
-      icon: 'redo',
-      onClick: () => console.log('redo'),
-    },
+    // {
+    //   icon: 'undo',
+    //   onClick: () => {
+    //     console.log('undo');
+    //   },
+    // },
+    // {
+    //   icon: 'redo',
+    //   onClick: () => console.log('redo'),
+    // },
     {
       icon: 'pinch',
       onClick: () => {
