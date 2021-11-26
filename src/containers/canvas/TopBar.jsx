@@ -40,6 +40,7 @@ export default function TopBar() {
       icon: 'hide_inactive_lt',
       onClick: () => {
         setMaxCanvas(!maxCanvas);
+        setPanZoom(false);
         console.log('maxCanvas activated! ', maxCanvas);
       },
     },
@@ -47,7 +48,7 @@ export default function TopBar() {
 
   return (
     <>
-      {panZoom || maxCanvas ? (
+      {maxCanvas ? (
         <div
           className="minimalIcons"
           style={{
@@ -63,18 +64,18 @@ export default function TopBar() {
           }}
         >
           <img
-            src={useAssets('ui', 'topTools[3].icon')}
+            src={useAssets('ui', topTools[1].icon)}
             className="minimalIcon"
-            height="75px"
-            alt={topTools[3].icon}
-            onClick={topTools[3].onClick}
+            height="30px"
+            alt={topTools[1].icon}
+            onClick={topTools[1].onClick}
           />
           <img
-            src={useAssets('ui', topTools[4].icon)}
-            alt={topTools[4].icon}
-            height="75px"
+            src={useAssets('ui', topTools[2].icon)}
             className="minimalIcon"
-            onClick={topTools[4].onClick}
+            height="30px"
+            alt={topTools[2].icon}
+            onClick={topTools[2].onClick}
           />
         </div>
       ) : (

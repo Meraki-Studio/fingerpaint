@@ -50,7 +50,7 @@ export default function BottomBar() {
 
   return (
     <>
-      {panZoom || maxCanvas ? (
+      {maxCanvas ? (
         <div
           style={{
             position: 'absolute',
@@ -65,7 +65,7 @@ export default function BottomBar() {
             alt={bottomTools[0].icon}
             className="minimalIcon"
             onClick={bottomTools[0].onClick}
-            height="75px"
+            height="30px"
           />
         </div>
       ) : (

@@ -69,7 +69,13 @@ const Canvas = () => {
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
       <CanvasDraw
-        style={{ touchAction: 'none', position: 'relative', zIndex: 7 }}
+        style={{
+          touchAction: 'none',
+          position: 'relative',
+          zIndex: 7,
+          maxWidth: '100vw',
+          maxHeight: '100vh',
+        }}
         ref={canvasRef}
         {...canvasOptions}
         canvasHeight={window.screen.height}
