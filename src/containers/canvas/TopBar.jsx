@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react';
 
 import { usePanZoom, useMaxCanvas } from '../../state/UserProvider';
 import { AppBar, Toolbar } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useNavigate } from 'react-router-dom';
+import { useAssets } from '../../utils/useAssets';
 
 export default function TopBar() {
   const { panZoom, setPanZoom } = usePanZoom();
@@ -13,31 +13,31 @@ export default function TopBar() {
 
   const topTools = [
     {
-      icon: 'arrow-left',
+      icon: 'left-arrow',
       onClick: () => {
         console.log('Get back home!');
         navigate('/home');
       },
     },
     {
-      icon: 'undo-alt',
+      icon: 'undo',
       onClick: () => {
         console.log('undo');
       },
     },
     {
-      icon: 'redo-alt',
+      icon: 'redo',
       onClick: () => console.log('redo'),
     },
     {
-      icon: 'expand-arrows-alt',
+      icon: 'pinch',
       onClick: () => {
         setPanZoom(!panZoom);
         console.log('panZoom activated! ', panZoom);
       },
     },
     {
-      icon: 'eye',
+      icon: 'hide_inactive_lt',
       onClick: () => {
         setMaxCanvas(!maxCanvas);
         console.log('maxCanvas activated! ', maxCanvas);
@@ -62,13 +62,17 @@ export default function TopBar() {
             margin: '.5rem 1rem',
           }}
         >
-          <FontAwesomeIcon
-            icon={topTools[3].icon}
+          <img
+            src={useAssets('ui', 'topTools[3].icon')}
             className="minimalIcon"
+            height="75px"
+            alt={topTools[3].icon}
             onClick={topTools[3].onClick}
           />
-          <FontAwesomeIcon
-            icon={topTools[4].icon}
+          <img
+            src={useAssets('ui', topTools[4].icon)}
+            alt={topTools[4].icon}
+            height="75px"
             className="minimalIcon"
             onClick={topTools[4].onClick}
           />
@@ -87,9 +91,11 @@ export default function TopBar() {
           >
             {topTools.map((tool) => {
               return (
-                <FontAwesomeIcon
+                <img
                   key={tool.icon}
-                  icon={tool.icon}
+                  height="75px"
+                  src={useAssets('ui', tool.icon)}
+                  alt={tool.icon}
                   style={{
                     borderRadius: '50px',
                     padding: '.7rem',

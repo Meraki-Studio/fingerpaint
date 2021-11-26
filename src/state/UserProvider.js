@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 export const UserContext = createContext();
 
@@ -48,7 +48,6 @@ export function UserProvider({ children }) {
       img: 'https://placekitten.com/200/287',
     },
   ]);
-
   // useEffect to load art upon login
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Landing.scss';
-import { getIcon } from '../../utils/useIcons';
+import { useAssets } from '../../utils/useAssets';
 
 export default function ProfileItem({ maker }) {
   const { name, pronoun, img, role, blurb, links } = maker;
@@ -19,17 +19,29 @@ export default function ProfileItem({ maker }) {
         <div className="iconLinks">
           {!!links.linkedIn && (
             <a href={links.linkedIn} className="iconLinks">
-              <FontAwesomeIcon size="2x" icon={['fab', 'linkedin-in']} />
+              <img
+                src={useAssets('makers', 'linkedin')}
+                height="24px"
+                alt="linkedin"
+              />
             </a>
           )}
           {!!links.gitHub && (
             <a href={links.gitHub} className="iconLinks">
-              <FontAwesomeIcon size="2x" icon={['fab', 'github-alt']} />
+              <img
+                src={useAssets('makers', 'github')}
+                height="24px"
+                alt="github"
+              />
             </a>
           )}
           {!!links.twitter && (
             <a href={links.twitter} className="iconLinks">
-              <FontAwesomeIcon size="2x" icon={['fab', 'twitter']} />
+              <img
+                src={useAssets('makers', 'twitter')}
+                height="24px"
+                alt="twitter"
+              />
             </a>
           )}
         </div>
