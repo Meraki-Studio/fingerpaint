@@ -1,10 +1,10 @@
-import { getIcon } from '../../utils/useIcons';
+import { useAssets } from '../../utils/useAssets';
 
-const JuliImage = getIcon('makers', 'Juli');
+const JuliImage = useAssets('makers', 'Juli');
 
-const NickImage = getIcon('makers', 'Nick');
+const NickImage = useAssets('makers', 'Nick');
 
-const JamesImage = getIcon('makers', 'James');
+const JamesImage = useAssets('makers', 'James');
 
 export const makers = [
   {

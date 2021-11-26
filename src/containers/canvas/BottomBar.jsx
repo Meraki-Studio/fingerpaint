@@ -7,7 +7,7 @@ import {
   usePalette,
 } from '../../state/UserProvider';
 import { AppBar, Toolbar } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAssets } from '../../utils/useAssets';
 
 export default function BottomBar() {
   const { panZoom } = usePanZoom();
@@ -18,7 +18,7 @@ export default function BottomBar() {
 
   const bottomTools = [
     {
-      icon: 'palette',
+      icon: 'color-palette',
       onClick: () => {
         console.log('palette');
         setShowPalette(!showPalette);
@@ -31,14 +31,14 @@ export default function BottomBar() {
         setErase(false);
       },
     },
-    {
-      icon: 'stamp',
-      onClick: () => console.log('stamp'),
-    },
-    {
-      icon: 'image',
-      onClick: () => console.log('image'),
-    },
+    // {
+    //   icon: 'stamp',
+    //   onClick: () => console.log('stamp'),
+    // },
+    // {
+    //   icon: 'photo',
+    //   onClick: () => console.log('image'),
+    // },
     {
       icon: 'eraser',
       onClick: ({ target }) => {
@@ -60,10 +60,12 @@ export default function BottomBar() {
             margin: '0 1rem',
           }}
         >
-          <FontAwesomeIcon
-            icon={bottomTools[0].icon}
+          <img
+            src={useAssets('ui', bottomTools[0].icon)}
+            alt={bottomTools[0].icon}
             className="minimalIcon"
             onClick={bottomTools[0].onClick}
+            height="75px"
           />
         </div>
       ) : (
@@ -81,15 +83,17 @@ export default function BottomBar() {
           >
             {bottomTools.map((tool) => {
               return (
-                <FontAwesomeIcon
+                <img
                   key={tool.icon}
-                  icon={tool.icon}
+                  src={useAssets('ui', tool.icon)}
+                  alt={tool.icon}
                   style={{
                     borderRadius: '50px',
                     padding: '.7rem',
                     background: 'white',
                   }}
                   onClick={tool.onClick}
+                  height="75px"
                 />
               );
             })}
