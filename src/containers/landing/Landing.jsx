@@ -185,7 +185,9 @@ const Landing = () => (
           Steal this code!
         </a>
 
-        <a href="">Steal this design!</a>
+        <a href="https://www.figma.com/file/3LcCwYQPvgJ6WLntMnJyfG/Fingerpaint?node-id=130%3A410">
+          Steal this design!
+        </a>
       </footer>
     </main>
   </>
