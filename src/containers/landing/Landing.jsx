@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Card, Paper, Typography } from '@mui/material';
 import { Box, palette } from '@mui/system';
 import ProfileItem from './ProfileItem';
@@ -31,7 +32,9 @@ const Landing = () => (
         // className="ctaBtn"
         sx={{ bgColor: 'primary.main', color: 'text.secondary' }}
       >
-        Try it for free
+        <Link style={{ textDecoration: 'none' }} to="/home">
+          Try it for Free
+        </Link>
       </Button>
     </header>
     <Box
@@ -97,7 +100,9 @@ const Landing = () => (
               mt: '1rem',
             }}
           >
-            Try it for free
+            <Link style={{ textDecoration: 'none' }} to="/home">
+              Try it for Free
+            </Link>
           </Button>
         </Paper>
         <figure className="heroImage">

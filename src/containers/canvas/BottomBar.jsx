@@ -31,14 +31,14 @@ export default function BottomBar() {
         setErase(false);
       },
     },
-    {
-      icon: 'stamp',
-      onClick: () => console.log('stamp'),
-    },
-    {
-      icon: 'photo',
-      onClick: () => console.log('image'),
-    },
+    // {
+    //   icon: 'stamp',
+    //   onClick: () => console.log('stamp'),
+    // },
+    // {
+    //   icon: 'photo',
+    //   onClick: () => console.log('image'),
+    // },
     {
       icon: 'eraser',
       onClick: ({ target }) => {
@@ -84,6 +84,7 @@ export default function BottomBar() {
             {bottomTools.map((tool) => {
               return (
                 <img
+                  key={tool.icon}
                   src={useAssets('ui', tool.icon)}
                   alt={tool.icon}
                   style={{
