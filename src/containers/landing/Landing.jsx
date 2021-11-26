@@ -37,10 +37,9 @@ const Landing = () => (
         </Link>
       </Button>
     </header>
-    <Box
-      component="section"
+    <section
       className="heroContainer"
-      sx={{ bgColor: 'background.section', pb: '2rem' }}
+      style={{ bgColor: 'background.section', maxWidth: '100vw' }}
     >
       <Paper
         component="article"
@@ -73,7 +72,15 @@ const Landing = () => (
           complete vision to fruition.
         </Typography>
       </Paper>
-      <Box component="article" className="heroText">
+      <section
+        component="article"
+        className="heroText"
+        style={{
+          maxWidth: '100vw',
+          display: 'flex',
+          // overflow: 'none',
+        }}
+      >
         <Paper
           component="article"
           elevation={0}
@@ -105,11 +112,9 @@ const Landing = () => (
             </Link>
           </Button>
         </Paper>
-        <figure className="heroImage">
-          <img src={mockup} height="400px" alt="Hero" />
-        </figure>
-      </Box>
-    </Box>
+        <img src={mockup} height="400px" alt="Hero" className="heroImg" />
+      </section>
+    </section>
     <Box component="section" className="what">
       <img className="whatImg" src={logoMain} alt="Hero" />
       <div className="whatText">
