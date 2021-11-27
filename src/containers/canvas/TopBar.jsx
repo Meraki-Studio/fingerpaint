@@ -16,7 +16,7 @@ export default function TopBar() {
       icon: 'left-arrow',
       onClick: () => {
         console.log('Get back home!');
-        navigate('/home');
+        navigate('/');
       },
     },
     // {
