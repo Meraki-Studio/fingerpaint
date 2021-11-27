@@ -1,51 +1,20 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Landing from '../../containers/landing/Landing';
-import Login from '../../containers/Login';
-import Home from '../../containers/Home';
-import Canvas from '../../containers/Canvas.jsx';
+import Home from '../../containers/home/Home';
+import Canvas from '../../containers/canvas/Canvas.jsx';
 
-import styles from './App.css';
-
-import {
-    faArrowLeft,
-    faUndoAlt,
-    faRedoAlt,
-    faExpandArrowsAlt,
-    faEye,
-    faPalette,
-    faPaintBrush,
-    faStamp,
-    faFillDrip,
-    faImage,
-    faEraser,
-} from '@fortawesome/free-solid-svg-icons';
-
-library.add(
-    faArrowLeft,
-    faUndoAlt,
-    faRedoAlt,
-    faExpandArrowsAlt,
-    faEye,
-    faPalette,
-    faPaintBrush,
-    faStamp,
-    faFillDrip,
-    faImage,
-    faEraser
-);
+import './App.css';
 
 export default function App() {
-    return (
-        <main>
-            <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/canvas" element={<Canvas />} />
-            </Routes>
-        </main>
-    );
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/canvas" element={<Canvas />} />
+      </Routes>
+    </>
+  );
 }

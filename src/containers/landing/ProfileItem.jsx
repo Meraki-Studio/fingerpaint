@@ -1,33 +1,51 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import styles from './Landing.css';
+import './Landing.scss';
+import { useAssets } from '../../utils/useAssets';
 
 export default function ProfileItem({ maker }) {
-    const { name, pronoun, img, role, blurb, links } = maker;
-    console.log(img);
-    return (
-        <div sx={{ maxWidth: 250 }} className={styles.teamCard}>
-            <img src={img} alt={name} />
-            <div className={styles.teamContent}>
-                <h4 className={styles.name}>{name}</h4>
-                <h5 className={styles.role}>{role}</h5>
-                <p className={styles.blurb}>{blurb}</p>
-                <a href={links.portfolio} className={styles.portfolio}>
-                    See {pronoun} work here →
-                </a>
-                <div className={styles.iconLinks}>
-                    <a href={links.linkedIn} className={styles.iconLinks}>
-                        <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
-                    </a>
-                    <a href={links.gitHub} className={styles.iconLinks}>
-                        <FontAwesomeIcon icon={['fab', 'github-alt']} />
-                    </a>
-                    <a href={links.twitter} className={styles.iconLinks}>
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />
-                    </a>
-                </div>
-            </div>
+  const { name, pronoun, img, role, blurb, links } = maker;
+
+  return (
+    <div sx={{ maxWidth: 250 }} className="teamCard">
+      <img src={img} alt={name} />
+      <div className="teamContent">
+        <h4 className="name">{name}</h4>
+        <h5 className="role">{role}</h5>
+        <p className="blurb">{blurb}</p>
+        <a href={links.portfolio} className="portfolio">
+          See {pronoun} work here →
+        </a>
+        <div className="iconLinks">
+          {!!links.linkedIn && (
+            <a href={links.linkedIn} className="iconLinks">
+              <img
+                src={useAssets('makers', 'linkedin')}
+                height="24px"
+                alt="linkedin"
+              />
+            </a>
+          )}
+          {!!links.gitHub && (
+            <a href={links.gitHub} className="iconLinks">
+              <img
+                src={useAssets('makers', 'github')}
+                height="24px"
+                alt="github"
+              />
+            </a>
+          )}
+          {!!links.twitter && (
+            <a href={links.twitter} className="iconLinks">
+              <img
+                src={useAssets('makers', 'twitter')}
+                height="24px"
+                alt="twitter"
+              />
+            </a>
+          )}
         </div>
-    );
+      </div>
+    </div>
+  );
 }

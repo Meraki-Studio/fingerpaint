@@ -1,0 +1,45 @@
+.topHidden {
+  display: flex;
+  justify-content: end;
+  // pointer-events: none;
+}
+.barNoHide {
+  display: flex;
+  justify-content: space-between;
+  // pointer-events: none;
+}
+.bottomHidden {
+  display: flex;
+  justify-content: start;
+  pointer-events: none;
+}
+
+.colorContainer {
+  position: fixed;
+  width: 272px;
+  height: 420px;
+  left: 44px;
+  top: 128px;
+  overflow-y: scroll;
+  z-index: 9;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  max-width: 80vw;
+  max-height: 80vh;
+  margin: auto;
+
+  background-color: rgba(255, 255, 255, 0.582);
+}
+
+.minimalIconContainer {
+  margin: 0 1rem;
+}
+
+.minimalIcon {
+  border-radius: 50px;
+  margin: 1rem;
+}
