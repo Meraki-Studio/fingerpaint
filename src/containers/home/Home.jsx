@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { AppBar, SvgIcon, Toolbar } from '@mui/material';
-import Button from '@mui/material/Button';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Toolbar } from '@mui/material';
 import { useDrop } from 'react-dnd';
 
 import { useMyArt } from '../../state/UserProvider';
@@ -9,6 +9,7 @@ import { itemTypes } from '../../utils/itemTypes';
 import { useAssets } from '../../utils/useAssets';
 
 import '../containers.scss';
+import NewArt from '../../assets/icons/controls/NewArt.svg';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
@@ -31,7 +32,6 @@ export default function Home() {
   });
 
   const horizontalLogo = useAssets('brand', 'LogoHorizontal');
-  const newArt = useAssets('ui', 'addNew');
   const trashArt = useAssets('ui', 'trash');
   const shareArt = useAssets('ui', 'send');
 
@@ -47,9 +47,9 @@ export default function Home() {
       </section>
       <Toolbar className="buttonBar">
         <img src={trashArt} height="50px" alt="delete" className="sideButton" />
-        <Button href="canvas" className="newArtButton">
-          <img src={newArt} alt="Fingerpaint" />
-        </Button>
+        <Link to="/canvas" className="newArtButton">
+          <img src={NewArt} alt="Fingerpaint Add New" />
+        </Link>
         <img
           src={shareArt}
           height="50px"
