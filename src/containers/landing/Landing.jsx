@@ -32,7 +32,7 @@ const Landing = () => (
         // className="ctaBtn"
         sx={{ bgColor: 'primary.main', color: 'text.secondary' }}
       >
-        <Link style={{ textDecoration: 'none', color: '#fff' }} to="/home">
+        <Link style={{ textDecoration: 'none', color: '#fff' }} to="/canvas">
           Try it for Free
         </Link>
       </Button>
@@ -107,7 +107,10 @@ const Landing = () => (
               mt: '1rem',
             }}
           >
-            <Link style={{ textDecoration: 'none', color: '#fff' }} to="/home">
+            <Link
+              style={{ textDecoration: 'none', color: '#fff' }}
+              to="/canvas"
+            >
               Try it for Free
             </Link>
           </Button>
