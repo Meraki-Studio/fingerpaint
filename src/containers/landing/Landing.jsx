@@ -118,7 +118,7 @@ const Landing = () => (
         <img src={mockup} height="400px" alt="Hero" className="heroImg" />
       </section>
     </section>
-    <Box component="section" className="what">
+    <Box component="section" id="what" className="what">
       <img className="whatImg" src={logoMain} alt="Hero" />
       <div className="whatText">
         <h3>
@@ -175,7 +175,7 @@ const Landing = () => (
     {/* <section className="video">
         <p>Video goes here!</p>
       </section> */}
-    <Box component="section" className="howContainer">
+    <Box component="section" id="how" className="howContainer">
       <div className="how">
         <div className="howText">
           <h3>Step 1: Select a tool to use</h3>
@@ -217,7 +217,7 @@ const Landing = () => (
         <img className="howImg" src={Tutorial3} alt="Hero" />
       </div>
     </Box>
-    <section className="team">
+    <section className="team" id="who">
       {makers.map((maker) => {
         return <ProfileItem key={maker.name} maker={maker} />;
       })}
