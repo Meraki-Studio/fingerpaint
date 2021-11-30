@@ -47,13 +47,17 @@ export default function Home() {
           </div>
         ))}
       </section>
-      <Toolbar className="buttonBar">
-        <Trash />
-        <Link to="/canvas" className="newArtButton">
-          <New />
+      <section className="buttonBar">
+        <span className="sideButton">
+          <Trash />
+        </span>
+        <Link to="/canvas">
+          <New classname="newArtButton" />
         </Link>
-        <Share />
-      </Toolbar>
+        <span className="sideButton">
+          <Share />
+        </span>
+      </section>
     </main>
   );
 }

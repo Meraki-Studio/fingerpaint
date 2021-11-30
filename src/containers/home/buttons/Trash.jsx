@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Trash() {
+export default function Trash({ color }) {
   return (
     <svg
       width="49"
@@ -11,9 +11,9 @@ export default function Trash() {
     >
       <rect width="49" height="48" fill="#E5E5E5" />
       <rect
-        width="360"
-        height="640"
-        transform="translate(-39.1794 -540.002)"
+        width="50"
+        height="50"
+        // transform="translate(-39.1794 -540.002)"
         fill="white"
       />
       <path

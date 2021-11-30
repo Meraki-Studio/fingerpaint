@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Share() {
+export default function Share({ color }) {
   return (
     <svg
       width="49"
@@ -9,11 +9,11 @@ export default function Share() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="49" height="49" fill="#E5E5E5" />
+      <rect width="49" height="49" fill="red" />
       <rect
-        width="360"
-        height="640"
-        transform="translate(-271.179 -539.002)"
+        width="50"
+        height="50"
+        // transform="translate(-271.179 -539.002)"
         fill="white"
       />
       <g clip-path="url(#clip0_130_410)">
@@ -24,7 +24,7 @@ export default function Share() {
           fill="#393939"
         />
       </g>
-      <defs>
+      {/* <defs>
         <clipPath id="clip0_130_410">
           <rect
             width="48"
@@ -33,7 +33,7 @@ export default function Share() {
             transform="translate(0.820557 0.997864)"
           />
         </clipPath>
-      </defs>
+      </defs> */}
     </svg>
   );
 }

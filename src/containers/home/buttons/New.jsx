@@ -1,19 +1,26 @@
 import React from 'react';
 
-const New = () => {
+const New = ({ classname }) => {
+  // const tall = window.innerHeight;
+  // const wide = window.innerWidth;
+  // let size = 105;
+
+  // if (wide > tall) size = 50;
+
   return (
     <svg
+      className={classname}
       width="105"
       height="105"
       viewBox="0 0 105 105"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="105" height="105" fill="#E5E5E5" />
+      {/* <rect width="105" height="105" fill="#E5E5E5" /> */}
       <rect
-        width="360"
-        height="640"
-        transform="translate(-127.179 -511.002)"
+        width="105"
+        height="105"
+        // transform="translate(-127.179 -511.002)"
         fill="white"
       />
       <rect
