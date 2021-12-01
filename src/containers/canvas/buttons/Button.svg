@@ -1,18 +1,20 @@
-<svg width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="61" height="61" fill="#E5E5E5"/>
-<g id="Stamp tool - selected" clip-path="url(#clip0_130_410)">
-<rect width="360" height="640" transform="translate(-79.0432 -563.772)" fill="white"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" fill="#E5E5E5"/>
+<g id="Eraser - initial" clip-path="url(#clip0_130_410)">
+<rect width="360" height="640" transform="translate(-281.703 -562.074)" fill="white"/>
 <g id="Bottom Control Bar" filter="url(#filter0_d_130_410)">
-<rect width="360" height="92" transform="translate(-79.0432 -15.772)" fill="white"/>
+<rect width="360" height="92" transform="translate(-281.703 -14.0742)" fill="white"/>
 <g id="Button">
-<g id="Icon">
-<path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M36.4412 18.228H39.3943C40.299 18.228 41.0349 18.964 41.0349 19.8687V27.3687H20.8787V19.8687C20.8787 18.964 21.6145 18.228 22.5193 18.228H30.3474V23.1499C30.3474 23.5382 30.6621 23.853 31.0505 23.853C31.4389 23.853 31.7537 23.5382 31.7537 23.1499V18.228H35.0349V24.5562C35.0349 24.9445 35.3496 25.2593 35.738 25.2593C36.1264 25.2593 36.4412 24.9445 36.4412 24.5562V18.228ZM25.8005 33.6968H36.113C38.827 33.6968 41.0349 31.489 41.0349 28.7749H20.8787C20.8787 31.489 23.0865 33.6968 25.8005 33.6968ZM35.1099 35.103H26.8035L26.5385 37.2232C26.3802 38.4899 26.7739 39.7653 27.6187 40.7222C28.4636 41.679 29.6802 42.228 30.9568 42.228C32.2334 42.228 33.45 41.679 34.2947 40.7222C35.1397 39.7653 35.5333 38.4899 35.3749 37.2232L35.1099 35.103ZM30.9568 38.7124C30.5683 38.7124 30.2537 38.3976 30.2537 38.0093C30.2537 37.6209 30.5683 37.3062 30.9568 37.3062C31.3451 37.3062 31.6599 37.6209 31.6599 38.0093C31.6599 38.3976 31.3451 38.7124 30.9568 38.7124Z" fill="#393939"/>
+<rect id="Body" x="6.29688" y="5.92578" width="52" height="52" rx="12" fill="#F99D1F"/>
+<g id="Icon" clip-path="url(#clip1_130_410)">
+<path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M35.7254 21.3063L43.6804 29.2612C44.5029 30.0837 44.5029 31.4219 43.6804 32.2443L35.8911 40.0336L24.9528 29.0955L32.7422 21.3063C33.5646 20.4838 34.9028 20.4838 35.7254 21.3063ZM23.1297 30.9184C22.2887 31.7597 21.8255 32.8779 21.8255 34.0673C21.8255 35.2568 22.2887 36.3752 23.1297 37.2162L27.7703 41.8566C28.6113 42.6976 29.7297 43.1608 30.9192 43.1608C32.1088 43.1608 33.2269 42.6976 34.0682 41.8566L34.8967 41.0278L23.9586 30.0898L23.1297 30.9184ZM25.6807 41.7555H21.0001C20.6117 41.7555 20.2969 42.0705 20.2969 42.4587C20.2969 42.847 20.6117 43.1618 21.0001 43.1618H27.1119C26.9967 43.0629 26.8844 42.9594 26.7761 42.8508L25.6807 41.7555Z" fill="white"/>
 </g>
+<rect id="Outline" x="2.29688" y="1.92578" width="60" height="60" rx="12" stroke="#F99D1F" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 5"/>
 </g>
 </g>
 </g>
 <defs>
-<filter id="filter0_d_130_410" x="-109.043" y="-47.772" width="420" height="152" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_130_410" x="-311.703" y="-46.0742" width="420" height="152" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="-2"/>
@@ -23,7 +25,10 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_130_410" result="shape"/>
 </filter>
 <clipPath id="clip0_130_410">
-<rect width="360" height="640" fill="white" transform="translate(-79.0432 -563.772)"/>
+<rect width="360" height="640" fill="white" transform="translate(-281.703 -562.074)"/>
+</clipPath>
+<clipPath id="clip1_130_410">
+<rect width="24.0005" height="24" fill="white" transform="translate(20.2969 19.9258)"/>
 </clipPath>
 </defs>
 </svg>

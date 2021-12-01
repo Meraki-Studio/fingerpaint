@@ -63,13 +63,13 @@ export default function BottomBar() {
               padding: 0,
             }}
           >
-            <Button onClick={paletteClick} sx={{ padding: 0 }}>
+            <Button onClick={paletteClick} sx={{ padding: '16px 16px 16px 0' }}>
               <Palette alt="palette" className="minimalIcon" color={color} />
             </Button>
-            <Button onClick={brushClick} sx={{ padding: 0 }}>
+            <Button onClick={brushClick} sx={{ padding: '16px' }}>
               <Brush alt="brush" className="minimalIcon" color={color} />
             </Button>
-            <Button onClick={eraseClick} sx={{ padding: 0 }}>
+            <Button onClick={eraseClick} sx={{ padding: '16px' }}>
               <Eraser alt="eraser" className="minimalIcon" height="30px" />
             </Button>
           </Toolbar>
