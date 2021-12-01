@@ -6,7 +6,10 @@ import {
   useErase,
   usePalette,
 } from '../../state/UserProvider';
-import { AppBar, Toolbar } from '@mui/material';
+import { AppBar, Toolbar, Button } from '@mui/material';
+import Palette from './buttons/Palette';
+import Brush from './buttons/Brush';
+import Eraser from './buttons/Eraser';
 import { useAssets } from '../../utils/useAssets';
 
 export default function BottomBar() {
@@ -16,37 +19,16 @@ export default function BottomBar() {
   const { erase, setErase } = useErase();
   const { showPalette, setShowPalette } = usePalette();
 
-  const bottomTools = [
-    {
-      icon: 'color-palette',
-      onClick: () => {
-        console.log('palette');
-        setShowPalette(!showPalette);
-      },
-    },
-    {
-      icon: 'paint-brush',
-      onClick: () => {
-        console.log('brush');
-        setErase(false);
-      },
-    },
-    // {
-    //   icon: 'stamp',
-    //   onClick: () => console.log('stamp'),
-    // },
-    // {
-    //   icon: 'photo',
-    //   onClick: () => console.log('image'),
-    // },
-    {
-      icon: 'eraser',
-      onClick: ({ target }) => {
-        console.log(`within eraser! erase: ${erase}, color: ${color}`);
-        setErase(true);
-      },
-    },
-  ];
+  const paletteClick = () => {
+    setShowPalette(!showPalette);
+  };
+  const brushClick = () => {
+    setErase(false);
+  };
+  const eraseClick = ({ target }) => {
+    setShowPalette(false);
+    setErase(true);
+  };
 
   return (
     <>
@@ -60,11 +42,10 @@ export default function BottomBar() {
             margin: '0 1rem',
           }}
         >
-          <img
-            src={useAssets('ui', bottomTools[0].icon)}
-            alt={bottomTools[0].icon}
+          <Palette
+            alt="palette"
             className="minimalIcon"
-            onClick={bottomTools[0].onClick}
+            onClick={paletteClick}
             height="30px"
           />
         </div>
@@ -72,31 +53,25 @@ export default function BottomBar() {
         <AppBar
           position="absolute"
           color="transparent"
-          sx={{ top: 'auto', bottom: 0, zIndex: 8 }}
+          sx={{ top: 'auto', bottom: 0, zIndex: 8, padding: 0, margin: 0 }}
         >
           <Toolbar
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               backgroundColor: 'white',
+              padding: 0,
             }}
           >
-            {bottomTools.map((tool) => {
-              return (
-                <img
-                  key={tool.icon}
-                  src={useAssets('ui', tool.icon)}
-                  alt={tool.icon}
-                  style={{
-                    borderRadius: '50px',
-                    padding: '.7rem',
-                    background: 'white',
-                  }}
-                  onClick={tool.onClick}
-                  height="75px"
-                />
-              );
-            })}
+            <Button onClick={paletteClick} sx={{ padding: '16px 16px 16px 0' }}>
+              <Palette alt="palette" className="minimalIcon" color={color} />
+            </Button>
+            <Button onClick={brushClick} sx={{ padding: '16px' }}>
+              <Brush alt="brush" className="minimalIcon" color={color} />
+            </Button>
+            <Button onClick={eraseClick} sx={{ padding: '16px' }}>
+              <Eraser alt="eraser" className="minimalIcon" height="30px" />
+            </Button>
           </Toolbar>
         </AppBar>
       )}

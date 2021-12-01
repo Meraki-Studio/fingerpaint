@@ -8,6 +8,10 @@ import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
 import { useAssets } from '../../utils/useAssets';
 
+import New from './buttons/New';
+import Trash from './buttons/Trash';
+import Share from './buttons/Share';
+
 import '../containers.scss';
 import NewArt from '../../assets/icons/controls/NewArt.svg';
 
@@ -32,8 +36,6 @@ export default function Home() {
   });
 
   const horizontalLogo = useAssets('brand', 'LogoHorizontal');
-  const trashArt = useAssets('ui', 'trash');
-  const shareArt = useAssets('ui', 'send');
 
   return (
     <main className="home">
@@ -45,18 +47,17 @@ export default function Home() {
           </div>
         ))}
       </section>
-      <Toolbar className="buttonBar">
-        <img src={trashArt} height="50px" alt="delete" className="sideButton" />
-        <Link to="/canvas" className="newArtButton">
-          <img src={NewArt} alt="Fingerpaint Add New" />
+      <section className="buttonBar">
+        <span className="sideButton">
+          <Trash />
+        </span>
+        <Link to="/canvas">
+          <New classname="newArtButton" />
         </Link>
-        <img
-          src={shareArt}
-          height="50px"
-          alt="Fingerpaint"
-          className="sideButton"
-        />
-      </Toolbar>
+        <span className="sideButton">
+          <Share />
+        </span>
+      </section>
     </main>
   );
 }
