@@ -98,7 +98,7 @@ const Landing = () => (
             included.
           </Typography>
           <Button
-            href="home"
+            href="canvas"
             variant="contained"
             className="ctaBtn"
             sx={{
