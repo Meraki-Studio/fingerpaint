@@ -14,7 +14,7 @@ import Colors from './Colors';
 import Container from '@mui/material/Container';
 
 const Canvas = () => {
-  const { canvasOptions, setCanvasOptions } = useCanvasOptions();
+  const { canvasOptions } = useCanvasOptions();
   const { color } = useColor();
   const { erase } = useErase();
   const { panZoom } = usePanZoom();

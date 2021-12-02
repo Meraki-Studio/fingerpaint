@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Button } from '@mui/material';
 
@@ -50,20 +50,6 @@ export default function TopBar() {
           <Button onClick={maxClick} sx={{ padding: '10px' }}>
             <ShowHide />
           </Button>
-          {/* <img
-            src={useAssets('ui', topTools[1].icon)}
-            className="minimalIcon"
-            height="30px"
-            alt={topTools[1].icon}
-            onClick={topTools[1].onClick}
-          />
-          <img
-            src={useAssets('ui', topTools[2].icon)}
-            className="minimalIcon"
-            height="30px"
-            alt={topTools[2].icon}
-            onClick={topTools[2].onClick}
-          /> */}
         </div>
       ) : (
         <AppBar

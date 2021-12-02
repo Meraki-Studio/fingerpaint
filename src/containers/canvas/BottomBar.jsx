@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  usePanZoom,
   useMaxCanvas,
   useColor,
   useErase,
@@ -12,10 +11,9 @@ import Brush from './buttons/Brush';
 import Eraser from './buttons/Eraser';
 
 export default function BottomBar() {
-  const { panZoom } = usePanZoom();
   const { maxCanvas } = useMaxCanvas();
   const { color } = useColor();
-  const { erase, setErase } = useErase();
+  const { setErase } = useErase();
   const { showPalette, setShowPalette } = usePalette();
 
   const paletteClick = () => {
