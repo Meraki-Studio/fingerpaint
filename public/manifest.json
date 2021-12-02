@@ -1,0 +1,43 @@
+{
+  "name": "Fingerpaint by Meraki",
+  "short_name": "Fingerpaint",
+  "description": "Fingerpaint: making digital design tools accessible and fun for your child!",
+  "display": "standalone",
+  "background_color": "#fcd004",
+  "theme_color": "#fcd004",
+  "orientation": "Portrait",
+  "lang": "en",
+  "icons": [
+    {
+      "type": "image/png",
+      "sizes": "192x192",
+      "src": "images/192x192.png"
+    },
+    {
+      "type": "image/png",
+      "sizes": "512x512",
+      "src": "images/512x512.png"
+    },
+    {
+      "type": "image/png",
+      "sizes": "180x180",
+      "src": "../src/assets/icons/favicons/apple-touch-icon.png"
+    },
+    {
+      "type": "image/x-icon",
+      "sizes": [
+        "32x32",
+        "16x16"
+      ],
+      "src": "favicon.ico"
+    },
+    {
+      "type": "image/svg",
+      "color": "#f99d1f",
+      "purpose": "maskable any",
+      "src": "../src/assets/icons/favicons/safari-pinned-tab.svg"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/"
+}

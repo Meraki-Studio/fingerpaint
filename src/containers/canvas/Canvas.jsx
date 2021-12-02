@@ -83,7 +83,7 @@ const Canvas = () => {
         enablePanAndZoom={panZoom}
         brushColor={color}
         erase={erase}
-        hideGrid="true"
+        hideGrid={true}
       />
       <Colors />
       <BottomBar />

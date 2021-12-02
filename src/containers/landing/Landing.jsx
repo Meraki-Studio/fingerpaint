@@ -27,7 +27,6 @@ const Landing = () => (
         <a href="#who">Who made it</a>
       </nav>
       <Button
-        href="home"
         variant="contained"
         // className="ctaBtn"
         sx={{ bgColor: 'primary.main', color: 'text.secondary' }}
@@ -98,7 +97,6 @@ const Landing = () => (
             included.
           </Typography>
           <Button
-            href="canvas"
             variant="contained"
             className="ctaBtn"
             sx={{
@@ -223,11 +221,19 @@ const Landing = () => (
       })}
     </section>
     <footer className="footer">
-      <a href="https://github.com/Meraki-Studio/fingerpaint">
+      <a
+        href="https://github.com/Meraki-Studio/fingerpaint"
+        target="_blank"
+        rel="noreferrer"
+      >
         Steal this code!
       </a>
 
-      <a href="https://www.figma.com/file/3LcCwYQPvgJ6WLntMnJyfG/Fingerpaint?node-id=130%3A410">
+      <a
+        href="https://www.figma.com/file/3LcCwYQPvgJ6WLntMnJyfG/Fingerpaint?node-id=130%3A410"
+        target="_blank"
+        rel="noreferrer"
+      >
         Steal this design!
       </a>
     </footer>
