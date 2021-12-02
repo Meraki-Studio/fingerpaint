@@ -86,7 +86,7 @@ const Canvas = () => {
         hideGrid="true"
       />
       <Colors />
-      <BottomBar />
+      {!panZoom && <BottomBar />}
     </Container>
   );
 };
