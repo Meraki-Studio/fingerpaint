@@ -1,50 +1,31 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, Button } from '@mui/material';
 
 import { usePanZoom, useMaxCanvas } from '../../state/UserProvider';
-import { AppBar, Toolbar } from '@mui/material';
-
-import { useNavigate } from 'react-router-dom';
-import { useAssets } from '../../utils/useAssets';
+import Back from './buttons/Back';
+import PanZoom from './buttons/PanZoom';
+import ShowHide from './buttons/ShowHide';
 
 export default function TopBar() {
   const { panZoom, setPanZoom } = usePanZoom();
   const { maxCanvas, setMaxCanvas } = useMaxCanvas();
   const navigate = useNavigate();
 
-  const topTools = [
-    {
-      icon: 'left-arrow',
-      onClick: () => {
-        console.log('Get back home!');
-        navigate('/');
-      },
-    },
-    // {
-    //   icon: 'undo',
-    //   onClick: () => {
-    //     console.log('undo');
-    //   },
-    // },
-    // {
-    //   icon: 'redo',
-    //   onClick: () => console.log('redo'),
-    // },
-    {
-      icon: 'pinch',
-      onClick: () => {
-        setPanZoom(!panZoom);
-        console.log('panZoom activated! ', panZoom);
-      },
-    },
-    {
-      icon: 'hide_inactive_lt',
-      onClick: () => {
-        setMaxCanvas(!maxCanvas);
-        setPanZoom(false);
-        console.log('maxCanvas activated! ', maxCanvas);
-      },
-    },
-  ];
+  const backClick = () => {
+    navigate('/');
+  };
+
+  const panClick = () => {
+    setPanZoom(!panZoom);
+    console.log('panZoom activated! ', panZoom);
+  };
+
+  const maxClick = () => {
+    setMaxCanvas(!maxCanvas);
+    setPanZoom(false);
+    console.log('maxCanvas activated! ', maxCanvas);
+  };
 
   return (
     <>
@@ -63,20 +44,12 @@ export default function TopBar() {
             margin: '.5rem 1rem',
           }}
         >
-          <img
-            src={useAssets('ui', topTools[1].icon)}
-            className="minimalIcon"
-            height="30px"
-            alt={topTools[1].icon}
-            onClick={topTools[1].onClick}
-          />
-          <img
-            src={useAssets('ui', topTools[2].icon)}
-            className="minimalIcon"
-            height="30px"
-            alt={topTools[2].icon}
-            onClick={topTools[2].onClick}
-          />
+          <Button onClick={panClick} sx={{ padding: '10px' }}>
+            <PanZoom />
+          </Button>
+          <Button onClick={maxClick} sx={{ padding: '10px' }}>
+            <ShowHide />
+          </Button>
         </div>
       ) : (
         <AppBar
@@ -90,22 +63,15 @@ export default function TopBar() {
               justifyContent: 'space-between',
             }}
           >
-            {topTools.map((tool) => {
-              return (
-                <img
-                  key={tool.icon}
-                  height="75px"
-                  src={useAssets('ui', tool.icon)}
-                  alt={tool.icon}
-                  style={{
-                    borderRadius: '50px',
-                    padding: '.7rem',
-                    background: 'white',
-                  }}
-                  onClick={tool.onClick}
-                />
-              );
-            })}
+            <Button onClick={backClick} sx={{ padding: '16px' }}>
+              <Back />
+            </Button>
+            <Button onClick={panClick}>
+              <PanZoom />
+            </Button>
+            <Button onClick={maxClick}>
+              <ShowHide />
+            </Button>
           </Toolbar>
         </AppBar>
       )}
