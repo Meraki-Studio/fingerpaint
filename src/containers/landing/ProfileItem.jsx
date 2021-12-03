@@ -18,7 +18,12 @@ export default function ProfileItem({ maker }) {
         </a>
         <div className="iconLinks">
           {!!links.linkedIn && (
-            <a href={links.linkedIn} className="iconLinks">
+            <a
+              href={links.linkedIn}
+              className="iconLinks"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={useAssets('makers', 'linkedin')}
                 height="24px"
@@ -27,7 +32,12 @@ export default function ProfileItem({ maker }) {
             </a>
           )}
           {!!links.gitHub && (
-            <a href={links.gitHub} className="iconLinks">
+            <a
+              href={links.gitHub}
+              className="iconLinks"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={useAssets('makers', 'github')}
                 height="24px"
@@ -36,7 +46,12 @@ export default function ProfileItem({ maker }) {
             </a>
           )}
           {!!links.twitter && (
-            <a href={links.twitter} className="iconLinks">
+            <a
+              href={links.twitter}
+              className="iconLinks"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 src={useAssets('makers', 'twitter')}
                 height="24px"

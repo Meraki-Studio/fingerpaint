@@ -5,9 +5,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { UserProvider } from './state/UserProvider';
-import * as serviceWorkerRegistration from './sw-registration';
 import CssBaseline from '@mui/material/CssBaseline';
+
+import { UserProvider } from './state/UserProvider';
+import * as serviceWorker from './service-worker';
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -62,4 +64,4 @@ render(
   document.getElementById('root')
 );
 
-serviceWorkerRegistration.register();
+serviceWorker.register();

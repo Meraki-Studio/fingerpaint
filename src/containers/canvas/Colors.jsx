@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { CirclePicker } from 'react-color';
-import { Drawer } from '@mui/material';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+// import { Drawer } from '@mui/material';
+// import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useColor, usePalette } from '../../state/UserProvider';
 import './Canvas.scss';
 
