@@ -8,7 +8,7 @@ export function UserProvider({ children }) {
   const [showPalette, setShowPalette] = useState(false);
   const [maxCanvas, setMaxCanvas] = useState(false);
   const [panZoom, setPanZoom] = useState(false);
-  const [color, setColor] = useState('#000');
+  const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
   const [myArt, setMyArt] = useState([
     {

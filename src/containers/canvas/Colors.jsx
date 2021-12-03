@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { CirclePicker } from 'react-color';
-import { Drawer } from '@mui/material';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+// import { Drawer } from '@mui/material';
+// import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { useColor, usePalette } from '../../state/UserProvider';
 import './Canvas.scss';
 
@@ -10,14 +9,13 @@ export default function Colors() {
   const { showPalette, setShowPalette } = usePalette();
 
   const handleColorChange = (hex) => {
-    console.log(hex, ' is being passed into setColor');
     setColor(`${hex}`);
     setShowPalette(!showPalette);
   };
 
-  useEffect(() => {
-    console.log('this is now the color: ', color);
-  }, [color]);
+  // useEffect(() => {
+  //   console.log('this is now the color: ', color);
+  // }, [color]);
 
   const colors = [
     '#393939',
