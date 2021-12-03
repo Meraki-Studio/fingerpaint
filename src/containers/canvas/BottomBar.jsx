@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  usePanZoom,
   useMaxCanvas,
   useColor,
   useErase,
@@ -10,13 +9,11 @@ import { AppBar, Toolbar, Button } from '@mui/material';
 import Palette from './buttons/Palette';
 import Brush from './buttons/Brush';
 import Eraser from './buttons/Eraser';
-import { useAssets } from '../../utils/useAssets';
 
 export default function BottomBar() {
-  const { panZoom } = usePanZoom();
   const { maxCanvas } = useMaxCanvas();
   const { color } = useColor();
-  const { erase, setErase } = useErase();
+  const { setErase } = useErase();
   const { showPalette, setShowPalette } = usePalette();
 
   const paletteClick = () => {
@@ -38,16 +35,13 @@ export default function BottomBar() {
             position: 'absolute',
             top: 'auto',
             bottom: 0,
+            left: 0,
             zIndex: 8,
-            margin: '0 1rem',
           }}
         >
-          <Palette
-            alt="palette"
-            className="minimalIcon"
-            onClick={paletteClick}
-            height="30px"
-          />
+          <Button onClick={paletteClick} sx={{ padding: '16px 16px 17.5px 0' }}>
+            <Palette alt="palette" className="minimalIcon" color={color} />
+          </Button>
         </div>
       ) : (
         <AppBar

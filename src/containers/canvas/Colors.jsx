@@ -13,51 +13,56 @@ export default function Colors() {
     setShowPalette(!showPalette);
   };
 
-  // useEffect(() => {
-  //   console.log('this is now the color: ', color);
-  // }, [color]);
-
   const colors = [
+    // gray scale
     '#393939',
     '#FFFFFF',
     '#E8E8E8',
     '#B7B7B7',
     '#707070',
+    // reds
     '#FF3B30',
-    '#A10900',
-    '#D20B00',
-    '#FF7871',
     '#FFD5D2',
-    '#017AFF',
-    '#33C75A',
-    '#5956D6',
-    '#5AC9FA',
+    '#FF7871',
+    '#D20B00',
+    '#A10900',
+    // oranges
     '#F99D1F',
-    '#FFCC00',
-    '#004EA1',
-    '#0066D2',
-    '#0071A1',
-    '#0093D2',
-    '#00A12B',
-    '#00D238',
-    '#0300A1',
-    '#0400D2',
-    '#71B5FF',
-    '#71D4FF',
-    '#71FF97',
-    '#7371FF',
-    '#9D5E04',
-    '#A18100',
-    '#CD7A05',
-    '#D2A800',
-    '#D2E8FF',
-    '#D2F2FF',
-    '#D2FFDE',
-    '#D3D2FF',
-    '#FBC374',
     '#FEECD3',
-    '#FFE371',
+    '#FBC374',
+    '#CD7A05',
+    '#9D5E04',
+    // yellows
+    '#FFCC00',
     '#FFF6D2',
+    '#FFE371',
+    '#D2A800',
+    '#A18100',
+    // greens
+    '#33C75A',
+    '#D2FFDE',
+    '#71FF97',
+    '#00D238',
+    '#00A12B',
+    // blue 1
+    '#5AC9FA',
+    '#D2F2FF',
+    '#71D4FF',
+    '#0093D2',
+    '#0071A1',
+    // blue 2
+    '#017AFF',
+    '#D2E8FF',
+    '#71B5FF',
+    '#0066D2',
+    '#004EA1',
+    // purples
+    '#5956D6',
+    '#D3D2FF',
+    '#7371FF',
+    '#0400D2',
+    '#0300A1',
+    // what's next?
   ];
 
   return (
