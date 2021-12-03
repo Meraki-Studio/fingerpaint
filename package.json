@@ -1,11 +1,11 @@
 {
   "name": "fingerpaint",
   "version": "0.0.1",
-  "description": "",
+  "description": "Fingerpaint: making digital design tools accessible and fun for your child!",
   "scripts": {
-    "start": "parcel ./public/index.html",
+    "start": "parcel src/index.html",
     "prebuild": "rm -rf dist && rm -rf .parcel-cache",
-    "build": "parcel build ./public/index.html"
+    "build": "parcel build src/index.html"
   },
   "keywords": [],
   "author": "Julianne Vela, Nick Day, and James Rothbart",
