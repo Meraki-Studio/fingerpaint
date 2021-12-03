@@ -5,7 +5,15 @@
   "display": "standalone",
   "background_color": "#fcd004",
   "theme_color": "#fcd004",
-  "orientation": "Portrait",
+  "orientation": "portrait",
+  "categories": [
+    "education",
+    "painting",
+    "design",
+    "creativity",
+    "art",
+    "kids"
+  ],
   "lang": "en",
   "icons": [
     {
@@ -30,6 +38,7 @@
     },
     {
       "type": "image/svg",
+      "sizes": "949x949",
       "purpose": "maskable",
       "src": "../src/assets/icons/maskable/safari-pinned-tab.svg",
       "color": "#f99d1f"
