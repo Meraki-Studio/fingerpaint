@@ -10,7 +10,7 @@ export default function Back() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect width="49" height="49" fill="#E5E5E5" />
-      <g id="Pan and zoom mode" clip-path="url(#clip0_130_410)">
+      <g id="Pan and zoom mode" clipPath="url(#clip0_130_410)">
         <rect
           width="360"
           height="640"
@@ -43,9 +43,9 @@ export default function Back() {
           width="420"
           height="140"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
