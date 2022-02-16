@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import CanvasDraw from '../../utils/eraser/index';
+// import CanvasDraw from '../../utils/eraser/index';
+import CanvasDraw from 'react-canvas-draw';
 import {
   useCanvasOptions,
   useColor,
