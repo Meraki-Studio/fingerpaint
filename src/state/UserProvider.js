@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   // state here
+  const [canvasCommands, setCanvasCommands] = useState();
   const [canvasOptions, setCanvasOptions] = useState();
   const [showPalette, setShowPalette] = useState(false);
   const [maxCanvas, setMaxCanvas] = useState(false);
@@ -67,6 +68,8 @@ export function UserProvider({ children }) {
         setShowPalette,
         canvasOptions,
         setCanvasOptions,
+        canvasCommands,
+        setCanvasCommands,
       }}
     >
       {children}
@@ -103,3 +106,8 @@ export const useCanvasOptions = () => {
   const { canvasOptions, setCanvasOptions } = useContext(UserContext);
   return { canvasOptions, setCanvasOptions };
 };
+
+export const useCanvasCommands = () => {
+  const { canvasCommands, setCanvasCommands } = useContext(UserContext);
+  return { canvasCommands, setCanvasCommands };
+}

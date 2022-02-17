@@ -1,13 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-// import CanvasDraw from '../../utils/eraser/index';
 import CanvasDraw from 'react-canvas-draw';
 
 import {
-  useCanvasOptions,
+  useCanvasCommands,
   useColor,
   useErase,
   usePanZoom,
-  useSaveableCanvas,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -17,10 +15,9 @@ import Colors from './Colors';
 import Container from '@mui/material/Container';
 
 const Canvas = () => {
-  const { saveableCanvas, setSaveableCanvas } = useSaveableCanvas();
-  const { canvasOptions } = useCanvasOptions();
+  const { setCanvasCommands } = useCanvasCommands();
   const { color } = useColor();
-  const { erase, setErase } = useErase();
+  const { erase } = useErase();
   const { panZoom } = usePanZoom();
 
   /**
@@ -58,20 +55,25 @@ const Canvas = () => {
   //     }));
   // };
 
+  // Creates a reference to the canvas element
   const canvasDraw = useRef();
-  console.log('This is canvas: ', canvasDraw);
-  const canvasRef = canvasDraw.current;
-  console.log('This is canvasRef: ', canvasRef);
+  let canvasRef = null;
 
-  const clearCanvas = () => {
-    console.log('clearCanvas activated');
-    canvasRef.eraseAll();
-  };
+  // Creates the canvas reference
+  useEffect(() => {
+    canvasRef = canvasDraw.current;
+    console.log('This is new canvasRef: ', canvasRef);
+  }, [canvasDraw]);
+
+  // Puts canvas reference into state for functions to use
+  useEffect(() => {
+    setCanvasCommands(canvasRef);
+    console.log('Canvas Commands set to: ', canvasRef);
+  }, [canvasRef]);
 
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
-      <button onClick={() => clearCanvas()}>erase</button>
       <CanvasDraw
         style={{
           touchAction: 'none',
@@ -89,7 +91,7 @@ const Canvas = () => {
         hideGrid={true}
       />
       <Colors />
-      {!panZoom && <BottomBar />}
+      {!panZoom && <BottomBar canvas={canvasDraw} />}
     </Container>
   );
 };
