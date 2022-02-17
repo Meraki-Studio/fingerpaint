@@ -1,11 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 // import CanvasDraw from '../../utils/eraser/index';
 import CanvasDraw from 'react-canvas-draw';
+
 import {
   useCanvasOptions,
   useColor,
   useErase,
   usePanZoom,
+  useSaveableCanvas,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -15,9 +17,10 @@ import Colors from './Colors';
 import Container from '@mui/material/Container';
 
 const Canvas = () => {
+  const { saveableCanvas, setSaveableCanvas } = useSaveableCanvas();
   const { canvasOptions } = useCanvasOptions();
   const { color } = useColor();
-  const { erase } = useErase();
+  const { erase, setErase } = useErase();
   const { panZoom } = usePanZoom();
 
   /**
@@ -55,20 +58,20 @@ const Canvas = () => {
   //     }));
   // };
 
-  const canvas = useRef();
-  const canvasRef = canvas.current;
+  const canvasDraw = useRef();
+  console.log('This is canvas: ', canvasDraw);
+  const canvasRef = canvasDraw.current;
+  console.log('This is canvasRef: ', canvasRef);
 
   const clearCanvas = () => {
+    console.log('clearCanvas activated');
     canvasRef.eraseAll();
-  };
-
-  const saveCanvas = () => {
-    localStorage.setItem('savedCanvas', canvasRef.getSaveData());
   };
 
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
+      <button onClick={() => clearCanvas()}>erase</button>
       <CanvasDraw
         style={{
           touchAction: 'none',
@@ -77,8 +80,7 @@ const Canvas = () => {
           maxWidth: '100vw',
           maxHeight: '100vh',
         }}
-        ref={canvasRef}
-        {...canvasOptions}
+        ref={canvasDraw}
         canvasHeight={window.screen.height}
         canvasWidth={window.screen.width}
         enablePanAndZoom={panZoom}
