@@ -9,7 +9,6 @@ import {
 import { AppBar, Toolbar, Button } from '@mui/material';
 import Palette from './buttons/Palette';
 import Brush from './buttons/Brush';
-import Eraser from './buttons/Eraser';
 
 export default function BottomBar({ canvas }) {
   const { maxCanvas } = useMaxCanvas();
@@ -32,10 +31,6 @@ export default function BottomBar({ canvas }) {
   const saveClick = () => {
     console.log('save has been activated');
     localStorage.setItem(Date.now(), canvasCommands.getSaveData());
-  };
-  const eraseClick = () => {
-    console.log('erase all activated');
-    canvasCommands.eraseAll();
   };
 
   return (
@@ -76,9 +71,6 @@ export default function BottomBar({ canvas }) {
             </Button>
             <Button onClick={() => saveClick()} sx={{ padding: '16px' }}>
               SAVE
-            </Button>
-            <Button onClick={() => eraseClick()} sx={{ padding: '16px' }}>
-              <Eraser alt="eraser" className="minimalIcon" height="30px" />
             </Button>
           </Toolbar>
         </AppBar>

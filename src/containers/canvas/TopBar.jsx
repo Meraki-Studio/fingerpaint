@@ -2,18 +2,35 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Button } from '@mui/material';
 
-import { usePanZoom, useMaxCanvas } from '../../state/UserProvider';
+import {
+  usePanZoom,
+  useMaxCanvas,
+  useCanvasCommands,
+} from '../../state/UserProvider';
 import Back from './buttons/Back';
+import Undo from './buttons/Undo';
+import Eraser from './buttons/Eraser';
 import PanZoom from './buttons/PanZoom';
 import ShowHide from './buttons/ShowHide';
 
 export default function TopBar() {
   const { panZoom, setPanZoom } = usePanZoom();
   const { maxCanvas, setMaxCanvas } = useMaxCanvas();
+  const { canvasCommands } = useCanvasCommands();
   const navigate = useNavigate();
 
   const backClick = () => {
     navigate('/');
+  };
+
+  const undo = () => {
+    console.log('undo has been activated');
+    canvasCommands.undo();
+  };
+
+  const eraseAll = () => {
+    console.log('erase all activated');
+    canvasCommands.eraseAll();
   };
 
   const panClick = () => {
@@ -65,6 +82,12 @@ export default function TopBar() {
           >
             <Button onClick={backClick} sx={{ padding: '16px' }}>
               <Back />
+            </Button>
+            <Button onClick={() => undo()}>
+              <Undo />
+            </Button>
+            <Button onClick={() => eraseAll()}>
+              <Eraser alt="eraser" className="minimalIcon" height="30px" />
             </Button>
             <Button onClick={panClick}>
               <PanZoom />
