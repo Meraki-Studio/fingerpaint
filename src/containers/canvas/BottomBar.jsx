@@ -29,6 +29,10 @@ export default function BottomBar({ canvas }) {
   const brushClick = () => {
     setErase(false);
   };
+  const saveClick = () => {
+    console.log('save has been activated');
+    localStorage.setItem(Date.now(), canvasCommands.getSaveData());
+  };
   const eraseClick = () => {
     console.log('erase all activated');
     canvasCommands.eraseAll();
@@ -69,6 +73,9 @@ export default function BottomBar({ canvas }) {
             </Button>
             <Button onClick={brushClick} sx={{ padding: '16px' }}>
               <Brush alt="brush" className="minimalIcon" color={color} />
+            </Button>
+            <Button onClick={() => saveClick()} sx={{ padding: '16px' }}>
+              SAVE
             </Button>
             <Button onClick={() => eraseClick()} sx={{ padding: '16px' }}>
               <Eraser alt="eraser" className="minimalIcon" height="30px" />
