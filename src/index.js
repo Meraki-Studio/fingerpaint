@@ -8,7 +8,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import { UserProvider } from './state/UserProvider';
-import * as serviceWorker from './service-worker';
 
 const theme = createTheme({
   palette: {
@@ -63,5 +62,3 @@ render(
   </UserProvider>,
   document.getElementById('root')
 );
-
-serviceWorker.register();
