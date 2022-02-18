@@ -83,6 +83,7 @@ const Canvas = () => {
           maxHeight: '100vh',
         }}
         ref={canvasDraw}
+        lazyRadius={5}
         canvasHeight={window.screen.height}
         canvasWidth={window.screen.width}
         enablePanAndZoom={panZoom}
