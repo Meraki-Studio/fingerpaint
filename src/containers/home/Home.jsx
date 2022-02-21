@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Toolbar } from '@mui/material';
 import { useDrop } from 'react-dnd';
@@ -17,6 +17,17 @@ import NewArt from '../../assets/icons/controls/NewArt.svg';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
+
+  useEffect(() => {
+    // fetch art from localStorage
+    const localArtKeys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      localArtKeys.push(key);
+    }
+    setMyArt(localArtKeys);
+    console.log('Art keys pulled from localStorage: ', localArtKeys);
+  }, [1]);
 
   const filter = (num) => {
     const filteredList = myArt.filter((art) => {
@@ -42,7 +53,7 @@ export default function Home() {
       <img src={horizontalLogo} alt="Fingerpaint" className="homeLogo" />
       <section className="artDisplay">
         {myArt.map((art) => (
-          <div key={art.id}>
+          <div key={art}>
             <ArtItem art={art} />
           </div>
         ))}

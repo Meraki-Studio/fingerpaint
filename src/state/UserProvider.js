@@ -11,45 +11,19 @@ export function UserProvider({ children }) {
   const [panZoom, setPanZoom] = useState(false);
   const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
-  const [myArt, setMyArt] = useState([
-    {
-      id: 1,
-      img: 'https://placekitten.com/96/140',
-    },
-    {
-      id: 2,
-      img: 'https://placekitten.com/96/139',
-    },
-    {
-      id: 3,
-      img: 'https://placekitten.com/200/287',
-    },
-    {
-      id: 4,
-      img: 'https://placekitten.com/96/140',
-    },
-    {
-      id: 5,
-      img: 'https://placekitten.com/96/139',
-    },
-    {
-      id: 6,
-      img: 'https://placekitten.com/200/287',
-    },
-    {
-      id: 7,
-      img: 'https://placekitten.com/96/140',
-    },
-    {
-      id: 8,
-      img: 'https://placekitten.com/96/139',
-    },
-    {
-      id: 9,
-      img: 'https://placekitten.com/200/287',
-    },
-  ]);
+  const [myArt, setMyArt] = useState([]);
+
   // useEffect to load art upon login
+  useEffect(() => {
+    // fetch art from localStorage
+    const localArtKeys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      localArtKeys.push(key);
+    }
+    setMyArt(localArtKeys);
+    console.log('Art keys pulled from localStorage: ', localArtKeys);
+  }, [1]);
 
   return (
     <UserContext.Provider

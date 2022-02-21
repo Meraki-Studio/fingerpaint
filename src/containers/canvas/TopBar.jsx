@@ -20,7 +20,7 @@ export default function TopBar() {
   const navigate = useNavigate();
 
   const backClick = () => {
-    navigate('/');
+    navigate('/home');
   };
 
   const undo = () => {
