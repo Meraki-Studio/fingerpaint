@@ -13,18 +13,6 @@ export function UserProvider({ children }) {
   const [erase, setErase] = useState(false);
   const [myArt, setMyArt] = useState([]);
 
-  // useEffect to load art upon login
-  useEffect(() => {
-    // fetch art from localStorage
-    const localArtKeys = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      localArtKeys.push(key);
-    }
-    setMyArt(localArtKeys);
-    console.log('Art keys pulled from localStorage: ', localArtKeys);
-  }, [1]);
-
   return (
     <UserContext.Provider
       value={{

@@ -13,7 +13,6 @@ import Trash from './buttons/Trash';
 import Share from './buttons/Share';
 
 import '../containers.scss';
-import NewArt from '../../assets/icons/controls/NewArt.svg';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
