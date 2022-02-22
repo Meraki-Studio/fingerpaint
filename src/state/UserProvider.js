@@ -8,6 +8,7 @@ export function UserProvider({ children }) {
   const [canvasOptions, setCanvasOptions] = useState();
   const [showPalette, setShowPalette] = useState(false);
   const [maxCanvas, setMaxCanvas] = useState(false);
+  const [currentArt, setCurrentArt] = useState();
   const [panZoom, setPanZoom] = useState(false);
   const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
@@ -24,6 +25,8 @@ export function UserProvider({ children }) {
         setErase,
         panZoom,
         setPanZoom,
+        currentArt,
+        setCurrentArt,
         maxCanvas,
         setMaxCanvas,
         showPalette,
@@ -72,4 +75,8 @@ export const useCanvasOptions = () => {
 export const useCanvasCommands = () => {
   const { canvasCommands, setCanvasCommands } = useContext(UserContext);
   return { canvasCommands, setCanvasCommands };
+}
+export const useCurrentArt = () => {
+  const { currentArt, setCurrentArt } = useContext(UserContext);
+  return { currentArt, setCurrentArt };
 }
