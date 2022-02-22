@@ -21,22 +21,26 @@ export default function ArtItem({ art }) {
 
   const canvasRef = useRef();
 
+  const height = window.screen.height / 2.8 - 20;
+  const width = window.screen.width / 2.8;
+
   return (
-    <ImageListItem className="artContainer" ref={drag}>
-      <CanvasDraw
-        disabled={true}
-        // style={{
-        //   touchAction: 'none',
-        //   position: 'relative',
-        //   zIndex: 7,
-        //   maxWidth: '20rem',
-        //   maxHeight: '15rem',
-        // }}
-        hidegrid={true}
-        ref={canvasRef}
-        saveData={localStorage.getItem(art)}
-        className="art"
-      />
-    </ImageListItem>
+    <CanvasDraw
+      style={{
+        touchAction: 'none',
+        position: 'relative',
+        zIndex: 7,
+        maxWidth: '10rem',
+        maxHeight: '15rem',
+      }}
+      hideGrid={true}
+      immediateLoading={true}
+      canvasHeight={height}
+      canvasWidth={width}
+      disabled={true}
+      ref={canvasRef}
+      saveData={localStorage.getItem(art)}
+      className="art"
+    />
   );
 }
