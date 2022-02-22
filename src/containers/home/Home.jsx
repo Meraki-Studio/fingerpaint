@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Toolbar } from '@mui/material';
 import { useDrop } from 'react-dnd';
 
-import { useMyArt } from '../../state/UserProvider';
+import { useMyArt, useCurrentArt } from '../../state/UserProvider';
 import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
 import { useAssets } from '../../utils/useAssets';
@@ -16,6 +16,7 @@ import '../containers.scss';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
+  const { setCurrentArt } = useCurrentArt();
 
   useEffect(() => {
     // fetch art from localStorage
@@ -37,6 +38,14 @@ export default function Home() {
     return filteredList;
   };
 
+  const editArt = (art) => {
+    console.log('art clicked: ', art);
+    // set current art to clicked art id
+    setCurrentArt(art);
+    // navigate to canvas page
+    window.location.href = '/canvas';
+  };
+
   const [{ isOver }, drop] = useDrop({
     accept: itemTypes.CARD,
     drop: (item, _monitor) => filter(item.id),
@@ -52,7 +61,7 @@ export default function Home() {
       <img src={horizontalLogo} alt="Fingerpaint" className="homeLogo" />
       <section className="artDisplay">
         {myArt.map((art) => (
-          <div key={art}>
+          <div key={art} onClick={() => editArt(art)}>
             <ArtItem art={art} />
           </div>
         ))}
