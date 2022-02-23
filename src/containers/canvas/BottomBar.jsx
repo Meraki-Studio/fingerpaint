@@ -17,10 +17,7 @@ export default function BottomBar({ canvas }) {
   const { showPalette, setShowPalette } = usePalette();
   const { canvasCommands } = useCanvasCommands();
 
-  console.log('This is canvas: ', canvas);
   const canvasRef = canvas.current;
-  console.log('This is canvasRef: ', canvasRef);
-  console.log('This is canvasCommands: ', canvasCommands);
 
   const paletteClick = () => {
     setShowPalette(!showPalette);

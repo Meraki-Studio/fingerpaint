@@ -6,6 +6,7 @@ import {
   useColor,
   useErase,
   usePanZoom,
+  useCurrentArt,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -19,6 +20,7 @@ const Canvas = () => {
   const { color } = useColor();
   const { erase } = useErase();
   const { panZoom } = usePanZoom();
+  const { currentArt } = useCurrentArt();
 
   /**
      * @param {Object} canvasOptions
@@ -62,13 +64,11 @@ const Canvas = () => {
   // Creates the canvas reference
   useEffect(() => {
     canvasRef = canvasDraw.current;
-    console.log('This is new canvasRef: ', canvasRef);
   }, [canvasDraw]);
 
   // Puts canvas reference into state for functions to use
   useEffect(() => {
     setCanvasCommands(canvasRef);
-    console.log('Canvas Commands set to: ', canvasRef);
   }, [canvasRef]);
 
   return (
@@ -90,6 +90,8 @@ const Canvas = () => {
         brushColor={color}
         erase={erase}
         hideGrid={true}
+        saveData={localStorage.getItem(currentArt)}
+        immediateLoading={true}
       />
       <Colors />
       {!panZoom && <BottomBar canvas={canvasDraw} />}
