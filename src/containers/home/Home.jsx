@@ -15,7 +15,7 @@ import Share from './buttons/Share';
 import '../containers.scss';
 
 export default function Home() {
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
   const { myArt, setMyArt } = useMyArt();
   const { currentArt, setCurrentArt } = useCurrentArt();
 

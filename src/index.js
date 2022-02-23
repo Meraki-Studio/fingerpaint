@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -54,9 +53,7 @@ render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <DndProvider backend={HTML5Backend}>
-        <Router>
-          <App />
-        </Router>
+        <App />
       </DndProvider>
     </ThemeProvider>
   </UserProvider>,
