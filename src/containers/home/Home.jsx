@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Toolbar } from '@mui/material';
 import { useDrop } from 'react-dnd';
 
-import { useMyArt, useCurrentArt } from '../../state/UserProvider';
+import { useMyArt, useCurrentArt, useLoading } from '../../state/UserProvider';
 import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
 import { useAssets } from '../../utils/useAssets';
@@ -15,9 +15,10 @@ import Share from './buttons/Share';
 import '../containers.scss';
 
 export default function Home() {
-  const { navigate } = useNavigate();
   const { myArt, setMyArt } = useMyArt();
+  const { loading, setLoading } = useLoading();
   const { currentArt, setCurrentArt } = useCurrentArt();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // fetch art from localStorage
@@ -43,14 +44,14 @@ export default function Home() {
     console.log('art clicked: ', art);
     // set current art to clicked art id
     setCurrentArt(art);
-    navigate('/canvas');
+    navigate('/loading');
   };
 
   // useEffect(() => {
   //   if (currentArt !== undefined) {
   //     window.location.href = '/canvas';
   //   }
-  // }, [currentArt]);
+  // }, [loading]);
 
   const [{ isOver }, drop] = useDrop({
     accept: itemTypes.CARD,

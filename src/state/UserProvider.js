@@ -10,6 +10,7 @@ export function UserProvider({ children }) {
   const [maxCanvas, setMaxCanvas] = useState(false);
   const [currentArt, setCurrentArt] = useState();
   const [panZoom, setPanZoom] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
   const [myArt, setMyArt] = useState([]);
@@ -23,6 +24,8 @@ export function UserProvider({ children }) {
         setColor,
         erase,
         setErase,
+        loading,
+        setLoading,
         panZoom,
         setPanZoom,
         currentArt,
@@ -79,4 +82,8 @@ export const useCanvasCommands = () => {
 export const useCurrentArt = () => {
   const { currentArt, setCurrentArt } = useContext(UserContext);
   return { currentArt, setCurrentArt };
+}
+export const useLoading = () => {
+  const { loading, setLoading } = useContext(UserContext);
+  return { loading, setLoading };
 }
