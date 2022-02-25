@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Toolbar } from '@mui/material';
-import { useDrop } from 'react-dnd';
+import { useDrop, useDrag } from 'react-dnd';
 
 import { useMyArt, useCurrentArt, useLoading } from '../../state/UserProvider';
 import ArtItem from './ArtItem';
@@ -16,8 +16,8 @@ import '../containers.scss';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
-  const { loading, setLoading } = useLoading();
-  const { currentArt, setCurrentArt } = useCurrentArt();
+  // const { loading, setLoading } = useLoading();
+  const { setCurrentArt } = useCurrentArt();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,12 +47,6 @@ export default function Home() {
     navigate('/loading');
   };
 
-  // useEffect(() => {
-  //   if (currentArt !== undefined) {
-  //     window.location.href = '/canvas';
-  //   }
-  // }, [loading]);
-
   const [{ isOver }, drop] = useDrop({
     accept: itemTypes.CARD,
     drop: (item, _monitor) => filter(item.id),
@@ -74,15 +68,15 @@ export default function Home() {
         ))}
       </section>
       <section className="buttonBar">
-        <span className="sideButton">
+        {/* <span className="sideButton">
           <Trash />
-        </span>
+        </span> */}
         <Link to="/canvas">
           <New classname="newArtButton" />
         </Link>
-        <span className="sideButton">
+        {/* <span className="sideButton">
           <Share />
-        </span>
+        </span> */}
       </section>
     </main>
   );

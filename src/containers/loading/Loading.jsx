@@ -11,7 +11,6 @@ export default function Loading() {
     }, 700);
   }, []);
 
-  const horizontalLogo = useAssets('brand', 'LogoHorizontal');
   const logoMain = useAssets('brand', 'LogoPrimary');
 
   return (
