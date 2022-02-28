@@ -5,10 +5,11 @@ import '../containers.scss';
 
 export default function Loading() {
   const navigate = useNavigate();
+
   useEffect(() => {
     setTimeout(() => {
       navigate('/canvas');
-    }, 700);
+    }, 1300);
   }, []);
 
   const logoMain = useAssets('brand', 'LogoPrimary');

@@ -6,6 +6,7 @@ import {
   usePanZoom,
   useMaxCanvas,
   useCanvasCommands,
+  useCurrentArt,
 } from '../../state/UserProvider';
 import Back from './buttons/Back';
 import Undo from './buttons/Undo';
@@ -17,9 +18,13 @@ export default function TopBar() {
   const { panZoom, setPanZoom } = usePanZoom();
   const { maxCanvas, setMaxCanvas } = useMaxCanvas();
   const { canvasCommands } = useCanvasCommands();
+  const { currentArt } = useCurrentArt();
   const navigate = useNavigate();
 
   const backClick = () => {
+    localStorage.setItem(currentArt, canvasCommands.getSaveData());
+    clearTimeout(window.timer);
+    console.log('saved and navigated back');
     navigate('/home');
   };
 

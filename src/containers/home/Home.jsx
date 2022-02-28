@@ -16,7 +16,6 @@ import '../containers.scss';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
-  // const { loading, setLoading } = useLoading();
   const { setCurrentArt } = useCurrentArt();
   const navigate = useNavigate();
 
@@ -31,15 +30,6 @@ export default function Home() {
     console.log('Art keys pulled from localStorage: ', localArtKeys);
   }, [1]);
 
-  const filter = (num) => {
-    const filteredList = myArt.filter((art) => {
-      console.log('item number: ', num);
-      if (art.id > num || art.id < num) return art;
-    });
-    setMyArt(filteredList);
-    return filteredList;
-  };
-
   const editArt = (art) => {
     console.log('art clicked: ', art);
     // set current art to clicked art id
@@ -47,13 +37,27 @@ export default function Home() {
     navigate('/loading');
   };
 
-  const [{ isOver }, drop] = useDrop({
-    accept: itemTypes.CARD,
-    drop: (item, _monitor) => filter(item.id),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  });
+  const newArt = () => {
+    setCurrentArt(Date.now());
+    navigate('/loading');
+  };
+
+  // const filter = (num) => {
+  //   const filteredList = myArt.filter((art) => {
+  //     console.log('item number: ', num);
+  //     if (art.id > num || art.id < num) return art;
+  //   });
+  //   setMyArt(filteredList);
+  //   return filteredList;
+  // };
+
+  // const [{ isOver }, drop] = useDrop({
+  //   accept: itemTypes.CARD,
+  //   drop: (item, _monitor) => filter(item.id),
+  //   collect: (monitor) => ({
+  //     isOver: !!monitor.isOver(),
+  //   }),
+  // });
 
   const horizontalLogo = useAssets('brand', 'LogoHorizontal');
 
@@ -71,9 +75,9 @@ export default function Home() {
         {/* <span className="sideButton">
           <Trash />
         </span> */}
-        <Link to="/canvas">
+        <span onClick={() => newArt()}>
           <New classname="newArtButton" />
-        </Link>
+        </span>
         {/* <span className="sideButton">
           <Share />
         </span> */}

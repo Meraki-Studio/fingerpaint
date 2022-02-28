@@ -16,7 +16,7 @@ import Colors from './Colors';
 import Container from '@mui/material/Container';
 
 const Canvas = () => {
-  const { setCanvasCommands } = useCanvasCommands();
+  const { canvasCommands, setCanvasCommands } = useCanvasCommands();
   const { color } = useColor();
   const { erase } = useErase();
   const { panZoom } = usePanZoom();
@@ -61,15 +61,51 @@ const Canvas = () => {
   const canvasDraw = useRef();
   let canvasRef = null;
 
+  console.log(currentArt);
+
   // Creates the canvas reference
   useEffect(() => {
     canvasRef = canvasDraw.current;
+    // console.log('canvas draw: ', canvasDraw, 'canvas ref: ', canvasRef);
   }, [canvasDraw]);
 
   // Puts canvas reference into state for functions to use
   useEffect(() => {
     setCanvasCommands(canvasRef);
+    // console.log(canvasRef);
   }, [canvasRef]);
+
+  // Auto save
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     console.log('auto save ', currentArt);
+  //     localStorage.setItem(currentArt, canvasCommands.getSaveData());
+  //   }, 5000);
+  // }, [currentArt]);
+
+  function saveCanvas() {
+    console.log('save has been activated');
+    localStorage.setItem(currentArt, canvasCommands.getSaveData());
+    timeout();
+  }
+
+  function timeout() {
+    setTimeout(saveCanvas, 10000);
+  }
+
+  function clear() {
+    clearTimeout();
+    timeout();
+  }
+
+  addEventListener('click', clear());
+  addEventListener('mousemove', clear());
+  addEventListener('keydown', clear());
+  addEventListener('scroll', clear());
+  addEventListener('keypress', clear());
+  addEventListener('mousedown', clear());
+  addEventListener('mouseup', clear());
+  addEventListener('touch', clear());
 
   return (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
@@ -91,7 +127,7 @@ const Canvas = () => {
         erase={erase}
         hideGrid={true}
         saveData={localStorage.getItem(currentArt)}
-        immediateLoading={true}
+        immediateLoading={false}
       />
       <Colors />
       {!panZoom && <BottomBar canvas={canvasDraw} />}

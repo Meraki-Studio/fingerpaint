@@ -21,8 +21,8 @@ export default function ArtItem({ art }) {
 
   const canvasRef = useRef();
 
-  const height = window.screen.height / 2.8 - 20;
-  const width = window.screen.width / 2.8;
+  const height = window.screen.height / 3;
+  const width = window.screen.width / 3;
 
   return (
     <ImageListItem id="art">
