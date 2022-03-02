@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   // state here
+  const [autoSaveActive, setAutoSaveActive] = useState(false);
   const [canvasCommands, setCanvasCommands] = useState();
   const [canvasOptions, setCanvasOptions] = useState();
   const [showPalette, setShowPalette] = useState(false);
@@ -38,6 +39,8 @@ export function UserProvider({ children }) {
         setCanvasOptions,
         canvasCommands,
         setCanvasCommands,
+        autoSaveActive,
+        setAutoSaveActive,
       }}
     >
       {children}
@@ -86,4 +89,8 @@ export const useCurrentArt = () => {
 export const useLoading = () => {
   const { loading, setLoading } = useContext(UserContext);
   return { loading, setLoading };
+}
+export const useAutoSaveActive = () => {
+  const { autoSaveActive, setAutoSaveActive } = useContext(UserContext);
+  return { autoSaveActive, setAutoSaveActive };
 }

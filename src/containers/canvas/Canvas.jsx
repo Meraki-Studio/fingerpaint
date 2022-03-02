@@ -7,6 +7,8 @@ import {
   useErase,
   usePanZoom,
   useCurrentArt,
+  useLoading,
+  useAutoSaveActive,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -21,6 +23,8 @@ const Canvas = () => {
   const { erase } = useErase();
   const { panZoom } = usePanZoom();
   const { currentArt } = useCurrentArt();
+  const { loading, setLoading } = useLoading();
+  const { autoSaveActive, setAutoSaveActive } = useAutoSaveActive();
 
   /**
      * @param {Object} canvasOptions
@@ -61,74 +65,77 @@ const Canvas = () => {
   const canvasDraw = useRef();
   let canvasRef = null;
 
-  console.log(currentArt);
+  // console.log(currentArt);
 
   // Creates the canvas reference
   useEffect(() => {
+    setLoading(true);
     canvasRef = canvasDraw.current;
     // console.log('canvas draw: ', canvasDraw, 'canvas ref: ', canvasRef);
-  }, [canvasDraw]);
-
-  // Puts canvas reference into state for functions to use
-  useEffect(() => {
     setCanvasCommands(canvasRef);
-    // console.log(canvasRef);
-  }, [canvasRef]);
+    // console.log('canvas commands: ', canvasCommands);
+    setLoading(false);
+  }, []);
 
-  // Auto save
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     console.log('auto save ', currentArt);
-  //     localStorage.setItem(currentArt, canvasCommands.getSaveData());
-  //   }, 5000);
-  // }, [currentArt]);
+  // autoSave() functionality
+  const timeoutId = setTimeout(autoSave, 5000);
 
-  function saveCanvas() {
-    console.log('save has been activated');
-    localStorage.setItem(currentArt, canvasCommands.getSaveData());
-    timeout();
+  function autoSave() {
+    if (autoSaveActive) {
+      console.log('auto save ', currentArt);
+      localStorage.setItem(currentArt, canvasCommands.getSaveData());
+      setAutoSaveActive(false);
+    } else {
+      console.log('auto save disabled');
+    }
   }
 
-  function timeout() {
-    setTimeout(saveCanvas, 10000);
-  }
+  // console.log('this is the autosave function: ', autoSave);
 
-  function clear() {
-    clearTimeout();
-    timeout();
-  }
+  // target canvas on mouse down to trigger clearInterval(autoSave)
+  const handleMouseDown = () => {
+    console.log('mouse down, clearInterval');
+    clearTimeout(timeoutId);
+    setAutoSaveActive(false);
+  };
 
-  addEventListener('click', clear());
-  addEventListener('mousemove', clear());
-  addEventListener('keydown', clear());
-  addEventListener('scroll', clear());
-  addEventListener('keypress', clear());
-  addEventListener('mousedown', clear());
-  addEventListener('mouseup', clear());
-  addEventListener('touch', clear());
+  console.log('autoSaveActive 110: ', autoSaveActive);
 
-  return (
+  // target canvas on mouse up to trigger autosave
+  const handleMouseUp = () => {
+    console.log('mouse up');
+    setAutoSaveActive(true);
+    autoSave();
+  };
+
+  console.log('autoSaveActive 116: ', autoSaveActive);
+
+  return loading ? (
+    <h1>loading</h1>
+  ) : (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
-      <CanvasDraw
-        style={{
-          touchAction: 'none',
-          position: 'relative',
-          zIndex: 7,
-          maxWidth: '100vw',
-          maxHeight: '100vh',
-        }}
-        ref={canvasDraw}
-        lazyRadius={5}
-        canvasHeight={window.screen.height}
-        canvasWidth={window.screen.width}
-        enablePanAndZoom={panZoom}
-        brushColor={color}
-        erase={erase}
-        hideGrid={true}
-        saveData={localStorage.getItem(currentArt)}
-        immediateLoading={false}
-      />
+      <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+        <CanvasDraw
+          style={{
+            touchAction: 'none',
+            position: 'relative',
+            zIndex: 7,
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+          }}
+          ref={canvasDraw}
+          lazyRadius={5}
+          canvasHeight={window.screen.height}
+          canvasWidth={window.screen.width}
+          enablePanAndZoom={panZoom}
+          brushColor={color}
+          erase={erase}
+          hideGrid={true}
+          saveData={localStorage.getItem(currentArt)}
+          immediateLoading={true}
+        />
+      </div>
       <Colors />
       {!panZoom && <BottomBar canvas={canvasDraw} />}
     </Container>

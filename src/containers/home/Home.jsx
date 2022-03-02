@@ -17,6 +17,7 @@ import '../containers.scss';
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
   const { setCurrentArt } = useCurrentArt();
+  const { setLoading } = useLoading();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,12 +35,13 @@ export default function Home() {
     console.log('art clicked: ', art);
     // set current art to clicked art id
     setCurrentArt(art);
-    navigate('/loading');
+    // setLoading(true);
+    navigate('/canvas');
   };
 
   const newArt = () => {
     setCurrentArt(Date.now());
-    navigate('/loading');
+    navigate('/canvas');
   };
 
   // const filter = (num) => {

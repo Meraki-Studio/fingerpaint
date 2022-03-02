@@ -23,7 +23,7 @@ export default function TopBar() {
 
   const backClick = () => {
     localStorage.setItem(currentArt, canvasCommands.getSaveData());
-    clearTimeout(window.timer);
+    clearInterval();
     console.log('saved and navigated back');
     navigate('/home');
   };

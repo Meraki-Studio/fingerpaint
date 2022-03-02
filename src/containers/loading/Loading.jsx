@@ -9,7 +9,7 @@ export default function Loading() {
   useEffect(() => {
     setTimeout(() => {
       navigate('/canvas');
-    }, 1300);
+    }, 1600);
   }, []);
 
   const logoMain = useAssets('brand', 'LogoPrimary');
