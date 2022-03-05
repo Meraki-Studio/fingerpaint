@@ -6,7 +6,7 @@ import {
   usePanZoom,
   useMaxCanvas,
   useCanvasCommands,
-  useAutoSaveActive,
+  useSaveActive,
 } from '../../state/UserProvider';
 import Back from './buttons/Back';
 import Undo from './buttons/Undo';
@@ -18,7 +18,7 @@ export default function TopBar() {
   const { panZoom, setPanZoom } = usePanZoom();
   const { maxCanvas, setMaxCanvas } = useMaxCanvas();
   const { canvasCommands } = useCanvasCommands();
-  const { saveActive, setSaveActive } = useAutoSaveActive();
+  const { saveActive, setSaveActive } = useSaveActive();
   const navigate = useNavigate();
 
   const backClick = () => {

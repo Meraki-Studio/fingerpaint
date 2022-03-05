@@ -29,19 +29,18 @@ export function UserProvider({ children }) {
 
   // start timer for auto save
   useEffect(() => {
-    if (timer) {
-      let time = setTimeout(() => {
-        if(!timer){ 
-          console.log('no timer active');
-          clearTimeout(time);
-          return;
-        } else {
-          console.log('timer active, saving');
-          setSaveActive(!saveActive);
-          setTimer(false);
-        }
-      }, 5000);
-    } else {
+    let time = setTimeout(() => {
+      if(!timer){ 
+        console.log('no timer active');
+        clearTimeout(time);
+        return;
+      } else {
+        console.log('timer active, saving');
+        setSaveActive(!saveActive);
+        setTimer(false);
+      }
+    }, 5000);
+    if (!timer) {
       clearTimeout(time);
     }
   }, [timer]);
