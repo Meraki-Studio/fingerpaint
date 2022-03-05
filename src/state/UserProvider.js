@@ -4,7 +4,7 @@ export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   // state here
-  const [autoSaveActive, setAutoSaveActive] = useState(false);
+  const [saveActive, setSaveActive] = useState(false);
   const [canvasCommands, setCanvasCommands] = useState();
   const [canvasOptions, setCanvasOptions] = useState();
   const [showPalette, setShowPalette] = useState(false);
@@ -15,10 +15,41 @@ export function UserProvider({ children }) {
   const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
   const [myArt, setMyArt] = useState([]);
+  const [timer, setTimer] = useState(false);
+
+  // save art to local storage
+  useEffect(() => {
+    if (!currentArt) {
+      console.log('Provider Save: no current art');
+    } else {
+      console.log('Provider Save: Activated');
+      localStorage.setItem(currentArt, canvasCommands.getSaveData())
+    }
+  }, [saveActive]);
+
+  // start timer for auto save
+  useEffect(() => {
+    if (timer) {
+      setTimeout(() => {
+        if(!timer){ 
+          console.log('no timer active');
+          return;
+        } else {
+          console.log('timer active, saving');
+          setSaveActive(!autoSaveActive);
+          setTimer(false);
+        }
+      }, 5000);
+    } else {
+      clearTimeout();
+    }
+  }, [timer]);
 
   return (
     <UserContext.Provider
       value={{
+        timer,
+        setTimer,
         myArt,
         setMyArt,
         color,
@@ -90,7 +121,11 @@ export const useLoading = () => {
   const { loading, setLoading } = useContext(UserContext);
   return { loading, setLoading };
 }
-export const useAutoSaveActive = () => {
-  const { autoSaveActive, setAutoSaveActive } = useContext(UserContext);
-  return { autoSaveActive, setAutoSaveActive };
+export const useSaveActive = () => {
+  const { saveActive, setSaveActive } = useContext(UserContext);
+  return { saveActive, setSaveActive };
+}
+export const useTimer = () => {
+  const { timer, setTimer } = useContext(UserContext);
+  return { timer, setTimer };
 }

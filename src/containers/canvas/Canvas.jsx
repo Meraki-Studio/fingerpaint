@@ -9,6 +9,7 @@ import {
   useCurrentArt,
   useLoading,
   useAutoSaveActive,
+  useTimer,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -18,13 +19,13 @@ import Colors from './Colors';
 import Container from '@mui/material/Container';
 
 const Canvas = () => {
-  const { canvasCommands, setCanvasCommands } = useCanvasCommands();
+  const { setCanvasCommands } = useCanvasCommands();
   const { color } = useColor();
   const { erase } = useErase();
   const { panZoom } = usePanZoom();
   const { currentArt } = useCurrentArt();
   const { loading, setLoading } = useLoading();
-  const { autoSaveActive, setAutoSaveActive } = useAutoSaveActive();
+  const { setTimer } = useTimer();
 
   /**
      * @param {Object} canvasOptions
@@ -65,50 +66,29 @@ const Canvas = () => {
   const canvasDraw = useRef();
   let canvasRef = null;
 
-  // console.log(currentArt);
-
   // Creates the canvas reference
   useEffect(() => {
     setLoading(true);
     canvasRef = canvasDraw.current;
     // console.log('canvas draw: ', canvasDraw, 'canvas ref: ', canvasRef);
     setCanvasCommands(canvasRef);
-    // console.log('canvas commands: ', canvasCommands);
+    console.log('page loaded');
     setLoading(false);
   }, []);
 
   // autoSave() functionality
-  const timeoutId = setTimeout(autoSave, 5000);
 
-  function autoSave() {
-    if (autoSaveActive) {
-      console.log('auto save ', currentArt);
-      localStorage.setItem(currentArt, canvasCommands.getSaveData());
-      setAutoSaveActive(false);
-    } else {
-      console.log('auto save disabled');
-    }
-  }
-
-  // console.log('this is the autosave function: ', autoSave);
-
-  // target canvas on mouse down to trigger clearInterval(autoSave)
+  // target canvas on mouse down to disable timer
   const handleMouseDown = () => {
-    console.log('mouse down, clearInterval');
-    clearTimeout(timeoutId);
-    setAutoSaveActive(false);
+    console.log('mouse down');
+    setTimer(false);
   };
 
-  console.log('autoSaveActive 110: ', autoSaveActive);
-
-  // target canvas on mouse up to trigger autosave
+  // target canvas on mouse up to trigger autosave timer
   const handleMouseUp = () => {
     console.log('mouse up');
-    setAutoSaveActive(true);
-    autoSave();
+    setTimer(true);
   };
-
-  console.log('autoSaveActive 116: ', autoSaveActive);
 
   return loading ? (
     <h1>loading</h1>
@@ -133,7 +113,7 @@ const Canvas = () => {
           erase={erase}
           hideGrid={true}
           saveData={localStorage.getItem(currentArt)}
-          immediateLoading={true}
+          immediateLoading={false}
         />
       </div>
       <Colors />
