@@ -71,8 +71,8 @@ export function UserProvider({ children }) {
         setCanvasOptions,
         canvasCommands,
         setCanvasCommands,
-        autoSaveActive,
-        setAutoSaveActive,
+        saveActive,
+        setSaveActive,
       }}
     >
       {children}
