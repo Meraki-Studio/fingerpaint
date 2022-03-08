@@ -1,55 +1,75 @@
-import React, { useState, createContext, useContext, useEffect } from 'react';
+import React, { useRef, useState, createContext, useContext, useEffect } from 'react';
 
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
-  // state here
-  const [saveActive, setSaveActive] = useState(false);
-  const [canvasCommands, setCanvasCommands] = useState();
-  const [canvasOptions, setCanvasOptions] = useState();
+  // state for for art commands
   const [showPalette, setShowPalette] = useState(false);
   const [maxCanvas, setMaxCanvas] = useState(false);
   const [currentArt, setCurrentArt] = useState();
   const [panZoom, setPanZoom] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
+
+  // other state
   const [myArt, setMyArt] = useState([]);
+  const [canvasOptions, setCanvasOptions] = useState();
+  const [loading, setLoading] = useState(false);
+
+  // state for art saving
+  const [canvasCommands, setCanvasCommands] = useState();
+  const [saveActive, setSaveActive] = useState(false);
+
+  // state for auto save
   const [timer, setTimer] = useState(false);
+  const [idleTime, setIdleTime] = useState(0);
+  const [keepCounting, setKeepCounting] = useState(false);
+  const [incrementIdle, setIncrementIdle] = useState(false);
 
   // save art to local storage
   useEffect(() => {
     if (!currentArt) {
       console.log('Provider Save: no current art');
     } else {
+      setLoading(true);
       console.log('Provider Save: Activated');
-      localStorage.setItem(currentArt, canvasCommands.getSaveData())
+      localStorage.setItem(
+        currentArt, canvasCommands.getSaveData()
+      );
+      setTimer(false);
+      setLoading(false);
     }
   }, [saveActive]);
 
-  // start timer for auto save
   useEffect(() => {
-    let time = setTimeout(() => {
-      if(!timer){ 
-        console.log('no timer active');
-        clearTimeout(time);
-        return;
-      } else {
-        console.log('timer active, saving');
-        setSaveActive(!saveActive);
-        setTimer(false);
-      }
-    }, 5000);
-    if (!timer) {
-      clearTimeout(time);
+    if (timer === false) {
+      setIdleTime(0);
+    } else if (timer === true) {
+      setIncrementIdle(!incrementIdle);
     }
-  }, [timer]);
+  }, [timer, keepCounting]);
+
+  useEffect(() => {
+    if (idleTime < 15 && timer === true) {
+      setTimeout(() => {
+        setIdleTime(idleTime + 1);
+        console.log('timer is true, timeout: ', idleTime);
+        setKeepCounting(!keepCounting);
+      }, 1500);
+    } else if (idleTime >= 15 && timer === true) {
+      setTimer(false);
+      setSaveActive(!saveActive);
+      setIdleTime(0);
+    }
+  }, [incrementIdle]);
 
   return (
     <UserContext.Provider
       value={{
         timer,
         setTimer,
+        idleTime,
+        setIdleTime,
         myArt,
         setMyArt,
         color,
@@ -128,4 +148,8 @@ export const useSaveActive = () => {
 export const useTimer = () => {
   const { timer, setTimer } = useContext(UserContext);
   return { timer, setTimer };
+}
+export const useIdleTime = () => {
+  const { idleTime, setIdleTime } = useContext(UserContext);
+  return { idleTime, setIdleTime };
 }

@@ -8,8 +8,9 @@ import {
   usePanZoom,
   useCurrentArt,
   useLoading,
-  useAutoSaveActive,
+  useIdleTime,
   useTimer,
+  useSaveActive,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -25,7 +26,9 @@ const Canvas = () => {
   const { panZoom } = usePanZoom();
   const { currentArt } = useCurrentArt();
   const { loading, setLoading } = useLoading();
-  const { setTimer } = useTimer();
+  const { timer, setTimer } = useTimer();
+  const { idleTime, setIdleTime } = useIdleTime();
+  const { saveActive, setSaveActive } = useSaveActive();
 
   /**
      * @param {Object} canvasOptions
@@ -69,10 +72,11 @@ const Canvas = () => {
   // Creates the canvas reference
   useEffect(() => {
     setLoading(true);
+
     canvasRef = canvasDraw.current;
-    // console.log('canvas draw: ', canvasDraw, 'canvas ref: ', canvasRef);
     setCanvasCommands(canvasRef);
     console.log('page loaded');
+
     setLoading(false);
   }, []);
 
