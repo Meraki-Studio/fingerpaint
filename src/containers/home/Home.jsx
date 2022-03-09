@@ -49,7 +49,7 @@ export default function Home() {
   };
 
   const newArt = () => {
-    setCurrentArt(Date.now());
+    setArtId(Date.now());
     navigate('/canvas');
   };
 
