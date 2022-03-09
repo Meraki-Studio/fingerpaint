@@ -11,7 +11,7 @@ export function UserProvider({ children }) {
   const [erase, setErase] = useState(false);
 
   // art management
-  const [artId, setArtId] = useState();
+  const [artId, setArtId] = useState(Date.now());
   const [currentArt, setCurrentArt] = useState();
 
   // other state
