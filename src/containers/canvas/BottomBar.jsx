@@ -4,7 +4,6 @@ import {
   useColor,
   useErase,
   usePalette,
-  useCanvasCommands,
 } from '../../state/UserProvider';
 import { AppBar, Toolbar, Button } from '@mui/material';
 import Palette from './buttons/Palette';
@@ -15,19 +14,12 @@ export default function BottomBar({ canvas }) {
   const { color } = useColor();
   const { setErase } = useErase();
   const { showPalette, setShowPalette } = usePalette();
-  const { canvasCommands } = useCanvasCommands();
-
-  const canvasRef = canvas.current;
 
   const paletteClick = () => {
     setShowPalette(!showPalette);
   };
   const brushClick = () => {
     setErase(false);
-  };
-  const saveClick = () => {
-    console.log('save has been activated');
-    localStorage.setItem(Date.now(), canvasCommands.getSaveData());
   };
 
   return (
@@ -65,9 +57,6 @@ export default function BottomBar({ canvas }) {
             </Button>
             <Button onClick={brushClick} sx={{ padding: '16px' }}>
               <Brush alt="brush" className="minimalIcon" color={color} />
-            </Button>
-            <Button onClick={() => saveClick()} sx={{ padding: '16px' }}>
-              SAVE
             </Button>
           </Toolbar>
         </AppBar>
