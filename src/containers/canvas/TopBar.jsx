@@ -7,6 +7,7 @@ import {
   useMaxCanvas,
   useCanvasCommands,
   useSaveActive,
+  useTimer,
 } from '../../state/UserProvider';
 import Back from './buttons/Back';
 import Undo from './buttons/Undo';
@@ -19,34 +20,37 @@ export default function TopBar() {
   const { maxCanvas, setMaxCanvas } = useMaxCanvas();
   const { canvasCommands } = useCanvasCommands();
   const { saveActive, setSaveActive } = useSaveActive();
+  const { setTimer } = useTimer();
   const navigate = useNavigate();
 
   const backClick = () => {
     setSaveActive(!saveActive);
     clearInterval();
-    console.log('saved and navigated back');
+    // console.log('saved and navigated back');
     navigate('/home');
   };
 
   const undo = () => {
-    console.log('undo has been activated');
+    // console.log('undo has been activated');
+    setTimer(true);
     canvasCommands.undo();
   };
 
   const eraseAll = () => {
-    console.log('erase all activated');
+    // console.log('erase all activated');
+    setTimer(true);
     canvasCommands.eraseAll();
   };
 
   const panClick = () => {
     setPanZoom(!panZoom);
-    console.log('panZoom activated! ', panZoom);
+    // console.log('panZoom activated! ', panZoom);
   };
 
   const maxClick = () => {
     setMaxCanvas(!maxCanvas);
     setPanZoom(false);
-    console.log('maxCanvas activated! ', maxCanvas);
+    // console.log('maxCanvas activated! ', maxCanvas);
   };
 
   return (

@@ -8,9 +8,7 @@ import {
   usePanZoom,
   useCurrentArt,
   useLoading,
-  useIdleTime,
   useTimer,
-  useSaveActive,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -26,9 +24,7 @@ const Canvas = () => {
   const { panZoom } = usePanZoom();
   const { currentArt } = useCurrentArt();
   const { loading, setLoading } = useLoading();
-  const { timer, setTimer } = useTimer();
-  const { idleTime, setIdleTime } = useIdleTime();
-  const { saveActive, setSaveActive } = useSaveActive();
+  const { setTimer } = useTimer();
 
   /**
      * @param {Object} canvasOptions
@@ -68,10 +64,12 @@ const Canvas = () => {
   // Creates a reference to the canvas element
   const canvasDraw = useRef();
   let canvasRef = null;
+  // let editArt = null;
 
   // Creates the canvas reference
   useEffect(() => {
     setLoading(true);
+    // editArt = localStorage.getItem(currentArt);
 
     canvasRef = canvasDraw.current;
     setCanvasCommands(canvasRef);
@@ -80,17 +78,15 @@ const Canvas = () => {
     setLoading(false);
   }, []);
 
-  // autoSave() functionality
-
   // target canvas on mouse down to disable timer
   const handleMouseDown = () => {
-    console.log('mouse down');
+    // console.log('mouse down');
     setTimer(false);
   };
 
   // target canvas on mouse up to trigger autosave timer
   const handleMouseUp = () => {
-    console.log('mouse up');
+    // console.log('mouse up');
     setTimer(true);
   };
 
@@ -116,7 +112,7 @@ const Canvas = () => {
           brushColor={color}
           erase={erase}
           hideGrid={true}
-          saveData={localStorage.getItem(currentArt)}
+          saveData={currentArt}
           immediateLoading={false}
         />
       </div>

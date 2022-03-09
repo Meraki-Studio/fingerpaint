@@ -3,21 +3,26 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Toolbar } from '@mui/material';
 import { useDrop, useDrag } from 'react-dnd';
 
-import { useMyArt, useCurrentArt, useLoading } from '../../state/UserProvider';
+import {
+  useMyArt,
+  useCurrentArt,
+  useLoading,
+  useArtId,
+} from '../../state/UserProvider';
 import ArtItem from './ArtItem';
 import { itemTypes } from '../../utils/itemTypes';
 import { useAssets } from '../../utils/useAssets';
 
 import New from './buttons/New';
-import Trash from './buttons/Trash';
-import Share from './buttons/Share';
+// import Trash from './buttons/Trash';
+// import Share from './buttons/Share';
 
 import '../containers.scss';
 
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
   const { setCurrentArt } = useCurrentArt();
-  const { setLoading } = useLoading();
+  const { setArtId } = useArtId();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,9 +38,13 @@ export default function Home() {
 
   const editArt = (art) => {
     console.log('art clicked: ', art);
-    // set current art to clicked art id
-    setCurrentArt(art);
-    // setLoading(true);
+    // set art id
+    setArtId(art);
+
+    // get art from localStorage
+    setCurrentArt(localStorage.getItem(art));
+
+    // navigate to edit page
     navigate('/canvas');
   };
 

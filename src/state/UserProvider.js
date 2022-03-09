@@ -6,10 +6,13 @@ export function UserProvider({ children }) {
   // state for for art commands
   const [showPalette, setShowPalette] = useState(false);
   const [maxCanvas, setMaxCanvas] = useState(false);
-  const [currentArt, setCurrentArt] = useState();
   const [panZoom, setPanZoom] = useState(false);
   const [color, setColor] = useState('#F99D1F');
   const [erase, setErase] = useState(false);
+
+  // art management
+  const [artId, setArtId] = useState();
+  const [currentArt, setCurrentArt] = useState();
 
   // other state
   const [myArt, setMyArt] = useState([]);
@@ -29,18 +32,19 @@ export function UserProvider({ children }) {
   // save art to local storage
   useEffect(() => {
     if (!currentArt) {
-      console.log('Provider Save: no current art');
+      // console.log('Provider Save: no current art');
     } else {
       setLoading(true);
-      console.log('Provider Save: Activated');
+      // console.log('Provider Save: Activated');
       localStorage.setItem(
-        currentArt, canvasCommands.getSaveData()
+        artId, canvasCommands.getSaveData()
       );
       setTimer(false);
       setLoading(false);
     }
   }, [saveActive]);
 
+  // start timer or cancel it if timer is false
   useEffect(() => {
     if (timer === false) {
       setIdleTime(0);
@@ -49,14 +53,15 @@ export function UserProvider({ children }) {
     }
   }, [timer, keepCounting]);
 
+  // increment timer or save if timer = 15 seconds
   useEffect(() => {
-    if (idleTime < 15 && timer === true) {
+    if (idleTime < 10 && timer === true) {
       setTimeout(() => {
         setIdleTime(idleTime + 1);
-        console.log('timer is true, timeout: ', idleTime);
+        // console.log('timer is true, timeout: ', idleTime);
         setKeepCounting(!keepCounting);
       }, 1500);
-    } else if (idleTime >= 15 && timer === true) {
+    } else if (idleTime >= 10 && timer === true) {
       setTimer(false);
       setSaveActive(!saveActive);
       setIdleTime(0);
@@ -66,6 +71,8 @@ export function UserProvider({ children }) {
   return (
     <UserContext.Provider
       value={{
+        artId,
+        setArtId,
         timer,
         setTimer,
         idleTime,
@@ -152,4 +159,8 @@ export const useTimer = () => {
 export const useIdleTime = () => {
   const { idleTime, setIdleTime } = useContext(UserContext);
   return { idleTime, setIdleTime };
+}
+export const useArtId = () => {
+  const { artId, setArtId } = useContext(UserContext);
+  return { artId, setArtId };
 }
