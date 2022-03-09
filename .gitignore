@@ -42,3 +42,4 @@ dist/
 .DS_*
 **/*.backup.*
 **/*.back.*
+.DS_Store

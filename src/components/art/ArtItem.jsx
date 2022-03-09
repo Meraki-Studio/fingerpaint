@@ -1,10 +1,14 @@
 import React from 'react';
+import CanvasDraw from 'react-canvas-draw';
 
 export default function ArtItem(art) {
-    return (
-        <label>
-            <img src={art.thumbnail} alt={art.title} />
-            {art.title}
-        </label>
-    );
+  const canvasRef = useRef();
+  return (
+    <CanvasDraw
+      disabled
+      hidegrid
+      ref={canvasRef}
+      saveData={localStorage.getItem(art)}
+    />
+  );
 }

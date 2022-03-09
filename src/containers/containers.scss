@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
   max-height: 100vh;
   max-width: 100vw;
 }
@@ -68,4 +69,20 @@
 
 .CanvasElement {
   position: absolute;
+}
+
+.loadingImg {
+  width: 408px;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.loadingLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 80vh;
 }

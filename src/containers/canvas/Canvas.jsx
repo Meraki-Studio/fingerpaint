@@ -6,6 +6,9 @@ import {
   useColor,
   useErase,
   usePanZoom,
+  useCurrentArt,
+  useLoading,
+  useTimer,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -19,6 +22,9 @@ const Canvas = () => {
   const { color } = useColor();
   const { erase } = useErase();
   const { panZoom } = usePanZoom();
+  const { currentArt } = useCurrentArt();
+  const { loading, setLoading } = useLoading();
+  const { setTimer } = useTimer();
 
   /**
      * @param {Object} canvasOptions
@@ -58,39 +64,58 @@ const Canvas = () => {
   // Creates a reference to the canvas element
   const canvasDraw = useRef();
   let canvasRef = null;
+  // let editArt = null;
 
   // Creates the canvas reference
   useEffect(() => {
+    setLoading(true);
+    // editArt = localStorage.getItem(currentArt);
+
     canvasRef = canvasDraw.current;
-    console.log('This is new canvasRef: ', canvasRef);
-  }, [canvasDraw]);
-
-  // Puts canvas reference into state for functions to use
-  useEffect(() => {
     setCanvasCommands(canvasRef);
-    console.log('Canvas Commands set to: ', canvasRef);
-  }, [canvasRef]);
+    console.log('page loaded');
 
-  return (
+    setLoading(false);
+  }, []);
+
+  // target canvas on mouse down to disable timer
+  const handleMouseDown = () => {
+    // console.log('mouse down');
+    setTimer(false);
+  };
+
+  // target canvas on mouse up to trigger autosave timer
+  const handleMouseUp = () => {
+    // console.log('mouse up');
+    setTimer(true);
+  };
+
+  return loading ? (
+    <h1>loading</h1>
+  ) : (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
-      <CanvasDraw
-        style={{
-          touchAction: 'none',
-          position: 'relative',
-          zIndex: 7,
-          maxWidth: '100vw',
-          maxHeight: '100vh',
-        }}
-        ref={canvasDraw}
-        lazyRadius={5}
-        canvasHeight={window.screen.height}
-        canvasWidth={window.screen.width}
-        enablePanAndZoom={panZoom}
-        brushColor={color}
-        erase={erase}
-        hideGrid={true}
-      />
+      <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+        <CanvasDraw
+          style={{
+            touchAction: 'none',
+            position: 'relative',
+            zIndex: 7,
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+          }}
+          ref={canvasDraw}
+          lazyRadius={5}
+          canvasHeight={window.screen.height}
+          canvasWidth={window.screen.width}
+          enablePanAndZoom={panZoom}
+          brushColor={color}
+          erase={erase}
+          hideGrid={true}
+          saveData={currentArt}
+          immediateLoading={false}
+        />
+      </div>
       <Colors />
       {!panZoom && <BottomBar canvas={canvasDraw} />}
     </Container>
