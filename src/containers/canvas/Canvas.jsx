@@ -26,7 +26,7 @@ const Canvas = () => {
   const { currentArt } = useCurrentArt();
   const { loading, setLoading } = useLoading();
   const { setTimer } = useTimer();
-  const { setArtId } = useArtId();
+  const { artId, setArtId } = useArtId();
 
   /**
      * @param {Object} canvasOptions
