@@ -71,6 +71,10 @@ const Canvas = () => {
     setLoading(true);
     // editArt = localStorage.getItem(currentArt);
 
+    if (!artId) {
+      setArtId(Date.now());
+    }
+
     canvasRef = canvasDraw.current;
     setCanvasCommands(canvasRef);
     console.log('page loaded');
