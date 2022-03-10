@@ -9,6 +9,7 @@ import {
   useCurrentArt,
   useLoading,
   useTimer,
+  useArtId,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -25,6 +26,7 @@ const Canvas = () => {
   const { currentArt } = useCurrentArt();
   const { loading, setLoading } = useLoading();
   const { setTimer } = useTimer();
+  const { setArtId } = useArtId();
 
   /**
      * @param {Object} canvasOptions
