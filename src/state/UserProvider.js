@@ -31,11 +31,11 @@ export function UserProvider({ children }) {
 
   // save art to local storage
   useEffect(() => {
-    if (!currentArt) {
+    if (!artId) {
       // console.log('Provider Save: no current art');
     } else {
       setLoading(true);
-      // console.log('Provider Save: Activated');
+      console.log('Provider Save: Activated');
       localStorage.setItem(
         artId, canvasCommands.getSaveData()
       );

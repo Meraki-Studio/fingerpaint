@@ -25,7 +25,6 @@ export default function TopBar() {
 
   const backClick = () => {
     setSaveActive(!saveActive);
-    clearInterval();
     // console.log('saved and navigated back');
     navigate('/home');
   };
