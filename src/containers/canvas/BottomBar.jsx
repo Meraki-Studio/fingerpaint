@@ -8,9 +8,8 @@ import {
 import { AppBar, Toolbar, Button } from '@mui/material';
 import Palette from './buttons/Palette';
 import Brush from './buttons/Brush';
-import Eraser from './buttons/Eraser';
 
-export default function BottomBar() {
+export default function BottomBar({ canvas }) {
   const { maxCanvas } = useMaxCanvas();
   const { color } = useColor();
   const { setErase } = useErase();
@@ -21,10 +20,6 @@ export default function BottomBar() {
   };
   const brushClick = () => {
     setErase(false);
-  };
-  const eraseClick = ({ target }) => {
-    setShowPalette(false);
-    setErase(true);
   };
 
   return (
@@ -62,9 +57,6 @@ export default function BottomBar() {
             </Button>
             <Button onClick={brushClick} sx={{ padding: '16px' }}>
               <Brush alt="brush" className="minimalIcon" color={color} />
-            </Button>
-            <Button onClick={eraseClick} sx={{ padding: '16px' }}>
-              <Eraser alt="eraser" className="minimalIcon" height="30px" />
             </Button>
           </Toolbar>
         </AppBar>

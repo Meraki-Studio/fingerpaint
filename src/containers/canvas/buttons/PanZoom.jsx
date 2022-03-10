@@ -14,7 +14,7 @@ export default function PinchZoom() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect width="52" height="52" fill="#E5E5E5" />
-          <g id="Pan and zoom mode" clip-path="url(#clip0_130_410)">
+          <g id="Pan and zoom mode" clipPath="url(#clip0_130_410)">
             <rect
               width="360"
               height="640"
@@ -46,9 +46,9 @@ export default function PinchZoom() {
                   height="48.0002"
                   rx="10"
                   stroke="#F99D1F"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-dasharray="4 4"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeDasharray="4 4"
                 />
                 <g id="Icon">
                   <path
@@ -68,9 +68,9 @@ export default function PinchZoom() {
               width="420"
               height="140"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -115,7 +115,7 @@ export default function PinchZoom() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect width="49" height="49" fill="#E5E5E5" />
-          <g id="Pan and zoom mode" clip-path="url(#clip0_130_410)">
+          <g id="Pan and zoom mode" clipPath="url(#clip0_130_410)">
             <rect
               width="360"
               height="640"

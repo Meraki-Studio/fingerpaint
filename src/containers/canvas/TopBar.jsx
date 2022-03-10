@@ -2,29 +2,55 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Button } from '@mui/material';
 
-import { usePanZoom, useMaxCanvas } from '../../state/UserProvider';
+import {
+  usePanZoom,
+  useMaxCanvas,
+  useCanvasCommands,
+  useSaveActive,
+  useTimer,
+} from '../../state/UserProvider';
 import Back from './buttons/Back';
+import Undo from './buttons/Undo';
+import Eraser from './buttons/Eraser';
 import PanZoom from './buttons/PanZoom';
 import ShowHide from './buttons/ShowHide';
 
 export default function TopBar() {
   const { panZoom, setPanZoom } = usePanZoom();
   const { maxCanvas, setMaxCanvas } = useMaxCanvas();
+  const { canvasCommands } = useCanvasCommands();
+  const { saveActive, setSaveActive } = useSaveActive();
+  const { setTimer } = useTimer();
   const navigate = useNavigate();
 
   const backClick = () => {
-    navigate('/');
+    setSaveActive(!saveActive);
+    clearInterval();
+    // console.log('saved and navigated back');
+    navigate('/home');
+  };
+
+  const undo = () => {
+    // console.log('undo has been activated');
+    setTimer(true);
+    canvasCommands.undo();
+  };
+
+  const eraseAll = () => {
+    // console.log('erase all activated');
+    setTimer(true);
+    canvasCommands.eraseAll();
   };
 
   const panClick = () => {
     setPanZoom(!panZoom);
-    console.log('panZoom activated! ', panZoom);
+    // console.log('panZoom activated! ', panZoom);
   };
 
   const maxClick = () => {
     setMaxCanvas(!maxCanvas);
     setPanZoom(false);
-    console.log('maxCanvas activated! ', maxCanvas);
+    // console.log('maxCanvas activated! ', maxCanvas);
   };
 
   return (
@@ -65,6 +91,12 @@ export default function TopBar() {
           >
             <Button onClick={backClick} sx={{ padding: '16px' }}>
               <Back />
+            </Button>
+            <Button onClick={() => undo()}>
+              <Undo />
+            </Button>
+            <Button onClick={() => eraseAll()}>
+              <Eraser alt="eraser" className="minimalIcon" height="30px" />
             </Button>
             <Button onClick={panClick}>
               <PanZoom />

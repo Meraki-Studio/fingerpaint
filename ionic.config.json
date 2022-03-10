@@ -1,7 +1,0 @@
-{
-    "name": "Fingerpaint",
-    "integrations": {
-        "capacitor": {}
-    },
-    "type": "react"
-}

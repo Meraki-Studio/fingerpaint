@@ -1,10 +1,14 @@
-import React, { useRef } from 'react';
-import CanvasDraw from '../../utils/eraser/index';
+import React, { useRef, useEffect } from 'react';
+import CanvasDraw from 'react-canvas-draw';
+
 import {
-  useCanvasOptions,
+  useCanvasCommands,
   useColor,
   useErase,
   usePanZoom,
+  useCurrentArt,
+  useLoading,
+  useTimer,
 } from '../../state/UserProvider';
 
 import TopBar from './TopBar';
@@ -14,10 +18,13 @@ import Colors from './Colors';
 import Container from '@mui/material/Container';
 
 const Canvas = () => {
-  const { canvasOptions } = useCanvasOptions();
+  const { setCanvasCommands } = useCanvasCommands();
   const { color } = useColor();
   const { erase } = useErase();
   const { panZoom } = usePanZoom();
+  const { currentArt } = useCurrentArt();
+  const { loading, setLoading } = useLoading();
+  const { setTimer } = useTimer();
 
   /**
      * @param {Object} canvasOptions
@@ -54,39 +61,63 @@ const Canvas = () => {
   //     }));
   // };
 
-  const canvas = useRef();
-  const canvasRef = canvas.current;
+  // Creates a reference to the canvas element
+  const canvasDraw = useRef();
+  let canvasRef = null;
+  // let editArt = null;
 
-  const clearCanvas = () => {
-    canvasRef.eraseAll();
+  // Creates the canvas reference
+  useEffect(() => {
+    setLoading(true);
+    // editArt = localStorage.getItem(currentArt);
+
+    canvasRef = canvasDraw.current;
+    setCanvasCommands(canvasRef);
+    console.log('page loaded');
+
+    setLoading(false);
+  }, []);
+
+  // target canvas on mouse down to disable timer
+  const handleMouseDown = () => {
+    // console.log('mouse down');
+    setTimer(false);
   };
 
-  const saveCanvas = () => {
-    localStorage.setItem('savedCanvas', canvasRef.getSaveData());
+  // target canvas on mouse up to trigger autosave timer
+  const handleMouseUp = () => {
+    // console.log('mouse up');
+    setTimer(true);
   };
 
-  return (
+  return loading ? (
+    <h1>loading</h1>
+  ) : (
     <Container maxWidth="lg" sx={{ margin: 0, padding: 0 }}>
       <TopBar />
-      <CanvasDraw
-        style={{
-          touchAction: 'none',
-          position: 'relative',
-          zIndex: 7,
-          maxWidth: '100vw',
-          maxHeight: '100vh',
-        }}
-        ref={canvasRef}
-        {...canvasOptions}
-        canvasHeight={window.screen.height}
-        canvasWidth={window.screen.width}
-        enablePanAndZoom={panZoom}
-        brushColor={color}
-        erase={erase}
-        hideGrid={true}
-      />
+      <div onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+        <CanvasDraw
+          style={{
+            touchAction: 'none',
+            position: 'relative',
+            zIndex: 7,
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+          }}
+          ref={canvasDraw}
+          lazyRadius={5}
+          canvasHeight={window.screen.height}
+          canvasWidth={window.screen.width}
+          enablePanAndZoom={panZoom}
+          brushColor={color}
+          erase={erase}
+          hideGrid={true}
+          saveData={currentArt}
+          immediateLoading={false}
+        />
+      </div>
       <Colors />
-      {!panZoom && <BottomBar />}
+      {!panZoom && <BottomBar canvas={canvasDraw} />}
     </Container>
   );
 };
