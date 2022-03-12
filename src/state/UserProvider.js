@@ -1,4 +1,4 @@
-import React, { useRef, useState, createContext, useContext, useEffect } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 export const UserContext = createContext();
 
@@ -22,6 +22,7 @@ export function UserProvider({ children }) {
   // state for art saving
   const [canvasCommands, setCanvasCommands] = useState();
   const [saveActive, setSaveActive] = useState(false);
+  const [navigateTo, setNavigateTo] = useState();
 
   // state for auto save
   const [timer, setTimer] = useState(false);
@@ -99,6 +100,8 @@ export function UserProvider({ children }) {
         setCanvasCommands,
         saveActive,
         setSaveActive,
+        navigateTo,
+        setNavigateTo,
       }}
     >
       {children}
@@ -163,4 +166,8 @@ export const useIdleTime = () => {
 export const useArtId = () => {
   const { artId, setArtId } = useContext(UserContext);
   return { artId, setArtId };
+}
+export const useNavigateTo = () => {
+  const { navigateTo, setNavigateTo } = useContext(UserContext);
+  return { navigateTo, setNavigateTo };
 }

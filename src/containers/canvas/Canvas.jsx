@@ -56,12 +56,6 @@ const Canvas = () => {
             zoomExtents: { min: 0.33, max: 3 },
         };
      */
-  // const handleChange = (name, value) => {
-  //     setCanvasOptions((prevState) => ({
-  //         ...prevState,
-  //         [name]: value,
-  //     }));
-  // };
 
   // Creates a reference to the canvas element
   const canvasDraw = useRef();

@@ -8,6 +8,7 @@ import {
   useCanvasCommands,
   useSaveActive,
   useTimer,
+  useNavigateTo,
 } from '../../state/UserProvider';
 import Back from './buttons/Back';
 import Undo from './buttons/Undo';
@@ -21,12 +22,14 @@ export default function TopBar() {
   const { canvasCommands } = useCanvasCommands();
   const { saveActive, setSaveActive } = useSaveActive();
   const { setTimer } = useTimer();
+  const { setNavigateTo } = useNavigateTo();
   const navigate = useNavigate();
 
   const backClick = () => {
+    setNavigateTo('/home');
     setSaveActive(!saveActive);
     // console.log('saved and navigated back');
-    navigate('/home');
+    setTimeout(() => navigate('/home'), 100);
   };
 
   const undo = () => {
