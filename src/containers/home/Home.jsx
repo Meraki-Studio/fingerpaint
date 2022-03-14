@@ -77,7 +77,7 @@ export default function Home() {
       <img src={horizontalLogo} alt="Fingerpaint" className="homeLogo" />
       <section className="artDisplay">
         {myArt.map((art) => (
-          <div key={art} onClick={() => editArt(art)}>
+          <div key={art} className="artCard" onClick={() => editArt(art)}>
             <ArtItem art={art} />
           </div>
         ))}

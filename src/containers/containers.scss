@@ -1,7 +1,7 @@
 .home {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   height: 100vh;
   max-height: 100vh;
@@ -10,7 +10,7 @@
 .homeLogo {
   max-width: 90vw;
   max-height: 50px;
-  padding-top: 1rem;
+  margin: 1rem;
 }
 
 .artDisplay {
@@ -32,17 +32,9 @@
 .artDisplay::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
-.artContainer {
-  padding: 0.5rem;
-  height: 200px;
-  width: 140px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-.art {
-  overflow: hidden;
-  border-radius: 10px;
-  height: 200px;
+.artCard {
+  margin: 0.5rem;
+  box-shadow: 5px 5px 5px rgb(194, 194, 194);
 }
 
 .buttonBar {
