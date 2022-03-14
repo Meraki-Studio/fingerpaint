@@ -52,23 +52,22 @@ const Landing = () => (
         // className="status"
       >
         <Typography align="center" variant="h4">
-          <img
+          {/* <img
             src={useAssets('ui', 'alert')}
             alt="alert"
             height="40px"
             style={{ marginRight: '1rem' }}
-          />
-          Fingerpaint now in Beta
-          <img
+          /> */}
+          Now available!
+          {/* <img
             src={useAssets('ui', 'alert')}
             alt="alert"
             height="40px"
             style={{ marginLeft: '1rem' }}
-          />
+          /> */}
         </Typography>
         <Typography align="center" variant="body2">
-          Some features are incomplete; please be patient as we bring our
-          complete vision to fruition.
+          Features to come: Stickers, Brush Size, and more!
         </Typography>
       </Paper>
       <section
