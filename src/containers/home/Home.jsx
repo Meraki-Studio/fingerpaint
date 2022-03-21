@@ -22,7 +22,7 @@ import '../containers.scss';
 export default function Home() {
   const { myArt, setMyArt } = useMyArt();
   const { setCurrentArt } = useCurrentArt();
-  const { setArtId } = useArtId();
+  const { artId, setArtId } = useArtId();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,6 +50,7 @@ export default function Home() {
 
   const newArt = () => {
     setArtId(Date.now());
+    setCurrentArt(null);
     navigate('/canvas');
   };
 
