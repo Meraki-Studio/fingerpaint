@@ -14,7 +14,7 @@ import { itemTypes } from '../../utils/itemTypes';
 import { useAssets } from '../../utils/useAssets';
 
 import New from './buttons/New';
-// import Trash from './buttons/Trash';
+import Trash from './buttons/Trash';
 // import Share from './buttons/Share';
 
 import '../containers.scss';
@@ -62,13 +62,17 @@ export default function Home() {
   //   return filteredList;
   // };
 
-  // const [{ isOver }, drop] = useDrop({
-  //   accept: itemTypes.CARD,
-  //   drop: (item, _monitor) => filter(item.id),
-  //   collect: (monitor) => ({
-  //     isOver: !!monitor.isOver(),
-  //   }),
-  // });
+  // working on drop function below
+
+  const [{ isOver }, drop] = useDrop({
+    accept: itemTypes.CARD,
+    // this is where you put the drop function, but I haven't figured out how to set it to trash vs share
+    drop: (item, _monitor) => filter(item.id),
+    // this might be where you pick what it's over?
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  });
 
   const horizontalLogo = useAssets('brand', 'LogoHorizontal');
 
@@ -83,9 +87,9 @@ export default function Home() {
         ))}
       </section>
       <section className="buttonBar">
-        {/* <span className="sideButton">
+        <span className="sideButton">
           <Trash />
-        </span> */}
+        </span>
         <span onClick={() => newArt()}>
           <New classname="newArtButton" />
         </span>
