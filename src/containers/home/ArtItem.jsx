@@ -9,15 +9,13 @@ import CanvasDraw from 'react-canvas-draw';
 export default function ArtItem({ art }) {
   // console.log('art: ', art);
 
-  const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging }, drag] = useDrag(() => ({
     type: itemTypes.CARD,
-    item: {
-      id: art,
-    },
+
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-  });
+  }));
 
   const canvasRef = useRef();
 
@@ -25,7 +23,11 @@ export default function ArtItem({ art }) {
   const width = window.screen.width / 3;
 
   return (
-    <ImageListItem id="art">
+    <ImageListItem
+      id="art"
+      ref={drag}
+      style={{ opacity: isDragging ? 0.5 : 1 }}
+    >
       <CanvasDraw
         style={{
           touchAction: 'none',
